@@ -77,7 +77,6 @@ public class AtomicClient {
         this.rpcClient = this.cliClientService.getRpcClient();
         if (conf != null) {
             final Set<PeerId> peers = conf.getPeerSet();
-            System.out.println("peers: "+peers);
             for (final PeerId peer : peers) {
                 try {
                     final BooleanCommand cmd = (BooleanCommand) this.rpcClient.invokeSync(peer.getEndpoint(),
