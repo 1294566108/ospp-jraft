@@ -20,8 +20,6 @@ import java.util.concurrent.locks.StampedLock;
 
 import javax.annotation.concurrent.ThreadSafe;
 
-import com.alipay.sofa.jraft.Quorum;
-import com.alipay.sofa.jraft.entity.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -30,6 +28,8 @@ import com.alipay.sofa.jraft.FSMCaller;
 import com.alipay.sofa.jraft.Lifecycle;
 import com.alipay.sofa.jraft.closure.ClosureQueue;
 import com.alipay.sofa.jraft.conf.Configuration;
+import com.alipay.sofa.jraft.entity.Ballot;
+import com.alipay.sofa.jraft.entity.PeerId;
 import com.alipay.sofa.jraft.option.BallotBoxOptions;
 import com.alipay.sofa.jraft.util.Describer;
 import com.alipay.sofa.jraft.util.OnlyForTest;
@@ -38,9 +38,8 @@ import com.alipay.sofa.jraft.util.SegmentList;
 
 /**
  * Ballot box for voting.
- *
  * @author boyan (boyan@alibaba-inc.com)
- * <p>
+ *
  * 2018-Apr-04 2:32:10 PM
  */
 @ThreadSafe
@@ -53,7 +52,7 @@ public class BallotBox implements Lifecycle<BallotBoxOptions>, Describer {
     private final StampedLock         stampedLock        = new StampedLock();
     private long                      lastCommittedIndex = 0;
     private long                      pendingIndex;
-    private final SegmentList<Quorum> pendingMetaQueue   = new SegmentList<>(false);
+    private final SegmentList<Ballot> pendingMetaQueue   = new SegmentList<>(false);
     private BallotBoxOptions          opts;
 
     @OnlyForTest
@@ -62,7 +61,7 @@ public class BallotBox implements Lifecycle<BallotBoxOptions>, Describer {
     }
 
     @OnlyForTest
-    SegmentList<Quorum> getPendingMetaQueue() {
+    SegmentList<Ballot> getPendingMetaQueue() {
         return this.pendingMetaQueue;
     }
 
@@ -113,15 +112,14 @@ public class BallotBox implements Lifecycle<BallotBoxOptions>, Describer {
             }
 
             final long startAt = Math.max(this.pendingIndex, firstLogIndex);
-            Quorum.PosHint hint = new Quorum.PosHint();
+            Ballot.PosHint hint = new Ballot.PosHint();
             for (long logIndex = startAt; logIndex <= lastLogIndex; logIndex++) {
-                final Quorum quorum = this.pendingMetaQueue.get((int) (logIndex - this.pendingIndex));
-                hint = quorum.grant(peer, hint);
-                if (quorum.isGranted()) {
+                final Ballot bl = this.pendingMetaQueue.get((int) (logIndex - this.pendingIndex));
+                hint = bl.grant(peer, hint);
+                if (bl.isGranted()) {
                     lastCommittedIndex = logIndex;
                 }
             }
-
             if (lastCommittedIndex == 0) {
                 return true;
             }
@@ -166,7 +164,6 @@ public class BallotBox implements Lifecycle<BallotBoxOptions>, Describer {
      * According the the raft algorithm, the logs from previous terms can't be
      * committed until a log at the new term becomes committed, so
      * |newPendingIndex| should be |last_log_index| + 1.
-     *
      * @param newPendingIndex pending index of new leader
      * @return returns true if reset success
      */
@@ -195,18 +192,14 @@ public class BallotBox implements Lifecycle<BallotBoxOptions>, Describer {
      * Called by leader, otherwise the behavior is undefined
      * Store application context before replication.
      *
-     * @param conf    current configuration
-     * @param oldConf old configuration
-     * @param done    callback
-     * @param quorumConfiguration quorum configuration
-     * @return returns true on success
+     * @param conf      current configuration
+     * @param oldConf   old configuration
+     * @param done      callback
+     * @return          returns true on success
      */
-    public boolean appendPendingTask(final Configuration conf, final Configuration oldConf, final Closure done,
-                                     final QuorumConfiguration quorumConfiguration) {
-        final Quorum quorum;
-        quorum = quorumConfiguration.isEnableNWR() ? new NWRQuorum(quorumConfiguration.getWriteFactor(),
-            quorumConfiguration.getReadFactor()) : new MajorityQuorum();
-        if (!quorum.init(conf, oldConf)) {
+    public boolean appendPendingTask(final Configuration conf, final Configuration oldConf, final Closure done) {
+        final Ballot bl = new Ballot();
+        if (!bl.init(conf, oldConf)) {
             LOG.error("Fail to init ballot.");
             return false;
         }
@@ -216,7 +209,7 @@ public class BallotBox implements Lifecycle<BallotBoxOptions>, Describer {
                 LOG.error("Node {} fail to appendingTask, pendingIndex={}.", this.opts.getNodeId(), this.pendingIndex);
                 return false;
             }
-            this.pendingMetaQueue.add(quorum);
+            this.pendingMetaQueue.add(bl);
             this.closureQueue.appendPendingClosure(done);
             return true;
         } finally {
