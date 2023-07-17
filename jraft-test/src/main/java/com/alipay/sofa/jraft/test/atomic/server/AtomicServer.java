@@ -118,6 +118,7 @@ public class AtomicServer {
 
     //for test
     public static void main(String[] arsg) throws Exception {
-        start("config/server.properties");
+        //start("E:\\ospp-jraft\\jraft-test\\src\\main\\java\\server1.properties");
+        start("E:\\ospp-jraft\\jraft-test\\src\\main\\java\\server2.properties");
     }
 }

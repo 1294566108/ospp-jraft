@@ -30,14 +30,15 @@ public class AtomicClientTest {
     public static void main(String[] args) throws Exception {
         final RouteTable table = RouteTable.getInstance();
         table.updateConfiguration("atomic_0",
-            JRaftUtils.getConfiguration("127.0.0.1:8609,127.0.0.1:8610,127.0.0.1:8611"));
+            JRaftUtils.getConfiguration("localhost:8609,localhost:8610,localhost:8611,localhost:8612,localhost:8613"));
         final CliClientServiceImpl cliClientService = new CliClientServiceImpl();
         cliClientService.init(new CliOptions());
         final Status st = table.refreshLeader(cliClientService, "atomic_0", 10000);
         System.out.println(st);
 
-        final AtomicClient cli = new AtomicClient("atomic", JRaftUtils.getConfiguration("localhost:8610"));
+        final AtomicClient cli = new AtomicClient("atomic", JRaftUtils.getConfiguration("localhost:8609,localhost:8610,localhost:8611,localhost:8612,localhost:8613"));
         final PeerId leader = table.selectLeader("atomic_0");
+        System.out.println("leader is "+leader);
         cli.start();
 
         final int threads = 30;
@@ -51,10 +52,10 @@ public class AtomicClientTest {
                     long sum = 0;
                     try {
                         barrier.await();
-                        final PeerId peer = new PeerId("localhost", 8611);
+                        final PeerId peer = new PeerId("localhost", 8666);
                         for (int i = 0; i < count; i++) {
-                            sum += cli.get(leader, "a", true, false);
-                            //sum += cli.addAndGet(leader, "a", i);
+                            //sum += cli.get(leader, "a", true, false);
+                            sum += cli.addAndGet(leader, "a", i);
                         }
                         barrier.await();
                     } catch (final Exception e) {
