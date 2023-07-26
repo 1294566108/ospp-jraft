@@ -152,11 +152,11 @@ voteCtx = options.isEnableFlexibleRaft() ? new NWRQuorum(opts.getReadQuorumFacto
 
 #### Quorum
 
-Quorum作为NWRQuorum与MajorityQuorum的抽象父类，持有peers、oldPeers、quorum、oldQuorum几个公共属性。
+Quorum作为NWRQuorum与MajorityQuorum的抽象父类，持有peers、oldPeers、abstractQuorum、oldQuorum几个公共属性。
 
 ```
 protected final List<Quorum.UnfoundPeerId> peers = new ArrayList<>()
-protected int quorum;
+protected int abstractQuorum;
 protected final List<Quorum.UnfoundPeerId> oldPeers = new ArrayList<>();
 protected int oldQuorum;
 ```
@@ -216,7 +216,7 @@ public void grant(final PeerId peerId) ---节点投票
     public boolean init(Configuration conf, Configuration oldConf) {
         peers.clear();
         oldPeers.clear();
-        quorum = oldQuorum = 0;
+        abstractQuorum = oldQuorum = 0;
         int index = 0;
 
         if (conf != null) {
@@ -227,7 +227,7 @@ public void grant(final PeerId peerId) ---节点投票
 
         BigDecimal writeFactorDecimal = defaultDecimal.multiply(new BigDecimal(writeFactor))
                 .multiply(new BigDecimal(peers.size()));
-        quorum = writeFactorDecimal.setScale(0, RoundingMode.CEILING).intValue();
+        abstractQuorum = writeFactorDecimal.setScale(0, RoundingMode.CEILING).intValue();
 
         if (oldConf == null) {
             return true;
@@ -287,7 +287,7 @@ prevVoteCtx.init(this.conf.getConf(), this.conf.isStable() ? null : this.conf.ge
 - **在NodeImpl#handlePreVoteResponse中**，该方法用来处理预投票响应：首先根据响应判断对方节点是否为本节点投票，在判断为true后，Quorum(即prevVoteCtx)调用grant()对该节点进行授权投票。最后通过isGranted()判断是否大多数节点已经确认，如果符合条件，则开启正式选举模式，调用electSelf()方法。
 
 ```
-            // check granted quorum?
+            // check granted abstractQuorum?
             if (response.getGranted()) {
                 prevVoteCtx.grant(peerId);
                 if (prevVoteCtx.isGranted()) {
@@ -317,7 +317,7 @@ prevVoteCtx.init(this.conf.getConf(), this.conf.isStable() ? null : this.conf.ge
 - **在NodeImpl#handleRequestVoteResponse中**，该方法用来处理投票请求的响应。只要收到投票的反馈，就会在投票箱中对多数派进行确认，如果已经达成多数派确认的共识，那么本节点就调用NodeImpl#becomeLeader方法成为leader。投票请求处理器NodeImpl#handleRequestVoteResponse方法对选票处理的核心逻辑如下：
 
 ```
-            // check granted quorum?
+            // check granted abstractQuorum?
             if (response.getGranted()) {
                 voteCtx.grant(peerId);
                 if (voteCtx.isGranted()) {
@@ -432,9 +432,9 @@ public final class QuorumFactory {
             // 省略部分代码...
             Quorum.PosHint hint = new Quorum.PosHint();
             for (long logIndex = startAt; logIndex <= lastLogIndex; logIndex++) {
-                final Quorum quorum = this.pendingMetaQueue.get((int) (logIndex - this.pendingIndex));
-                hint = quorum.grant(peer, hint);
-                if (quorum.isGranted()) {
+                final Quorum abstractQuorum = this.pendingMetaQueue.get((int) (logIndex - this.pendingIndex));
+                hint = abstractQuorum.grant(peer, hint);
+                if (abstractQuorum.isGranted()) {
                     lastCommittedIndex = logIndex;
                 }
             }
@@ -480,14 +480,14 @@ public final class QuorumFactory {
 failPeersThreshold原有计算逻辑：
 
 ```
-this.failPeersThreshold = peersCount % 2 == 0 ? (quorum - 1) : quorum;
+this.failPeersThreshold = peersCount % 2 == 0 ? (abstractQuorum - 1) : abstractQuorum;
 ```
 
 修改后：
 
 ```
-this.failPeersThreshold = options.isEnableFlexibleRaft() ? peersCount - quorum + 1 :
-     (peersCount % 2 == 0 ? (quorum - 1) : quorum);
+this.failPeersThreshold = options.isEnableFlexibleRaft() ? peersCount - abstractQuorum + 1 :
+     (peersCount % 2 == 0 ? (abstractQuorum - 1) : abstractQuorum);
 ```
 #### Member change
 
@@ -532,10 +532,10 @@ this.failPeersThreshold = options.isEnableFlexibleRaft() ? peersCount - quorum +
 
 ```
         if (stepDownOnCheckFail) {
-            LOG.warn("Node {} steps down when alive nodes don't satisfy quorum, term={}, deadNodes={}, conf={}.",
+            LOG.warn("Node {} steps down when alive nodes don't satisfy abstractQuorum, term={}, deadNodes={}, conf={}.",
                 getNodeId(), this.currTerm, deadNodes, conf);
             final Status status = new Status();
-            String msg = options.isEnableFlexibleRaft() ? "Reading quorum does not meet availability conditions: "
+            String msg = options.isEnableFlexibleRaft() ? "Reading abstractQuorum does not meet availability conditions: "
                     + getReadQuorum() + ", Some nodes in the cluster dies" :
                     "Majority of the group dies";
             status.setError(RaftError.ERAFTTIMEDOUT, "%s: %d/%d", msg,

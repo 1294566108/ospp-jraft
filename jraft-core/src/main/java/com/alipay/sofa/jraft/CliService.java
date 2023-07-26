@@ -32,6 +32,8 @@ import com.alipay.sofa.jraft.option.CliOptions;
  * 2018-Apr-09 4:05:35 PM
  */
 public interface CliService extends Lifecycle<CliOptions> {
+    Status resetFactor(final String groupId, final Configuration conf, final Integer readFactor,
+                       final Integer writeFactor);
 
     /**
      * Add a new peer into the replicating group which consists of |conf|.

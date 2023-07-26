@@ -220,6 +220,16 @@ public interface Node extends Lifecycle<NodeOptions>, Describer {
     void changePeers(final Configuration newPeers, final Closure done);
 
     /**
+     * In some cases, this method can be called to reset the size of the read/write factor
+     *
+     * @param readFactor read factor for flexible raft
+     * @param writeFactor write factor for flexible raft
+     * @since 1.3.13
+     */
+    void resetFactor(final Integer readFactor, final Integer writeFactor, final Closure done);
+
+
+    /**
      * Reset the configuration of this node individually, without any replication
      * to other peers before this node becomes the leader. This function is
      * supposed to be invoked when the majority of the replication group are

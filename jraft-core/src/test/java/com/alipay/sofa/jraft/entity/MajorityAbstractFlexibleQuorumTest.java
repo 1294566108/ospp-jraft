@@ -24,13 +24,13 @@ import com.alipay.sofa.jraft.JRaftUtils;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-public class MajorityQuorumTest {
+public class MajorityAbstractFlexibleQuorumTest {
 
-    private MajorityQuorum majorityQuorum;
+    private MajorityAbstractQuorum majorityQuorum;
 
     @Before
     public void setup() {
-        this.majorityQuorum = new MajorityQuorum();
+        this.majorityQuorum = new MajorityAbstractQuorum();
         this.majorityQuorum.init(JRaftUtils.getConfiguration("localhost:8081,localhost:8082,localhost:8083"), null);
     }
 

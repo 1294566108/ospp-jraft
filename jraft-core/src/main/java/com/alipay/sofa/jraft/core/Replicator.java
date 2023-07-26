@@ -18,6 +18,7 @@ package com.alipay.sofa.jraft.core;
 
 import java.nio.ByteBuffer;
 import java.util.ArrayDeque;
+import java.util.Objects;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -869,10 +870,18 @@ public class Replicator implements ThreadId.OnError {
     private void fillMetaPeers(final RaftOutter.EntryMeta.Builder emb, final LogEntry entry) {
         for (final PeerId peer : entry.getPeers()) {
             emb.addPeers(peer.toString());
+            if(Objects.nonNull(entry.getReadFactor()) || Objects.nonNull(entry.getWriteFactor())){
+                emb.setReadFactor(entry.getReadFactor());
+                emb.setWriteFactor(entry.getWriteFactor());
+            }
         }
         if (entry.getOldPeers() != null) {
             for (final PeerId peer : entry.getOldPeers()) {
                 emb.addOldPeers(peer.toString());
+                if(Objects.nonNull(entry.getOldReadFactor())||Objects.nonNull(entry.getOldWriteFactor())){
+                    emb.setOldReadFactor(entry.getOldReadFactor());
+                    emb.setOldWriteFactor(entry.getOldWriteFactor());
+                }
             }
         }
         if (entry.getLearners() != null) {
