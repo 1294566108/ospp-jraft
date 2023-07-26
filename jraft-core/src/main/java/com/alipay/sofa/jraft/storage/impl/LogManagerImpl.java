@@ -315,7 +315,6 @@ public class LogManagerImpl implements LogManager {
             }
             for (int i = 0; i < entries.size(); i++) {
                 final LogEntry entry = entries.get(i);
-                System.out.println("拿到Entry："+entry);
                 // Set checksum after checkAndResolveConflict
                 if (this.raftOptions.isEnableLogEntryChecksum()) {
                     entry.setChecksum(entry.checksum());
@@ -325,7 +324,6 @@ public class LogManagerImpl implements LogManager {
                     if (entry.getOldPeers() != null) {
                         oldConf = new Configuration(entry.getOldPeers(), entry.getOldLearners());
                         if (Objects.nonNull(entry.getOldReadFactor()) || Objects.nonNull(entry.getOldWriteFactor())) {
-                            System.out.println("appendEntries");
                             oldConf.setReadFactor(entry.getOldReadFactor());
                             oldConf.setWriteFactor(entry.getOldWriteFactor());
                         }
@@ -337,8 +335,6 @@ public class LogManagerImpl implements LogManager {
                     }
                     final ConfigurationEntry conf = new ConfigurationEntry(entry.getId(),
                             newConf, oldConf);
-                    System.out.println();
-                    System.out.println("【configManager.add】 LogManagerImpl:"+conf);
                     this.configManager.add(conf);
                 }
             }
