@@ -20,6 +20,7 @@ import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReadWriteLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
@@ -273,9 +274,19 @@ public class LogitLogStorage implements LogStorage {
             if (entry.getType() == EntryType.ENTRY_TYPE_CONFIGURATION) {
                 final ConfigurationEntry confEntry = new ConfigurationEntry();
                 confEntry.setId(new LogId(entry.getId().getIndex(), entry.getId().getTerm()));
-                confEntry.setConf(new Configuration(entry.getPeers(), entry.getLearners()));
+                Configuration conf = new Configuration(entry.getPeers(), entry.getLearners());
+                if(Objects.nonNull(entry.getWriteFactor())||Objects.nonNull(entry.getReadFactor())) {
+                    conf.setWriteFactor(entry.getWriteFactor());
+                    conf.setReadFactor(entry.getReadFactor());
+                }
+                confEntry.setConf(conf);
                 if (entry.getOldPeers() != null) {
-                    confEntry.setOldConf(new Configuration(entry.getOldPeers(), entry.getOldLearners()));
+                    Configuration oldConf = new Configuration(entry.getOldPeers(), entry.getOldLearners());
+                    if(Objects.nonNull(entry.getOldWriteFactor())||Objects.nonNull(entry.getOldReadFactor())) {
+                        oldConf.setWriteFactor(entry.getOldWriteFactor());
+                        oldConf.setReadFactor(entry.getOldReadFactor());
+                    }
+                    confEntry.setOldConf(oldConf);
                 }
                 if (this.configurationManager != null) {
                     this.configurationManager.add(confEntry);

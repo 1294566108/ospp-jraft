@@ -16,10 +16,7 @@
  */
 package com.alipay.sofa.jraft.storage.impl;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
@@ -27,6 +24,7 @@ import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReadWriteLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
+import com.alipay.sofa.jraft.entity.*;
 import com.alipay.sofa.jraft.util.ThreadPoolsFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -39,9 +37,6 @@ import com.alipay.sofa.jraft.conf.ConfigurationManager;
 import com.alipay.sofa.jraft.core.NodeMetrics;
 import com.alipay.sofa.jraft.entity.EnumOutter.EntryType;
 import com.alipay.sofa.jraft.entity.EnumOutter.ErrorType;
-import com.alipay.sofa.jraft.entity.LogEntry;
-import com.alipay.sofa.jraft.entity.LogId;
-import com.alipay.sofa.jraft.entity.PeerId;
 import com.alipay.sofa.jraft.entity.RaftOutter.SnapshotMeta;
 import com.alipay.sofa.jraft.error.LogEntryCorruptedException;
 import com.alipay.sofa.jraft.error.RaftError;
@@ -70,7 +65,7 @@ import com.lmax.disruptor.dsl.ProducerType;
  * LogManager implementation.
  *
  * @author boyan (boyan@alibaba-inc.com)
- *
+ * <p>
  * 2018-Apr-04 4:42:20 PM
  */
 public class LogManagerImpl implements LogManager {
@@ -130,16 +125,23 @@ public class LogManagerImpl implements LogManager {
 
     /**
      * Waiter metadata
-     * @author boyan (boyan@alibaba-inc.com)
      *
+     * @author boyan (boyan@alibaba-inc.com)
+     * <p>
      * 2018-Apr-04 5:05:04 PM
      */
     private static class WaitMeta {
-        /** callback when new log come in*/
+        /**
+         * callback when new log come in
+         */
         NewLogCallback onNewLog;
-        /** callback error code*/
+        /**
+         * callback error code
+         */
         int            errorCode;
-        /** the waiter pass-in argument */
+        /**
+         * the waiter pass-in argument
+         */
         Object         arg;
 
         public WaitMeta(final NewLogCallback onNewLog, final Object arg, final int errorCode) {
@@ -189,7 +191,7 @@ public class LogManagerImpl implements LogManager {
             this.lastLogIndex = this.logStorage.getLastLogIndex();
             this.diskId = new LogId(this.lastLogIndex, getTermFromLogStorage(this.lastLogIndex));
             this.fsmCaller = opts.getFsmCaller();
-            this.disruptor = DisruptorBuilder.<StableClosureEvent> newInstance() //
+            this.disruptor = DisruptorBuilder.<StableClosureEvent>newInstance() //
                     .setEventFactory(new StableClosureEventFactory()) //
                     .setRingBufferSize(opts.getDisruptorBufferSize()) //
                     .setThreadFactory(new NamedThreadFactory("JRaft-LogManager-Disruptor-", true)) //
@@ -198,7 +200,7 @@ public class LogManagerImpl implements LogManager {
                      *  Use timeout strategy in log manager. If timeout happens, it will called reportError to halt the node.
                      */
                     .setWaitStrategy(new TimeoutBlockingWaitStrategy(
-                        this.raftOptions.getDisruptorPublishEventWaitTimeoutSecs(), TimeUnit.SECONDS)) //
+                            this.raftOptions.getDisruptorPublishEventWaitTimeoutSecs(), TimeUnit.SECONDS)) //
                     .build();
             this.disruptor.handleEventsWith(new StableClosureEventHandler());
             this.disruptor.setDefaultExceptionHandler(new LogExceptionHandler<Object>(this.getClass().getSimpleName(),
@@ -206,7 +208,7 @@ public class LogManagerImpl implements LogManager {
             this.diskQueue = this.disruptor.start();
             if (this.nodeMetrics.getMetricRegistry() != null) {
                 this.nodeMetrics.getMetricRegistry().register("jraft-log-manager-disruptor",
-                    new DisruptorMetricSet(this.diskQueue));
+                        new DisruptorMetricSet(this.diskQueue));
             }
         } finally {
             this.writeLock.unlock();
@@ -295,7 +297,7 @@ public class LogManagerImpl implements LogManager {
 
     @Override
     public void appendEntries(final List<LogEntry> entries, final StableClosure done) {
-        assert(done != null);
+        assert (done != null);
 
         Requires.requireNonNull(done, "done");
         if (this.hasError) {
@@ -313,6 +315,7 @@ public class LogManagerImpl implements LogManager {
             }
             for (int i = 0; i < entries.size(); i++) {
                 final LogEntry entry = entries.get(i);
+                System.out.println("拿到Entry："+entry);
                 // Set checksum after checkAndResolveConflict
                 if (this.raftOptions.isEnableLogEntryChecksum()) {
                     entry.setChecksum(entry.checksum());
@@ -321,9 +324,21 @@ public class LogManagerImpl implements LogManager {
                     Configuration oldConf = new Configuration();
                     if (entry.getOldPeers() != null) {
                         oldConf = new Configuration(entry.getOldPeers(), entry.getOldLearners());
+                        if (Objects.nonNull(entry.getOldReadFactor()) || Objects.nonNull(entry.getOldWriteFactor())) {
+                            System.out.println("appendEntries");
+                            oldConf.setReadFactor(entry.getOldReadFactor());
+                            oldConf.setWriteFactor(entry.getOldWriteFactor());
+                        }
+                    }
+                    Configuration newConf = new Configuration(entry.getPeers(), entry.getLearners());
+                    if (Objects.nonNull(entry.getReadFactor()) || Objects.nonNull(entry.getWriteFactor())) {
+                        newConf.setReadFactor(entry.getReadFactor());
+                        newConf.setWriteFactor(entry.getWriteFactor());
                     }
                     final ConfigurationEntry conf = new ConfigurationEntry(entry.getId(),
-                        new Configuration(entry.getPeers(), entry.getLearners()), oldConf);
+                            newConf, oldConf);
+                    System.out.println();
+                    System.out.println("【configManager.add】 LogManagerImpl:"+conf);
                     this.configManager.add(conf);
                 }
             }
@@ -340,9 +355,9 @@ public class LogManagerImpl implements LogManager {
 
             // publish event out of lock
             this.diskQueue.publishEvent((event, sequence) -> {
-              event.reset();
-              event.type = EventType.OTHER;
-              event.done = done;
+                event.reset();
+                event.type = EventType.OTHER;
+                event.done = done;
             });
         } finally {
             if (doUnlock) {
@@ -353,17 +368,18 @@ public class LogManagerImpl implements LogManager {
 
     /**
      * Adds event to disk queue, NEVER call it in lock.
+     *
      * @param done
      * @param type
      */
     private void offerEvent(final StableClosure done, final EventType type) {
-        assert(done != null);
+        assert (done != null);
 
         if (this.stopped) {
             ThreadPoolsFactory.runClosureInThread(this.groupId, done, new Status(RaftError.ESTOP, "Log manager is stopped."));
             return;
         }
-       this.diskQueue.publishEvent((event, sequence) -> {
+        this.diskQueue.publishEvent((event, sequence) -> {
             event.reset();
             event.type = type;
             event.done = done;
@@ -597,7 +613,6 @@ public class LogManagerImpl implements LogManager {
 
     @Override
     public void setSnapshot(final SnapshotMeta meta) {
-        LOG.debug("set snapshot: {}.", meta);
         boolean doUnlock = true;
         this.writeLock.lock();
         try {
@@ -609,6 +624,7 @@ public class LogManagerImpl implements LogManager {
 
             final ConfigurationEntry entry = new ConfigurationEntry(new LogId(meta.getLastIncludedIndex(),
                 meta.getLastIncludedTerm()), conf, oldConf);
+            System.out.println("【set snapshot】"+entry);
             this.configManager.setSnapshot(entry);
             final long term = unsafeGetTerm(meta.getLastIncludedIndex());
             final long savedLastSnapshotIndex = this.lastSnapshotId.getIndex();
@@ -665,10 +681,18 @@ public class LogManagerImpl implements LogManager {
             peer.parse(meta.getOldPeers(i));
             oldConf.addPeer(peer);
         }
+        if(meta.hasOldReadFactor() && meta.hasOldWriteFactor()){
+            oldConf.setReadFactor((int) meta.getOldReadFactor());
+            oldConf.setWriteFactor((int) meta.getWriteFactor());
+        }
         for (int i = 0; i < meta.getOldLearnersCount(); i++) {
             final PeerId peer = new PeerId();
             peer.parse(meta.getOldLearners(i));
             oldConf.addLearner(peer);
+        }
+        if(meta.hasOldReadFactor() || meta.hasOldWriteFactor()) {
+            oldConf.setReadFactor((int) meta.getOldReadFactor());
+            oldConf.setWriteFactor((int) meta.getOldWriteFactor());
         }
         return oldConf;
     }
@@ -684,6 +708,10 @@ public class LogManagerImpl implements LogManager {
             final PeerId peer = new PeerId();
             peer.parse(meta.getLearners(i));
             conf.addLearner(peer);
+        }
+        if(meta.hasReadFactor()|| meta.hasWriteFactor()) {
+            conf.setReadFactor((int) meta.getReadFactor());
+            conf.setWriteFactor((int) meta.getWriteFactor());
         }
         return conf;
     }
@@ -984,7 +1012,7 @@ public class LogManagerImpl implements LogManager {
     private void unsafeTruncateSuffix(final long lastIndexKept, final Lock lock) {
         if (lastIndexKept < this.appliedId.getIndex()) {
             LOG.error("FATAL ERROR: Can't truncate logs before appliedId={}, lastIndexKept={}", this.appliedId,
-                lastIndexKept);
+                    lastIndexKept);
             return;
         }
 
@@ -1083,6 +1111,7 @@ public class LogManagerImpl implements LogManager {
         try {
             final ConfigurationEntry lastConf = this.configManager.getLastConfiguration();
             if (lastConf != null && !lastConf.isEmpty() && !current.getId().equals(lastConf.getId())) {
+                System.out.println("从configManager拿取最新conf: "+lastConf);
                 return lastConf;
             }
         } finally {
@@ -1107,8 +1136,8 @@ public class LogManagerImpl implements LogManager {
             }
             long waitId = this.nextWaitId++;
             if (waitId < 0) {
-            	// Valid waitId starts from 1, skip 0.
-            	waitId = this.nextWaitId = 1;
+                // Valid waitId starts from 1, skip 0.
+                waitId = this.nextWaitId = 1;
             }
             this.waitMap.put(waitId, wm);
             return waitId;
