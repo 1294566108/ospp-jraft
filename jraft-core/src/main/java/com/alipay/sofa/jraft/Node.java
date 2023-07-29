@@ -220,14 +220,16 @@ public interface Node extends Lifecycle<NodeOptions>, Describer {
     void changePeers(final Configuration newPeers, final Closure done);
 
     /**
-     * In some cases, this method can be called to reset the size of the read/write factor
+     * This method can be called to reset the size of the read or write factor
+     *
+     * It should be noted that we cannot change the factory size while changing
+     * the number of cluster nodes.
      *
      * @param readFactor read factor for flexible raft
      * @param writeFactor write factor for flexible raft
      * @since 1.3.13
      */
     void resetFactor(final Integer readFactor, final Integer writeFactor, final Closure done);
-
 
     /**
      * Reset the configuration of this node individually, without any replication

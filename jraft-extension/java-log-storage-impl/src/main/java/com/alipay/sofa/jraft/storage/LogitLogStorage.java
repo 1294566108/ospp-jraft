@@ -275,14 +275,16 @@ public class LogitLogStorage implements LogStorage {
                 final ConfigurationEntry confEntry = new ConfigurationEntry();
                 confEntry.setId(new LogId(entry.getId().getIndex(), entry.getId().getTerm()));
                 Configuration conf = new Configuration(entry.getPeers(), entry.getLearners());
-                if(Objects.nonNull(entry.getWriteFactor())||Objects.nonNull(entry.getReadFactor())) {
+                // set factor from entry
+                if (entry.haveFactorValue()) {
                     conf.setWriteFactor(entry.getWriteFactor());
                     conf.setReadFactor(entry.getReadFactor());
                 }
                 confEntry.setConf(conf);
                 if (entry.getOldPeers() != null) {
                     Configuration oldConf = new Configuration(entry.getOldPeers(), entry.getOldLearners());
-                    if(Objects.nonNull(entry.getOldWriteFactor())||Objects.nonNull(entry.getOldReadFactor())) {
+                    // set old factor from entry
+                    if (entry.haveOldFactorValue()) {
                         oldConf.setWriteFactor(entry.getOldWriteFactor());
                         oldConf.setReadFactor(entry.getOldReadFactor());
                     }
@@ -519,7 +521,7 @@ public class LogitLogStorage implements LogStorage {
             this.confDB.reset(nextLogIndex);
             if (entry == null) {
                 entry = new LogEntry();
-                entry.setType(EnumOutter.EntryType.ENTRY_TYPE_NO_OP);
+                entry.setType(EntryType.ENTRY_TYPE_NO_OP);
                 entry.setId(new LogId(nextLogIndex, 0));
             }
             saveFirstLogIndex(-1);

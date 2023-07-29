@@ -161,14 +161,16 @@ public class BDBLogStorage implements LogStorage, Describer {
                             final ConfigurationEntry confEntry = new ConfigurationEntry();
                             confEntry.setId(new LogId(entry.getId().getIndex(), entry.getId().getTerm()));
                             Configuration conf = new Configuration(entry.getPeers(), entry.getLearners());
-                            if(Objects.nonNull(entry.getWriteFactor()) || Objects.nonNull(entry.getReadFactor())) {
+                            // load factors from entries
+                            if (entry.haveFactorValue()) {
                                 conf.setWriteFactor(entry.getWriteFactor());
                                 conf.setReadFactor(entry.getReadFactor());
                             }
                             confEntry.setConf(conf);
                             if (entry.getOldPeers() != null) {
                                 Configuration oldConf = new Configuration(entry.getOldPeers(), entry.getOldLearners());
-                                if(Objects.nonNull(entry.getOldWriteFactor()) || Objects.nonNull(entry.getOldReadFactor())) {
+                                // load old factors from entries
+                                if (entry.haveOldFactorValue()) {
                                     oldConf.setWriteFactor(entry.getOldWriteFactor());
                                     oldConf.setReadFactor(entry.getOldReadFactor());
                                 }

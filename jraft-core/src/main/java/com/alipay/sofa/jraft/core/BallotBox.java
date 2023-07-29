@@ -21,7 +21,8 @@ import java.util.concurrent.locks.StampedLock;
 import javax.annotation.concurrent.ThreadSafe;
 
 import com.alipay.sofa.jraft.Quorum;
-import com.alipay.sofa.jraft.entity.*;
+import com.alipay.sofa.jraft.entity.Ballot;
+import com.alipay.sofa.jraft.entity.PeerId;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -40,7 +41,7 @@ import com.alipay.sofa.jraft.util.SegmentList;
  * Ballot box for voting.
  *
  * @author boyan (boyan@alibaba-inc.com)
- * <p>
+ *
  * 2018-Apr-04 2:32:10 PM
  */
 @ThreadSafe
@@ -195,9 +196,11 @@ public class BallotBox implements Lifecycle<BallotBoxOptions>, Describer {
      * Called by leader, otherwise the behavior is undefined
      * Store application context before replication.
      *
-     * @param conf    current configuration
-     * @param oldConf old configuration
-     * @param done    callback
+     * @param conf      current configuration
+     * @param oldConf   old configuration
+     * @param quorum    quorum information
+     * @param oldQuorum old quorum information
+     * @param done      callback
      * @return returns true on success
      */
     public boolean appendPendingTask(final Configuration conf, final Configuration oldConf, final Quorum quorum,

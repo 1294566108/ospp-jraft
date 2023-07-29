@@ -18,6 +18,7 @@ package com.alipay.sofa.jraft.entity;
 
 import java.nio.ByteBuffer;
 import java.util.List;
+import java.util.Objects;
 
 import com.alipay.sofa.jraft.entity.codec.LogEntryDecoder;
 import com.alipay.sofa.jraft.entity.codec.LogEntryEncoder;
@@ -56,13 +57,13 @@ public class LogEntry implements Checksum {
     /** true when the log has checksum **/
     private boolean                hasChecksum;
     /** read factor for flexible raft **/
-    private Integer                readFactor;
+    private int                    readFactor;
     /** write factor for flexible raft **/
-    private Integer                writeFactor;
+    private int                    writeFactor;
     /** old read factor for flexible raft **/
-    private Integer                oldReadFactor;
+    private int                    oldReadFactor;
     /** old write factor for flexible raft **/
-    private Integer                oldWriteFactor;
+    private int                    oldWriteFactor;
 
     public List<PeerId> getLearners() {
         return this.learners;
@@ -235,6 +236,14 @@ public class LogEntry implements Checksum {
         this.oldWriteFactor = oldWriteFactor;
     }
 
+    public boolean haveFactorValue() {
+        return readFactor > 0 || writeFactor > 0;
+    }
+
+    public boolean haveOldFactorValue() {
+        return oldReadFactor > 0 || oldWriteFactor > 0;
+    }
+
     /**
      * Returns the log data, it's not read-only, you SHOULD take care it's modification and
      * thread-safety by yourself.
@@ -273,7 +282,7 @@ public class LogEntry implements Checksum {
         return "LogEntry [type=" + this.type + ", id=" + this.id + ", peers=" + this.peers + ", oldPeers="
                + this.oldPeers + ", learners=" + this.learners + ", oldLearners=" + this.oldLearners + ", data="
                + (this.data != null ? this.data.remaining() : 0) + ", readFactor=" + this.readFactor + ", writeFactor="
-               + this.writeFactor + ",oldReadFactor=" + oldReadFactor + ",oldWriteFactor=" + oldWriteFactor +"]";
+               + this.writeFactor + ", oldReadFactor=" + oldReadFactor + ", oldWriteFactor=" + oldWriteFactor + "]";
     }
 
     @Override

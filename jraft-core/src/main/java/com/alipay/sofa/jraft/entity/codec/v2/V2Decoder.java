@@ -64,7 +64,6 @@ public class V2Decoder implements LogEntryDecoder {
         i += LogEntryV2CodecFactory.RESERVED.length;
         try {
             final PBLogEntry entry = PBLogEntry.parseFrom(ZeroByteStringHelper.wrap(bs, i, bs.length - i));
-
             final LogEntry log = new LogEntry();
             log.setType(entry.getType());
             log.getId().setIndex(entry.getIndex());
@@ -102,6 +101,16 @@ public class V2Decoder implements LogEntryDecoder {
                     peers.add(JRaftUtils.getPeerId(AsciiStringUtil.unsafeDecode(bstring)));
                 }
                 log.setOldLearners(peers);
+            }
+
+            if(entry.hasWriteFactor() || entry.hasReadFactor()){
+                log.setWriteFactor((int) entry.getWriteFactor());
+                log.setReadFactor((int) entry.getReadFactor());
+            }
+
+            if(entry.hasOldWriteFactor() || entry.hasOldReadFactor()){
+                log.setOldWriteFactor((int) entry.getOldWriteFactor());
+                log.setOldReadFactor((int) entry.getOldReadFactor());
             }
 
             final ByteString data = entry.getData();

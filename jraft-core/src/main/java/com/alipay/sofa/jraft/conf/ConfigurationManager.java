@@ -28,7 +28,7 @@ import com.alipay.sofa.jraft.util.Requires;
  * Configuration manager
  *
  * @author boyan (boyan@alibaba-inc.com)
- * <p>
+ *
  * 2018-Apr-04 2:24:54 PM
  */
 public class ConfigurationManager {
@@ -48,6 +48,7 @@ public class ConfigurationManager {
                 return false;
             }
         }
+        System.out.println("【ADD Entry to configurations】：" + entry);
         return this.configurations.add(entry);
     }
 
@@ -79,8 +80,10 @@ public class ConfigurationManager {
 
     public ConfigurationEntry getLastConfiguration() {
         if (this.configurations.isEmpty()) {
+            System.out.println("【从snapshot获取】");
             return snapshot;
         } else {
+            System.out.println("从configurations获取");
             return this.configurations.peekLast();
         }
     }
