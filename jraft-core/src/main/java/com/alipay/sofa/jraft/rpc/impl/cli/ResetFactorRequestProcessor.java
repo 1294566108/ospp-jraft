@@ -63,8 +63,8 @@ public class ResetFactorRequestProcessor extends BaseCliRequestProcessor<ResetFa
                 done.run(status);
             } else {
                 final ResetFactorResponse.Builder rb = ResetFactorResponse.newBuilder();
-                rb.setReadFactor(readFactor);
-                rb.setWriteFactor(writeFactor);
+                rb.setReadFactor(node.getOptions().getReadQuorumFactor());
+                rb.setWriteFactor(node.getOptions().getWriteQuorumFactor());
                 done.sendResponse(rb.build());
             }
         });

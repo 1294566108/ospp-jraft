@@ -546,7 +546,7 @@ public class FSMCallerImpl implements FSMCaller {
                         if (logEntry.getOldPeers() != null && !logEntry.getOldPeers().isEmpty()) {
                             // Joint stage is not supposed to be noticeable by end users.
                             Configuration conf = new Configuration(iterImpl.entry().getPeers());
-                            if(Objects.nonNull(logEntry.getReadFactor()) || Objects.nonNull(logEntry.getWriteFactor())){
+                            if (logEntry.haveFactorValue()) {
                                 conf.setReadFactor(logEntry.getReadFactor());
                                 conf.setWriteFactor(logEntry.getWriteFactor());
                             }
@@ -632,7 +632,8 @@ public class FSMCallerImpl implements FSMCaller {
             metaBuilder.addLearners(peer.toString());
         }
         Configuration conf = confEntry.getConf();
-        if(conf.haveFactors()) {
+        // set new factor
+        if (conf.haveFactors()) {
             metaBuilder.setReadFactor(conf.getReadFactor());
             metaBuilder.setWriteFactor(conf.getWriteFactor());
         }
@@ -644,6 +645,7 @@ public class FSMCallerImpl implements FSMCaller {
                 metaBuilder.addOldLearners(peer.toString());
             }
             Configuration oldConf = confEntry.getOldConf();
+            // set old factor
             if (oldConf.haveFactors()) {
                 metaBuilder.setOldReadFactor(oldConf.getReadFactor());
                 metaBuilder.setOldWriteFactor(oldConf.getWriteFactor());
@@ -738,7 +740,8 @@ public class FSMCallerImpl implements FSMCaller {
                 Requires.requireTrue(peer.parse(meta.getPeers(i)), "Parse peer failed");
                 conf.addPeer(peer);
             }
-            if(meta.hasWriteFactor()||meta.hasReadFactor()){
+            // set factor from meta
+            if (meta.hasWriteFactor() || meta.hasReadFactor()) {
                 conf.setWriteFactor((int) meta.getWriteFactor());
                 conf.setReadFactor((int) meta.getReadFactor());
             }

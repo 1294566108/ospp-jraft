@@ -53,8 +53,8 @@ public class AtomicClientTest {
                         barrier.await();
                         final PeerId peer = new PeerId("localhost", 8611);
                         for (int i = 0; i < count; i++) {
-                            //sum += cli.get(leader, "a", true, false);
-                            sum += cli.addAndGet(leader, "a", i);
+                            sum += cli.get(leader, "a", true, false);
+                            //sum += cli.addAndGet(leader, "a", i);
                         }
                         barrier.await();
                     } catch (final Exception e) {
