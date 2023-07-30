@@ -43,7 +43,7 @@ public abstract class Clock {
      * The default clock to use.
      *
      * @return the default {@link Clock} instance
-     * @see Clock.UserTimeClock
+     * @see UserTimeClock
      */
     public static Clock defaultClock() {
         return UserTimeClockHolder.DEFAULT;

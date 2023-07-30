@@ -92,6 +92,10 @@ public class AtomicRangeGroup {
         nodeOptions.setRaftMetaUri(dataPath + File.separator + "raft_meta");
         // Snapshot, not required, but recommend
         nodeOptions.setSnapshotUri(dataPath + File.separator + "snapshot");
+        // enable flexible mode
+        nodeOptions.enableFlexibleRaft(true);
+        nodeOptions.setWriteQuorumFactor(4);
+
         // Init raft group service framework
         this.raftGroupService = new RaftGroupService(groupId, serverId, nodeOptions, rpcServer);
         // Startup node
@@ -163,7 +167,9 @@ public class AtomicRangeGroup {
         // A snapshot saving would be triggered every 30 seconds
         // nodeOptions.setSnapshotIntervalSecs(30);
         // Parsing Options
-        nodeOptions.setReadQuorumFactor(4);
+
+        // If you want to perform flexible raft testing, you need to open comments
+        // nodeOptions.setReadQuorumFactor(4);
         final PeerId serverId = new PeerId();
         if (!serverId.parse(conf.getServerAddress())) {
             throw new IllegalArgumentException("Fail to parse serverId:" + conf.getServerAddress());
