@@ -20,4320 +20,4023 @@
 package com.alipay.sofa.jraft.entity;
 
 public final class RaftOutter {
-  private RaftOutter() {
-  }
-
-  public static void registerAllExtensions(com.google.protobuf.ExtensionRegistryLite registry) {
-  }
-
-  public static void registerAllExtensions(com.google.protobuf.ExtensionRegistry registry) {
-    registerAllExtensions((com.google.protobuf.ExtensionRegistryLite) registry);
-  }
-
-  public interface EntryMetaOrBuilder extends
-          // @@protoc_insertion_point(interface_extends:jraft.EntryMeta)
-          com.google.protobuf.MessageOrBuilder {
-
-    /**
-     * <code>required int64 term = 1;</code>
-     * @return Whether the term field is set.
-     */
-    boolean hasTerm();
-
-    /**
-     * <code>required int64 term = 1;</code>
-     * @return The term.
-     */
-    long getTerm();
-
-    /**
-     * <code>required .jraft.EntryType type = 2;</code>
-     * @return Whether the type field is set.
-     */
-    boolean hasType();
-
-    /**
-     * <code>required .jraft.EntryType type = 2;</code>
-     * @return The type.
-     */
-    com.alipay.sofa.jraft.entity.EnumOutter.EntryType getType();
-
-    /**
-     * <code>repeated string peers = 3;</code>
-     * @return A list containing the peers.
-     */
-    java.util.List<java.lang.String> getPeersList();
-
-    /**
-     * <code>repeated string peers = 3;</code>
-     * @return The count of peers.
-     */
-    int getPeersCount();
-
-    /**
-     * <code>repeated string peers = 3;</code>
-     * @param index The index of the element to return.
-     * @return The peers at the given index.
-     */
-    java.lang.String getPeers(int index);
-
-    /**
-     * <code>repeated string peers = 3;</code>
-     * @param index The index of the value to return.
-     * @return The bytes of the peers at the given index.
-     */
-    com.google.protobuf.ByteString getPeersBytes(int index);
-
-    /**
-     * <code>optional int64 data_len = 4;</code>
-     * @return Whether the dataLen field is set.
-     */
-    boolean hasDataLen();
-
-    /**
-     * <code>optional int64 data_len = 4;</code>
-     * @return The dataLen.
-     */
-    long getDataLen();
-
-    /**
-     * <pre>
-     * Don't change field id of `old_peers' in the consideration of backward
-     * compatibility
-     * </pre>
-     *
-     * <code>repeated string old_peers = 5;</code>
-     * @return A list containing the oldPeers.
-     */
-    java.util.List<java.lang.String> getOldPeersList();
-
-    /**
-     * <pre>
-     * Don't change field id of `old_peers' in the consideration of backward
-     * compatibility
-     * </pre>
-     *
-     * <code>repeated string old_peers = 5;</code>
-     * @return The count of oldPeers.
-     */
-    int getOldPeersCount();
-
-    /**
-     * <pre>
-     * Don't change field id of `old_peers' in the consideration of backward
-     * compatibility
-     * </pre>
-     *
-     * <code>repeated string old_peers = 5;</code>
-     * @param index The index of the element to return.
-     * @return The oldPeers at the given index.
-     */
-    java.lang.String getOldPeers(int index);
-
-    /**
-     * <pre>
-     * Don't change field id of `old_peers' in the consideration of backward
-     * compatibility
-     * </pre>
-     *
-     * <code>repeated string old_peers = 5;</code>
-     * @param index The index of the value to return.
-     * @return The bytes of the oldPeers at the given index.
-     */
-    com.google.protobuf.ByteString getOldPeersBytes(int index);
-
-    /**
-     * <pre>
-     * Checksum fot this log entry, since 1.2.6, added by boyan&#64;antfin.com
-     * </pre>
-     *
-     * <code>optional int64 checksum = 6;</code>
-     * @return Whether the checksum field is set.
-     */
-    boolean hasChecksum();
-
-    /**
-     * <pre>
-     * Checksum fot this log entry, since 1.2.6, added by boyan&#64;antfin.com
-     * </pre>
-     *
-     * <code>optional int64 checksum = 6;</code>
-     * @return The checksum.
-     */
-    long getChecksum();
-
-    /**
-     * <code>repeated string learners = 7;</code>
-     * @return A list containing the learners.
-     */
-    java.util.List<java.lang.String> getLearnersList();
-
-    /**
-     * <code>repeated string learners = 7;</code>
-     * @return The count of learners.
-     */
-    int getLearnersCount();
-
-    /**
-     * <code>repeated string learners = 7;</code>
-     * @param index The index of the element to return.
-     * @return The learners at the given index.
-     */
-    java.lang.String getLearners(int index);
-
-    /**
-     * <code>repeated string learners = 7;</code>
-     * @param index The index of the value to return.
-     * @return The bytes of the learners at the given index.
-     */
-    com.google.protobuf.ByteString getLearnersBytes(int index);
-
-    /**
-     * <code>repeated string old_learners = 8;</code>
-     * @return A list containing the oldLearners.
-     */
-    java.util.List<java.lang.String> getOldLearnersList();
-
-    /**
-     * <code>repeated string old_learners = 8;</code>
-     * @return The count of oldLearners.
-     */
-    int getOldLearnersCount();
-
-    /**
-     * <code>repeated string old_learners = 8;</code>
-     * @param index The index of the element to return.
-     * @return The oldLearners at the given index.
-     */
-    java.lang.String getOldLearners(int index);
-
-    /**
-     * <code>repeated string old_learners = 8;</code>
-     * @param index The index of the value to return.
-     * @return The bytes of the oldLearners at the given index.
-     */
-    com.google.protobuf.ByteString getOldLearnersBytes(int index);
-
-    /**
-     * <code>optional int64 read_factor = 9;</code>
-     * @return Whether the readFactor field is set.
-     */
-    boolean hasReadFactor();
-
-    /**
-     * <code>optional int64 read_factor = 9;</code>
-     * @return The readFactor.
-     */
-    long getReadFactor();
-
-    /**
-     * <code>optional int64 write_factor = 10;</code>
-     * @return Whether the writeFactor field is set.
-     */
-    boolean hasWriteFactor();
-
-    /**
-     * <code>optional int64 write_factor = 10;</code>
-     * @return The writeFactor.
-     */
-    long getWriteFactor();
-
-    /**
-     * <code>optional int64 old_read_factor = 11;</code>
-     * @return Whether the oldReadFactor field is set.
-     */
-    boolean hasOldReadFactor();
-
-    /**
-     * <code>optional int64 old_read_factor = 11;</code>
-     * @return The oldReadFactor.
-     */
-    long getOldReadFactor();
-
-    /**
-     * <code>optional int64 old_write_factor = 12;</code>
-     * @return Whether the oldWriteFactor field is set.
-     */
-    boolean hasOldWriteFactor();
-
-    /**
-     * <code>optional int64 old_write_factor = 12;</code>
-     * @return The oldWriteFactor.
-     */
-    long getOldWriteFactor();
-  }
-
-  /**
-   * Protobuf type {@code jraft.EntryMeta}
-   */
-  public static final class EntryMeta extends com.google.protobuf.GeneratedMessageV3 implements
-          // @@protoc_insertion_point(message_implements:jraft.EntryMeta)
-          EntryMetaOrBuilder {
-    private static final long serialVersionUID = 0L;
-
-    // Use EntryMeta.newBuilder() to construct.
-    private EntryMeta(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
-      super(builder);
+    private RaftOutter() {
     }
 
-    private EntryMeta() {
-      type_ = 0;
-      peers_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-      oldPeers_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-      learners_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-      oldLearners_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+    public static void registerAllExtensions(com.google.protobuf.ExtensionRegistryLite registry) {
     }
 
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
-      return this.unknownFields;
+    public static void registerAllExtensions(com.google.protobuf.ExtensionRegistry registry) {
+        registerAllExtensions((com.google.protobuf.ExtensionRegistryLite) registry);
     }
 
-    private EntryMeta(com.google.protobuf.CodedInputStream input,
-                      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields = com.google.protobuf.UnknownFieldSet
-              .newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            case 8: {
-              bitField0_ |= 0x00000001;
-              term_ = input.readInt64();
-              break;
-            }
-            case 16: {
-              int rawValue = input.readEnum();
-              @SuppressWarnings("deprecation")
-              com.alipay.sofa.jraft.entity.EnumOutter.EntryType value = com.alipay.sofa.jraft.entity.EnumOutter.EntryType
-                      .valueOf(rawValue);
-              if (value == null) {
-                unknownFields.mergeVarintField(2, rawValue);
-              } else {
-                bitField0_ |= 0x00000002;
-                type_ = rawValue;
-              }
-              break;
-            }
-            case 26: {
-              com.google.protobuf.ByteString bs = input.readBytes();
-              if (!((mutable_bitField0_ & 0x00000004) != 0)) {
-                peers_ = new com.google.protobuf.LazyStringArrayList();
-                mutable_bitField0_ |= 0x00000004;
-              }
-              peers_.add(bs);
-              break;
-            }
-            case 32: {
-              bitField0_ |= 0x00000004;
-              dataLen_ = input.readInt64();
-              break;
-            }
-            case 42: {
-              com.google.protobuf.ByteString bs = input.readBytes();
-              if (!((mutable_bitField0_ & 0x00000010) != 0)) {
-                oldPeers_ = new com.google.protobuf.LazyStringArrayList();
-                mutable_bitField0_ |= 0x00000010;
-              }
-              oldPeers_.add(bs);
-              break;
-            }
-            case 48: {
-              bitField0_ |= 0x00000008;
-              checksum_ = input.readInt64();
-              break;
-            }
-            case 58: {
-              com.google.protobuf.ByteString bs = input.readBytes();
-              if (!((mutable_bitField0_ & 0x00000040) != 0)) {
-                learners_ = new com.google.protobuf.LazyStringArrayList();
-                mutable_bitField0_ |= 0x00000040;
-              }
-              learners_.add(bs);
-              break;
-            }
-            case 66: {
-              com.google.protobuf.ByteString bs = input.readBytes();
-              if (!((mutable_bitField0_ & 0x00000080) != 0)) {
-                oldLearners_ = new com.google.protobuf.LazyStringArrayList();
-                mutable_bitField0_ |= 0x00000080;
-              }
-              oldLearners_.add(bs);
-              break;
-            }
-            case 72: {
-              bitField0_ |= 0x00000010;
-              readFactor_ = input.readInt64();
-              break;
-            }
-            case 80: {
-              bitField0_ |= 0x00000020;
-              writeFactor_ = input.readInt64();
-              break;
-            }
-            case 88: {
-              bitField0_ |= 0x00000040;
-              oldReadFactor_ = input.readInt64();
-              break;
-            }
-            case 96: {
-              bitField0_ |= 0x00000080;
-              oldWriteFactor_ = input.readInt64();
-              break;
-            }
-            default: {
-              if (!parseUnknownField(input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(e).setUnfinishedMessage(this);
-      } finally {
-        if (((mutable_bitField0_ & 0x00000004) != 0)) {
-          peers_ = peers_.getUnmodifiableView();
-        }
-        if (((mutable_bitField0_ & 0x00000010) != 0)) {
-          oldPeers_ = oldPeers_.getUnmodifiableView();
-        }
-        if (((mutable_bitField0_ & 0x00000040) != 0)) {
-          learners_ = learners_.getUnmodifiableView();
-        }
-        if (((mutable_bitField0_ & 0x00000080) != 0)) {
-          oldLearners_ = oldLearners_.getUnmodifiableView();
-        }
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
-
-    public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
-      return com.alipay.sofa.jraft.entity.RaftOutter.internal_static_jraft_EntryMeta_descriptor;
-    }
-
-    @java.lang.Override
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable internalGetFieldAccessorTable() {
-      return com.alipay.sofa.jraft.entity.RaftOutter.internal_static_jraft_EntryMeta_fieldAccessorTable
-              .ensureFieldAccessorsInitialized(com.alipay.sofa.jraft.entity.RaftOutter.EntryMeta.class,
-                      com.alipay.sofa.jraft.entity.RaftOutter.EntryMeta.Builder.class);
-    }
-
-    private int             bitField0_;
-    public static final int TERM_FIELD_NUMBER = 1;
-    private long            term_;
-
-    /**
-     * <code>required int64 term = 1;</code>
-     * @return Whether the term field is set.
-     */
-    @java.lang.Override
-    public boolean hasTerm() {
-      return ((bitField0_ & 0x00000001) != 0);
-    }
-
-    /**
-     * <code>required int64 term = 1;</code>
-     * @return The term.
-     */
-    @java.lang.Override
-    public long getTerm() {
-      return term_;
-    }
-
-    public static final int TYPE_FIELD_NUMBER = 2;
-    private int             type_;
-
-    /**
-     * <code>required .jraft.EntryType type = 2;</code>
-     * @return Whether the type field is set.
-     */
-    @java.lang.Override
-    public boolean hasType() {
-      return ((bitField0_ & 0x00000002) != 0);
-    }
-
-    /**
-     * <code>required .jraft.EntryType type = 2;</code>
-     * @return The type.
-     */
-    @java.lang.Override
-    public com.alipay.sofa.jraft.entity.EnumOutter.EntryType getType() {
-      @SuppressWarnings("deprecation")
-      com.alipay.sofa.jraft.entity.EnumOutter.EntryType result = com.alipay.sofa.jraft.entity.EnumOutter.EntryType
-              .valueOf(type_);
-      return result == null ? com.alipay.sofa.jraft.entity.EnumOutter.EntryType.ENTRY_TYPE_UNKNOWN : result;
-    }
-
-    public static final int                    PEERS_FIELD_NUMBER = 3;
-    private com.google.protobuf.LazyStringList peers_;
-
-    /**
-     * <code>repeated string peers = 3;</code>
-     * @return A list containing the peers.
-     */
-    public com.google.protobuf.ProtocolStringList getPeersList() {
-      return peers_;
-    }
-
-    /**
-     * <code>repeated string peers = 3;</code>
-     * @return The count of peers.
-     */
-    public int getPeersCount() {
-      return peers_.size();
-    }
-
-    /**
-     * <code>repeated string peers = 3;</code>
-     * @param index The index of the element to return.
-     * @return The peers at the given index.
-     */
-    public java.lang.String getPeers(int index) {
-      return peers_.get(index);
-    }
-
-    /**
-     * <code>repeated string peers = 3;</code>
-     * @param index The index of the value to return.
-     * @return The bytes of the peers at the given index.
-     */
-    public com.google.protobuf.ByteString getPeersBytes(int index) {
-      return peers_.getByteString(index);
-    }
-
-    public static final int DATA_LEN_FIELD_NUMBER = 4;
-    private long            dataLen_;
-
-    /**
-     * <code>optional int64 data_len = 4;</code>
-     * @return Whether the dataLen field is set.
-     */
-    @java.lang.Override
-    public boolean hasDataLen() {
-      return ((bitField0_ & 0x00000004) != 0);
-    }
-
-    /**
-     * <code>optional int64 data_len = 4;</code>
-     * @return The dataLen.
-     */
-    @java.lang.Override
-    public long getDataLen() {
-      return dataLen_;
-    }
-
-    public static final int                    OLD_PEERS_FIELD_NUMBER = 5;
-    private com.google.protobuf.LazyStringList oldPeers_;
-
-    /**
-     * <pre>
-     * Don't change field id of `old_peers' in the consideration of backward
-     * compatibility
-     * </pre>
-     *
-     * <code>repeated string old_peers = 5;</code>
-     * @return A list containing the oldPeers.
-     */
-    public com.google.protobuf.ProtocolStringList getOldPeersList() {
-      return oldPeers_;
-    }
-
-    /**
-     * <pre>
-     * Don't change field id of `old_peers' in the consideration of backward
-     * compatibility
-     * </pre>
-     *
-     * <code>repeated string old_peers = 5;</code>
-     * @return The count of oldPeers.
-     */
-    public int getOldPeersCount() {
-      return oldPeers_.size();
-    }
-
-    /**
-     * <pre>
-     * Don't change field id of `old_peers' in the consideration of backward
-     * compatibility
-     * </pre>
-     *
-     * <code>repeated string old_peers = 5;</code>
-     * @param index The index of the element to return.
-     * @return The oldPeers at the given index.
-     */
-    public java.lang.String getOldPeers(int index) {
-      return oldPeers_.get(index);
-    }
-
-    /**
-     * <pre>
-     * Don't change field id of `old_peers' in the consideration of backward
-     * compatibility
-     * </pre>
-     *
-     * <code>repeated string old_peers = 5;</code>
-     * @param index The index of the value to return.
-     * @return The bytes of the oldPeers at the given index.
-     */
-    public com.google.protobuf.ByteString getOldPeersBytes(int index) {
-      return oldPeers_.getByteString(index);
-    }
-
-    public static final int CHECKSUM_FIELD_NUMBER = 6;
-    private long            checksum_;
-
-    /**
-     * <pre>
-     * Checksum fot this log entry, since 1.2.6, added by boyan&#64;antfin.com
-     * </pre>
-     *
-     * <code>optional int64 checksum = 6;</code>
-     * @return Whether the checksum field is set.
-     */
-    @java.lang.Override
-    public boolean hasChecksum() {
-      return ((bitField0_ & 0x00000008) != 0);
-    }
-
-    /**
-     * <pre>
-     * Checksum fot this log entry, since 1.2.6, added by boyan&#64;antfin.com
-     * </pre>
-     *
-     * <code>optional int64 checksum = 6;</code>
-     * @return The checksum.
-     */
-    @java.lang.Override
-    public long getChecksum() {
-      return checksum_;
-    }
-
-    public static final int                    LEARNERS_FIELD_NUMBER = 7;
-    private com.google.protobuf.LazyStringList learners_;
-
-    /**
-     * <code>repeated string learners = 7;</code>
-     * @return A list containing the learners.
-     */
-    public com.google.protobuf.ProtocolStringList getLearnersList() {
-      return learners_;
-    }
-
-    /**
-     * <code>repeated string learners = 7;</code>
-     * @return The count of learners.
-     */
-    public int getLearnersCount() {
-      return learners_.size();
-    }
-
-    /**
-     * <code>repeated string learners = 7;</code>
-     * @param index The index of the element to return.
-     * @return The learners at the given index.
-     */
-    public java.lang.String getLearners(int index) {
-      return learners_.get(index);
-    }
-
-    /**
-     * <code>repeated string learners = 7;</code>
-     * @param index The index of the value to return.
-     * @return The bytes of the learners at the given index.
-     */
-    public com.google.protobuf.ByteString getLearnersBytes(int index) {
-      return learners_.getByteString(index);
-    }
-
-    public static final int                    OLD_LEARNERS_FIELD_NUMBER = 8;
-    private com.google.protobuf.LazyStringList oldLearners_;
-
-    /**
-     * <code>repeated string old_learners = 8;</code>
-     * @return A list containing the oldLearners.
-     */
-    public com.google.protobuf.ProtocolStringList getOldLearnersList() {
-      return oldLearners_;
-    }
-
-    /**
-     * <code>repeated string old_learners = 8;</code>
-     * @return The count of oldLearners.
-     */
-    public int getOldLearnersCount() {
-      return oldLearners_.size();
-    }
-
-    /**
-     * <code>repeated string old_learners = 8;</code>
-     * @param index The index of the element to return.
-     * @return The oldLearners at the given index.
-     */
-    public java.lang.String getOldLearners(int index) {
-      return oldLearners_.get(index);
-    }
-
-    /**
-     * <code>repeated string old_learners = 8;</code>
-     * @param index The index of the value to return.
-     * @return The bytes of the oldLearners at the given index.
-     */
-    public com.google.protobuf.ByteString getOldLearnersBytes(int index) {
-      return oldLearners_.getByteString(index);
-    }
-
-    public static final int READ_FACTOR_FIELD_NUMBER = 9;
-    private long            readFactor_;
-
-    /**
-     * <code>optional int64 read_factor = 9;</code>
-     * @return Whether the readFactor field is set.
-     */
-    @java.lang.Override
-    public boolean hasReadFactor() {
-      return ((bitField0_ & 0x00000010) != 0);
-    }
-
-    /**
-     * <code>optional int64 read_factor = 9;</code>
-     * @return The readFactor.
-     */
-    @java.lang.Override
-    public long getReadFactor() {
-      return readFactor_;
-    }
-
-    public static final int WRITE_FACTOR_FIELD_NUMBER = 10;
-    private long            writeFactor_;
-
-    /**
-     * <code>optional int64 write_factor = 10;</code>
-     * @return Whether the writeFactor field is set.
-     */
-    @java.lang.Override
-    public boolean hasWriteFactor() {
-      return ((bitField0_ & 0x00000020) != 0);
-    }
-
-    /**
-     * <code>optional int64 write_factor = 10;</code>
-     * @return The writeFactor.
-     */
-    @java.lang.Override
-    public long getWriteFactor() {
-      return writeFactor_;
-    }
-
-    public static final int OLD_READ_FACTOR_FIELD_NUMBER = 11;
-    private long            oldReadFactor_;
-
-    /**
-     * <code>optional int64 old_read_factor = 11;</code>
-     * @return Whether the oldReadFactor field is set.
-     */
-    @java.lang.Override
-    public boolean hasOldReadFactor() {
-      return ((bitField0_ & 0x00000040) != 0);
-    }
-
-    /**
-     * <code>optional int64 old_read_factor = 11;</code>
-     * @return The oldReadFactor.
-     */
-    @java.lang.Override
-    public long getOldReadFactor() {
-      return oldReadFactor_;
-    }
-
-    public static final int OLD_WRITE_FACTOR_FIELD_NUMBER = 12;
-    private long            oldWriteFactor_;
-
-    /**
-     * <code>optional int64 old_write_factor = 12;</code>
-     * @return Whether the oldWriteFactor field is set.
-     */
-    @java.lang.Override
-    public boolean hasOldWriteFactor() {
-      return ((bitField0_ & 0x00000080) != 0);
-    }
-
-    /**
-     * <code>optional int64 old_write_factor = 12;</code>
-     * @return The oldWriteFactor.
-     */
-    @java.lang.Override
-    public long getOldWriteFactor() {
-      return oldWriteFactor_;
-    }
-
-    private byte memoizedIsInitialized = -1;
-
-    @java.lang.Override
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized == 1)
-        return true;
-      if (isInitialized == 0)
-        return false;
-
-      if (!hasTerm()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!hasType()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
-      if (((bitField0_ & 0x00000001) != 0)) {
-        output.writeInt64(1, term_);
-      }
-      if (((bitField0_ & 0x00000002) != 0)) {
-        output.writeEnum(2, type_);
-      }
-      for (int i = 0; i < peers_.size(); i++) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, peers_.getRaw(i));
-      }
-      if (((bitField0_ & 0x00000004) != 0)) {
-        output.writeInt64(4, dataLen_);
-      }
-      for (int i = 0; i < oldPeers_.size(); i++) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 5, oldPeers_.getRaw(i));
-      }
-      if (((bitField0_ & 0x00000008) != 0)) {
-        output.writeInt64(6, checksum_);
-      }
-      for (int i = 0; i < learners_.size(); i++) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 7, learners_.getRaw(i));
-      }
-      for (int i = 0; i < oldLearners_.size(); i++) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 8, oldLearners_.getRaw(i));
-      }
-      if (((bitField0_ & 0x00000010) != 0)) {
-        output.writeInt64(9, readFactor_);
-      }
-      if (((bitField0_ & 0x00000020) != 0)) {
-        output.writeInt64(10, writeFactor_);
-      }
-      if (((bitField0_ & 0x00000040) != 0)) {
-        output.writeInt64(11, oldReadFactor_);
-      }
-      if (((bitField0_ & 0x00000080) != 0)) {
-        output.writeInt64(12, oldWriteFactor_);
-      }
-      unknownFields.writeTo(output);
-    }
-
-    @java.lang.Override
-    public int getSerializedSize() {
-      int size = memoizedSize;
-      if (size != -1)
-        return size;
-
-      size = 0;
-      if (((bitField0_ & 0x00000001) != 0)) {
-        size += com.google.protobuf.CodedOutputStream.computeInt64Size(1, term_);
-      }
-      if (((bitField0_ & 0x00000002) != 0)) {
-        size += com.google.protobuf.CodedOutputStream.computeEnumSize(2, type_);
-      }
-      {
-        int dataSize = 0;
-        for (int i = 0; i < peers_.size(); i++) {
-          dataSize += computeStringSizeNoTag(peers_.getRaw(i));
-        }
-        size += dataSize;
-        size += 1 * getPeersList().size();
-      }
-      if (((bitField0_ & 0x00000004) != 0)) {
-        size += com.google.protobuf.CodedOutputStream.computeInt64Size(4, dataLen_);
-      }
-      {
-        int dataSize = 0;
-        for (int i = 0; i < oldPeers_.size(); i++) {
-          dataSize += computeStringSizeNoTag(oldPeers_.getRaw(i));
-        }
-        size += dataSize;
-        size += 1 * getOldPeersList().size();
-      }
-      if (((bitField0_ & 0x00000008) != 0)) {
-        size += com.google.protobuf.CodedOutputStream.computeInt64Size(6, checksum_);
-      }
-      {
-        int dataSize = 0;
-        for (int i = 0; i < learners_.size(); i++) {
-          dataSize += computeStringSizeNoTag(learners_.getRaw(i));
-        }
-        size += dataSize;
-        size += 1 * getLearnersList().size();
-      }
-      {
-        int dataSize = 0;
-        for (int i = 0; i < oldLearners_.size(); i++) {
-          dataSize += computeStringSizeNoTag(oldLearners_.getRaw(i));
-        }
-        size += dataSize;
-        size += 1 * getOldLearnersList().size();
-      }
-      if (((bitField0_ & 0x00000010) != 0)) {
-        size += com.google.protobuf.CodedOutputStream.computeInt64Size(9, readFactor_);
-      }
-      if (((bitField0_ & 0x00000020) != 0)) {
-        size += com.google.protobuf.CodedOutputStream.computeInt64Size(10, writeFactor_);
-      }
-      if (((bitField0_ & 0x00000040) != 0)) {
-        size += com.google.protobuf.CodedOutputStream.computeInt64Size(11, oldReadFactor_);
-      }
-      if (((bitField0_ & 0x00000080) != 0)) {
-        size += com.google.protobuf.CodedOutputStream.computeInt64Size(12, oldWriteFactor_);
-      }
-      size += unknownFields.getSerializedSize();
-      memoizedSize = size;
-      return size;
-    }
-
-    @java.lang.Override
-    public boolean equals(final java.lang.Object obj) {
-      if (obj == this) {
-        return true;
-      }
-      if (!(obj instanceof com.alipay.sofa.jraft.entity.RaftOutter.EntryMeta)) {
-        return super.equals(obj);
-      }
-      com.alipay.sofa.jraft.entity.RaftOutter.EntryMeta other = (com.alipay.sofa.jraft.entity.RaftOutter.EntryMeta) obj;
-
-      if (hasTerm() != other.hasTerm())
-        return false;
-      if (hasTerm()) {
-        if (getTerm() != other.getTerm())
-          return false;
-      }
-      if (hasType() != other.hasType())
-        return false;
-      if (hasType()) {
-        if (type_ != other.type_)
-          return false;
-      }
-      if (!getPeersList().equals(other.getPeersList()))
-        return false;
-      if (hasDataLen() != other.hasDataLen())
-        return false;
-      if (hasDataLen()) {
-        if (getDataLen() != other.getDataLen())
-          return false;
-      }
-      if (!getOldPeersList().equals(other.getOldPeersList()))
-        return false;
-      if (hasChecksum() != other.hasChecksum())
-        return false;
-      if (hasChecksum()) {
-        if (getChecksum() != other.getChecksum())
-          return false;
-      }
-      if (!getLearnersList().equals(other.getLearnersList()))
-        return false;
-      if (!getOldLearnersList().equals(other.getOldLearnersList()))
-        return false;
-      if (hasReadFactor() != other.hasReadFactor())
-        return false;
-      if (hasReadFactor()) {
-        if (getReadFactor() != other.getReadFactor())
-          return false;
-      }
-      if (hasWriteFactor() != other.hasWriteFactor())
-        return false;
-      if (hasWriteFactor()) {
-        if (getWriteFactor() != other.getWriteFactor())
-          return false;
-      }
-      if (hasOldReadFactor() != other.hasOldReadFactor())
-        return false;
-      if (hasOldReadFactor()) {
-        if (getOldReadFactor() != other.getOldReadFactor())
-          return false;
-      }
-      if (hasOldWriteFactor() != other.hasOldWriteFactor())
-        return false;
-      if (hasOldWriteFactor()) {
-        if (getOldWriteFactor() != other.getOldWriteFactor())
-          return false;
-      }
-      if (!unknownFields.equals(other.unknownFields))
-        return false;
-      return true;
-    }
-
-    @java.lang.Override
-    public int hashCode() {
-      if (memoizedHashCode != 0) {
-        return memoizedHashCode;
-      }
-      int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
-      if (hasTerm()) {
-        hash = (37 * hash) + TERM_FIELD_NUMBER;
-        hash = (53 * hash) + com.google.protobuf.Internal.hashLong(getTerm());
-      }
-      if (hasType()) {
-        hash = (37 * hash) + TYPE_FIELD_NUMBER;
-        hash = (53 * hash) + type_;
-      }
-      if (getPeersCount() > 0) {
-        hash = (37 * hash) + PEERS_FIELD_NUMBER;
-        hash = (53 * hash) + getPeersList().hashCode();
-      }
-      if (hasDataLen()) {
-        hash = (37 * hash) + DATA_LEN_FIELD_NUMBER;
-        hash = (53 * hash) + com.google.protobuf.Internal.hashLong(getDataLen());
-      }
-      if (getOldPeersCount() > 0) {
-        hash = (37 * hash) + OLD_PEERS_FIELD_NUMBER;
-        hash = (53 * hash) + getOldPeersList().hashCode();
-      }
-      if (hasChecksum()) {
-        hash = (37 * hash) + CHECKSUM_FIELD_NUMBER;
-        hash = (53 * hash) + com.google.protobuf.Internal.hashLong(getChecksum());
-      }
-      if (getLearnersCount() > 0) {
-        hash = (37 * hash) + LEARNERS_FIELD_NUMBER;
-        hash = (53 * hash) + getLearnersList().hashCode();
-      }
-      if (getOldLearnersCount() > 0) {
-        hash = (37 * hash) + OLD_LEARNERS_FIELD_NUMBER;
-        hash = (53 * hash) + getOldLearnersList().hashCode();
-      }
-      if (hasReadFactor()) {
-        hash = (37 * hash) + READ_FACTOR_FIELD_NUMBER;
-        hash = (53 * hash) + com.google.protobuf.Internal.hashLong(getReadFactor());
-      }
-      if (hasWriteFactor()) {
-        hash = (37 * hash) + WRITE_FACTOR_FIELD_NUMBER;
-        hash = (53 * hash) + com.google.protobuf.Internal.hashLong(getWriteFactor());
-      }
-      if (hasOldReadFactor()) {
-        hash = (37 * hash) + OLD_READ_FACTOR_FIELD_NUMBER;
-        hash = (53 * hash) + com.google.protobuf.Internal.hashLong(getOldReadFactor());
-      }
-      if (hasOldWriteFactor()) {
-        hash = (37 * hash) + OLD_WRITE_FACTOR_FIELD_NUMBER;
-        hash = (53 * hash) + com.google.protobuf.Internal.hashLong(getOldWriteFactor());
-      }
-      hash = (29 * hash) + unknownFields.hashCode();
-      memoizedHashCode = hash;
-      return hash;
-    }
-
-    public static com.alipay.sofa.jraft.entity.RaftOutter.EntryMeta parseFrom(java.nio.ByteBuffer data)
-            throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-
-    public static com.alipay.sofa.jraft.entity.RaftOutter.EntryMeta parseFrom(java.nio.ByteBuffer data,
-                                                                              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-
-    public static com.alipay.sofa.jraft.entity.RaftOutter.EntryMeta parseFrom(com.google.protobuf.ByteString data)
-            throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-
-    public static com.alipay.sofa.jraft.entity.RaftOutter.EntryMeta parseFrom(com.google.protobuf.ByteString data,
-                                                                              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-
-    public static com.alipay.sofa.jraft.entity.RaftOutter.EntryMeta parseFrom(byte[] data)
-            throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-
-    public static com.alipay.sofa.jraft.entity.RaftOutter.EntryMeta parseFrom(byte[] data,
-                                                                              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-
-    public static com.alipay.sofa.jraft.entity.RaftOutter.EntryMeta parseFrom(java.io.InputStream input)
-            throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
-    }
-
-    public static com.alipay.sofa.jraft.entity.RaftOutter.EntryMeta parseFrom(java.io.InputStream input,
-                                                                              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input, extensionRegistry);
-    }
-
-    public static com.alipay.sofa.jraft.entity.RaftOutter.EntryMeta parseDelimitedFrom(java.io.InputStream input)
-            throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
-    }
-
-    public static com.alipay.sofa.jraft.entity.RaftOutter.EntryMeta parseDelimitedFrom(java.io.InputStream input,
-                                                                                       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input,
-              extensionRegistry);
-    }
-
-    public static com.alipay.sofa.jraft.entity.RaftOutter.EntryMeta parseFrom(com.google.protobuf.CodedInputStream input)
-            throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
-    }
-
-    public static com.alipay.sofa.jraft.entity.RaftOutter.EntryMeta parseFrom(com.google.protobuf.CodedInputStream input,
-                                                                              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input, extensionRegistry);
-    }
-
-    @java.lang.Override
-    public Builder newBuilderForType() {
-      return newBuilder();
-    }
-
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
-
-    public static Builder newBuilder(com.alipay.sofa.jraft.entity.RaftOutter.EntryMeta prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-    }
-
-    @java.lang.Override
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
-    }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
+    public interface EntryMetaOrBuilder extends
+    // @@protoc_insertion_point(interface_extends:jraft.EntryMeta)
+                                       com.google.protobuf.MessageOrBuilder {
+
+        /**
+         * <code>required int64 term = 1;</code>
+         */
+        boolean hasTerm();
+
+        /**
+         * <code>required int64 term = 1;</code>
+         */
+        long getTerm();
+
+        /**
+         * <code>required .jraft.EntryType type = 2;</code>
+         */
+        boolean hasType();
+
+        /**
+         * <code>required .jraft.EntryType type = 2;</code>
+         */
+        com.alipay.sofa.jraft.entity.EnumOutter.EntryType getType();
+
+        /**
+         * <code>repeated string peers = 3;</code>
+         */
+        java.util.List<java.lang.String> getPeersList();
+
+        /**
+         * <code>repeated string peers = 3;</code>
+         */
+        int getPeersCount();
+
+        /**
+         * <code>repeated string peers = 3;</code>
+         */
+        java.lang.String getPeers(int index);
+
+        /**
+         * <code>repeated string peers = 3;</code>
+         */
+        com.google.protobuf.ByteString getPeersBytes(int index);
+
+        /**
+         * <code>optional int64 data_len = 4;</code>
+         */
+        boolean hasDataLen();
+
+        /**
+         * <code>optional int64 data_len = 4;</code>
+         */
+        long getDataLen();
+
+        /**
+         * <pre>
+         * Don't change field id of `old_peers' in the consideration of backward
+         * compatibility
+         * </pre>
+         *
+         * <code>repeated string old_peers = 5;</code>
+         */
+        java.util.List<java.lang.String> getOldPeersList();
+
+        /**
+         * <pre>
+         * Don't change field id of `old_peers' in the consideration of backward
+         * compatibility
+         * </pre>
+         *
+         * <code>repeated string old_peers = 5;</code>
+         */
+        int getOldPeersCount();
+
+        /**
+         * <pre>
+         * Don't change field id of `old_peers' in the consideration of backward
+         * compatibility
+         * </pre>
+         *
+         * <code>repeated string old_peers = 5;</code>
+         */
+        java.lang.String getOldPeers(int index);
+
+        /**
+         * <pre>
+         * Don't change field id of `old_peers' in the consideration of backward
+         * compatibility
+         * </pre>
+         *
+         * <code>repeated string old_peers = 5;</code>
+         */
+        com.google.protobuf.ByteString getOldPeersBytes(int index);
+
+        /**
+         * <pre>
+         * Checksum fot this log entry, since 1.2.6, added by boyan&#64;antfin.com
+         * </pre>
+         *
+         * <code>optional int64 checksum = 6;</code>
+         */
+        boolean hasChecksum();
+
+        /**
+         * <pre>
+         * Checksum fot this log entry, since 1.2.6, added by boyan&#64;antfin.com
+         * </pre>
+         *
+         * <code>optional int64 checksum = 6;</code>
+         */
+        long getChecksum();
+
+        /**
+         * <code>repeated string learners = 7;</code>
+         */
+        java.util.List<java.lang.String> getLearnersList();
+
+        /**
+         * <code>repeated string learners = 7;</code>
+         */
+        int getLearnersCount();
+
+        /**
+         * <code>repeated string learners = 7;</code>
+         */
+        java.lang.String getLearners(int index);
+
+        /**
+         * <code>repeated string learners = 7;</code>
+         */
+        com.google.protobuf.ByteString getLearnersBytes(int index);
+
+        /**
+         * <code>repeated string old_learners = 8;</code>
+         */
+        java.util.List<java.lang.String> getOldLearnersList();
+
+        /**
+         * <code>repeated string old_learners = 8;</code>
+         */
+        int getOldLearnersCount();
+
+        /**
+         * <code>repeated string old_learners = 8;</code>
+         */
+        java.lang.String getOldLearners(int index);
+
+        /**
+         * <code>repeated string old_learners = 8;</code>
+         */
+        com.google.protobuf.ByteString getOldLearnersBytes(int index);
+
+        /**
+         * <code>optional int32 read_factor = 9;</code>
+         */
+        boolean hasReadFactor();
+
+        /**
+         * <code>optional int32 read_factor = 9;</code>
+         */
+        int getReadFactor();
+
+        /**
+         * <code>optional int32 write_factor = 10;</code>
+         */
+        boolean hasWriteFactor();
+
+        /**
+         * <code>optional int32 write_factor = 10;</code>
+         */
+        int getWriteFactor();
+
+        /**
+         * <code>optional int32 old_read_factor = 11;</code>
+         */
+        boolean hasOldReadFactor();
+
+        /**
+         * <code>optional int32 old_read_factor = 11;</code>
+         */
+        int getOldReadFactor();
+
+        /**
+         * <code>optional int32 old_write_factor = 12;</code>
+         */
+        boolean hasOldWriteFactor();
+
+        /**
+         * <code>optional int32 old_write_factor = 12;</code>
+         */
+        int getOldWriteFactor();
+
+        /**
+         * <code>optional bool isEnableFlexible = 13;</code>
+         */
+        boolean hasIsEnableFlexible();
+
+        /**
+         * <code>optional bool isEnableFlexible = 13;</code>
+         */
+        boolean getIsEnableFlexible();
     }
 
     /**
      * Protobuf type {@code jraft.EntryMeta}
      */
-    public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
-            implements
-            // @@protoc_insertion_point(builder_implements:jraft.EntryMeta)
-            com.alipay.sofa.jraft.entity.RaftOutter.EntryMetaOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
-        return com.alipay.sofa.jraft.entity.RaftOutter.internal_static_jraft_EntryMeta_descriptor;
-      }
+    public static final class EntryMeta extends com.google.protobuf.GeneratedMessageV3 implements
+    // @@protoc_insertion_point(message_implements:jraft.EntryMeta)
+                                                                                      EntryMetaOrBuilder {
+        private static final long serialVersionUID = 0L;
 
-      @java.lang.Override
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable internalGetFieldAccessorTable() {
-        return com.alipay.sofa.jraft.entity.RaftOutter.internal_static_jraft_EntryMeta_fieldAccessorTable
+        // Use EntryMeta.newBuilder() to construct.
+        private EntryMeta(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+            super(builder);
+        }
+
+        private EntryMeta() {
+            term_ = 0L;
+            type_ = 0;
+            peers_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+            dataLen_ = 0L;
+            oldPeers_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+            checksum_ = 0L;
+            learners_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+            oldLearners_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+            readFactor_ = 0;
+            writeFactor_ = 0;
+            oldReadFactor_ = 0;
+            oldWriteFactor_ = 0;
+            isEnableFlexible_ = false;
+        }
+
+        @java.lang.Override
+        public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
+            return this.unknownFields;
+        }
+
+        private EntryMeta(com.google.protobuf.CodedInputStream input,
+                          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                                                                                      throws com.google.protobuf.InvalidProtocolBufferException {
+            this();
+            if (extensionRegistry == null) {
+                throw new java.lang.NullPointerException();
+            }
+            int mutable_bitField0_ = 0;
+            com.google.protobuf.UnknownFieldSet.Builder unknownFields = com.google.protobuf.UnknownFieldSet
+                .newBuilder();
+            try {
+                boolean done = false;
+                while (!done) {
+                    int tag = input.readTag();
+                    switch (tag) {
+                        case 0:
+                            done = true;
+                            break;
+                        default: {
+                            if (!parseUnknownField(input, unknownFields, extensionRegistry, tag)) {
+                                done = true;
+                            }
+                            break;
+                        }
+                        case 8: {
+                            bitField0_ |= 0x00000001;
+                            term_ = input.readInt64();
+                            break;
+                        }
+                        case 16: {
+                            int rawValue = input.readEnum();
+                            com.alipay.sofa.jraft.entity.EnumOutter.EntryType value = com.alipay.sofa.jraft.entity.EnumOutter.EntryType
+                                .valueOf(rawValue);
+                            if (value == null) {
+                                unknownFields.mergeVarintField(2, rawValue);
+                            } else {
+                                bitField0_ |= 0x00000002;
+                                type_ = rawValue;
+                            }
+                            break;
+                        }
+                        case 26: {
+                            com.google.protobuf.ByteString bs = input.readBytes();
+                            if (!((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
+                                peers_ = new com.google.protobuf.LazyStringArrayList();
+                                mutable_bitField0_ |= 0x00000004;
+                            }
+                            peers_.add(bs);
+                            break;
+                        }
+                        case 32: {
+                            bitField0_ |= 0x00000004;
+                            dataLen_ = input.readInt64();
+                            break;
+                        }
+                        case 42: {
+                            com.google.protobuf.ByteString bs = input.readBytes();
+                            if (!((mutable_bitField0_ & 0x00000010) == 0x00000010)) {
+                                oldPeers_ = new com.google.protobuf.LazyStringArrayList();
+                                mutable_bitField0_ |= 0x00000010;
+                            }
+                            oldPeers_.add(bs);
+                            break;
+                        }
+                        case 48: {
+                            bitField0_ |= 0x00000008;
+                            checksum_ = input.readInt64();
+                            break;
+                        }
+                        case 58: {
+                            com.google.protobuf.ByteString bs = input.readBytes();
+                            if (!((mutable_bitField0_ & 0x00000040) == 0x00000040)) {
+                                learners_ = new com.google.protobuf.LazyStringArrayList();
+                                mutable_bitField0_ |= 0x00000040;
+                            }
+                            learners_.add(bs);
+                            break;
+                        }
+                        case 66: {
+                            com.google.protobuf.ByteString bs = input.readBytes();
+                            if (!((mutable_bitField0_ & 0x00000080) == 0x00000080)) {
+                                oldLearners_ = new com.google.protobuf.LazyStringArrayList();
+                                mutable_bitField0_ |= 0x00000080;
+                            }
+                            oldLearners_.add(bs);
+                            break;
+                        }
+                        case 72: {
+                            bitField0_ |= 0x00000010;
+                            readFactor_ = input.readInt32();
+                            break;
+                        }
+                        case 80: {
+                            bitField0_ |= 0x00000020;
+                            writeFactor_ = input.readInt32();
+                            break;
+                        }
+                        case 88: {
+                            bitField0_ |= 0x00000040;
+                            oldReadFactor_ = input.readInt32();
+                            break;
+                        }
+                        case 96: {
+                            bitField0_ |= 0x00000080;
+                            oldWriteFactor_ = input.readInt32();
+                            break;
+                        }
+                        case 104: {
+                            bitField0_ |= 0x00000100;
+                            isEnableFlexible_ = input.readBool();
+                            break;
+                        }
+                    }
+                }
+            } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+                throw e.setUnfinishedMessage(this);
+            } catch (java.io.IOException e) {
+                throw new com.google.protobuf.InvalidProtocolBufferException(e).setUnfinishedMessage(this);
+            } finally {
+                if (((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
+                    peers_ = peers_.getUnmodifiableView();
+                }
+                if (((mutable_bitField0_ & 0x00000010) == 0x00000010)) {
+                    oldPeers_ = oldPeers_.getUnmodifiableView();
+                }
+                if (((mutable_bitField0_ & 0x00000040) == 0x00000040)) {
+                    learners_ = learners_.getUnmodifiableView();
+                }
+                if (((mutable_bitField0_ & 0x00000080) == 0x00000080)) {
+                    oldLearners_ = oldLearners_.getUnmodifiableView();
+                }
+                this.unknownFields = unknownFields.build();
+                makeExtensionsImmutable();
+            }
+        }
+
+        public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+            return com.alipay.sofa.jraft.entity.RaftOutter.internal_static_jraft_EntryMeta_descriptor;
+        }
+
+        protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable internalGetFieldAccessorTable() {
+            return com.alipay.sofa.jraft.entity.RaftOutter.internal_static_jraft_EntryMeta_fieldAccessorTable
                 .ensureFieldAccessorsInitialized(com.alipay.sofa.jraft.entity.RaftOutter.EntryMeta.class,
-                        com.alipay.sofa.jraft.entity.RaftOutter.EntryMeta.Builder.class);
-      }
+                    com.alipay.sofa.jraft.entity.RaftOutter.EntryMeta.Builder.class);
+        }
 
-      // Construct using com.alipay.sofa.jraft.entity.RaftOutter.EntryMeta.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
+        private int             bitField0_;
+        public static final int TERM_FIELD_NUMBER = 1;
+        private long            term_;
 
-      private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
+        /**
+         * <code>required int64 term = 1;</code>
+         */
+        public boolean hasTerm() {
+            return ((bitField0_ & 0x00000001) == 0x00000001);
+        }
 
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {
+        /**
+         * <code>required int64 term = 1;</code>
+         */
+        public long getTerm() {
+            return term_;
         }
-      }
 
-      @java.lang.Override
-      public Builder clear() {
-        super.clear();
-        term_ = 0L;
-        bitField0_ = (bitField0_ & ~0x00000001);
-        type_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000002);
-        peers_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-        bitField0_ = (bitField0_ & ~0x00000004);
-        dataLen_ = 0L;
-        bitField0_ = (bitField0_ & ~0x00000008);
-        oldPeers_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-        bitField0_ = (bitField0_ & ~0x00000010);
-        checksum_ = 0L;
-        bitField0_ = (bitField0_ & ~0x00000020);
-        learners_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-        bitField0_ = (bitField0_ & ~0x00000040);
-        oldLearners_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-        bitField0_ = (bitField0_ & ~0x00000080);
-        readFactor_ = 0L;
-        bitField0_ = (bitField0_ & ~0x00000100);
-        writeFactor_ = 0L;
-        bitField0_ = (bitField0_ & ~0x00000200);
-        oldReadFactor_ = 0L;
-        bitField0_ = (bitField0_ & ~0x00000400);
-        oldWriteFactor_ = 0L;
-        bitField0_ = (bitField0_ & ~0x00000800);
-        return this;
-      }
+        public static final int TYPE_FIELD_NUMBER = 2;
+        private int             type_;
 
-      @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
-        return com.alipay.sofa.jraft.entity.RaftOutter.internal_static_jraft_EntryMeta_descriptor;
-      }
+        /**
+         * <code>required .jraft.EntryType type = 2;</code>
+         */
+        public boolean hasType() {
+            return ((bitField0_ & 0x00000002) == 0x00000002);
+        }
 
-      @java.lang.Override
-      public com.alipay.sofa.jraft.entity.RaftOutter.EntryMeta getDefaultInstanceForType() {
-        return com.alipay.sofa.jraft.entity.RaftOutter.EntryMeta.getDefaultInstance();
-      }
-
-      @java.lang.Override
-      public com.alipay.sofa.jraft.entity.RaftOutter.EntryMeta build() {
-        com.alipay.sofa.jraft.entity.RaftOutter.EntryMeta result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-
-      @java.lang.Override
-      public com.alipay.sofa.jraft.entity.RaftOutter.EntryMeta buildPartial() {
-        com.alipay.sofa.jraft.entity.RaftOutter.EntryMeta result = new com.alipay.sofa.jraft.entity.RaftOutter.EntryMeta(
-                this);
-        int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) != 0)) {
-          result.term_ = term_;
-          to_bitField0_ |= 0x00000001;
-        }
-        if (((from_bitField0_ & 0x00000002) != 0)) {
-          to_bitField0_ |= 0x00000002;
-        }
-        result.type_ = type_;
-        if (((bitField0_ & 0x00000004) != 0)) {
-          peers_ = peers_.getUnmodifiableView();
-          bitField0_ = (bitField0_ & ~0x00000004);
-        }
-        result.peers_ = peers_;
-        if (((from_bitField0_ & 0x00000008) != 0)) {
-          result.dataLen_ = dataLen_;
-          to_bitField0_ |= 0x00000004;
-        }
-        if (((bitField0_ & 0x00000010) != 0)) {
-          oldPeers_ = oldPeers_.getUnmodifiableView();
-          bitField0_ = (bitField0_ & ~0x00000010);
-        }
-        result.oldPeers_ = oldPeers_;
-        if (((from_bitField0_ & 0x00000020) != 0)) {
-          result.checksum_ = checksum_;
-          to_bitField0_ |= 0x00000008;
-        }
-        if (((bitField0_ & 0x00000040) != 0)) {
-          learners_ = learners_.getUnmodifiableView();
-          bitField0_ = (bitField0_ & ~0x00000040);
-        }
-        result.learners_ = learners_;
-        if (((bitField0_ & 0x00000080) != 0)) {
-          oldLearners_ = oldLearners_.getUnmodifiableView();
-          bitField0_ = (bitField0_ & ~0x00000080);
-        }
-        result.oldLearners_ = oldLearners_;
-        if (((from_bitField0_ & 0x00000100) != 0)) {
-          result.readFactor_ = readFactor_;
-          to_bitField0_ |= 0x00000010;
-        }
-        if (((from_bitField0_ & 0x00000200) != 0)) {
-          result.writeFactor_ = writeFactor_;
-          to_bitField0_ |= 0x00000020;
-        }
-        if (((from_bitField0_ & 0x00000400) != 0)) {
-          result.oldReadFactor_ = oldReadFactor_;
-          to_bitField0_ |= 0x00000040;
-        }
-        if (((from_bitField0_ & 0x00000800) != 0)) {
-          result.oldWriteFactor_ = oldWriteFactor_;
-          to_bitField0_ |= 0x00000080;
-        }
-        result.bitField0_ = to_bitField0_;
-        onBuilt();
-        return result;
-      }
-
-      @java.lang.Override
-      public Builder clone() {
-        return super.clone();
-      }
-
-      @java.lang.Override
-      public Builder setField(com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
-        return super.setField(field, value);
-      }
-
-      @java.lang.Override
-      public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return super.clearField(field);
-      }
-
-      @java.lang.Override
-      public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return super.clearOneof(oneof);
-      }
-
-      @java.lang.Override
-      public Builder setRepeatedField(com.google.protobuf.Descriptors.FieldDescriptor field, int index,
-                                      java.lang.Object value) {
-        return super.setRepeatedField(field, index, value);
-      }
-
-      @java.lang.Override
-      public Builder addRepeatedField(com.google.protobuf.Descriptors.FieldDescriptor field,
-                                      java.lang.Object value) {
-        return super.addRepeatedField(field, value);
-      }
-
-      @java.lang.Override
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof com.alipay.sofa.jraft.entity.RaftOutter.EntryMeta) {
-          return mergeFrom((com.alipay.sofa.jraft.entity.RaftOutter.EntryMeta) other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-
-      public Builder mergeFrom(com.alipay.sofa.jraft.entity.RaftOutter.EntryMeta other) {
-        if (other == com.alipay.sofa.jraft.entity.RaftOutter.EntryMeta.getDefaultInstance())
-          return this;
-        if (other.hasTerm()) {
-          setTerm(other.getTerm());
-        }
-        if (other.hasType()) {
-          setType(other.getType());
-        }
-        if (!other.peers_.isEmpty()) {
-          if (peers_.isEmpty()) {
-            peers_ = other.peers_;
-            bitField0_ = (bitField0_ & ~0x00000004);
-          } else {
-            ensurePeersIsMutable();
-            peers_.addAll(other.peers_);
-          }
-          onChanged();
-        }
-        if (other.hasDataLen()) {
-          setDataLen(other.getDataLen());
-        }
-        if (!other.oldPeers_.isEmpty()) {
-          if (oldPeers_.isEmpty()) {
-            oldPeers_ = other.oldPeers_;
-            bitField0_ = (bitField0_ & ~0x00000010);
-          } else {
-            ensureOldPeersIsMutable();
-            oldPeers_.addAll(other.oldPeers_);
-          }
-          onChanged();
-        }
-        if (other.hasChecksum()) {
-          setChecksum(other.getChecksum());
-        }
-        if (!other.learners_.isEmpty()) {
-          if (learners_.isEmpty()) {
-            learners_ = other.learners_;
-            bitField0_ = (bitField0_ & ~0x00000040);
-          } else {
-            ensureLearnersIsMutable();
-            learners_.addAll(other.learners_);
-          }
-          onChanged();
-        }
-        if (!other.oldLearners_.isEmpty()) {
-          if (oldLearners_.isEmpty()) {
-            oldLearners_ = other.oldLearners_;
-            bitField0_ = (bitField0_ & ~0x00000080);
-          } else {
-            ensureOldLearnersIsMutable();
-            oldLearners_.addAll(other.oldLearners_);
-          }
-          onChanged();
-        }
-        if (other.hasReadFactor()) {
-          setReadFactor(other.getReadFactor());
-        }
-        if (other.hasWriteFactor()) {
-          setWriteFactor(other.getWriteFactor());
-        }
-        if (other.hasOldReadFactor()) {
-          setOldReadFactor(other.getOldReadFactor());
-        }
-        if (other.hasOldWriteFactor()) {
-          setOldWriteFactor(other.getOldWriteFactor());
-        }
-        this.mergeUnknownFields(other.unknownFields);
-        onChanged();
-        return this;
-      }
-
-      @java.lang.Override
-      public final boolean isInitialized() {
-        if (!hasTerm()) {
-          return false;
-        }
-        if (!hasType()) {
-          return false;
-        }
-        return true;
-      }
-
-      @java.lang.Override
-      public Builder mergeFrom(com.google.protobuf.CodedInputStream input,
-                               com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-              throws java.io.IOException {
-        com.alipay.sofa.jraft.entity.RaftOutter.EntryMeta parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (com.alipay.sofa.jraft.entity.RaftOutter.EntryMeta) e.getUnfinishedMessage();
-          throw e.unwrapIOException();
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
-        return this;
-      }
-
-      private int  bitField0_;
-
-      private long term_;
-
-      /**
-       * <code>required int64 term = 1;</code>
-       * @return Whether the term field is set.
-       */
-      @java.lang.Override
-      public boolean hasTerm() {
-        return ((bitField0_ & 0x00000001) != 0);
-      }
-
-      /**
-       * <code>required int64 term = 1;</code>
-       * @return The term.
-       */
-      @java.lang.Override
-      public long getTerm() {
-        return term_;
-      }
-
-      /**
-       * <code>required int64 term = 1;</code>
-       * @param value The term to set.
-       * @return This builder for chaining.
-       */
-      public Builder setTerm(long value) {
-        bitField0_ |= 0x00000001;
-        term_ = value;
-        onChanged();
-        return this;
-      }
-
-      /**
-       * <code>required int64 term = 1;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearTerm() {
-        bitField0_ = (bitField0_ & ~0x00000001);
-        term_ = 0L;
-        onChanged();
-        return this;
-      }
-
-      private int type_ = 0;
-
-      /**
-       * <code>required .jraft.EntryType type = 2;</code>
-       * @return Whether the type field is set.
-       */
-      @java.lang.Override
-      public boolean hasType() {
-        return ((bitField0_ & 0x00000002) != 0);
-      }
-
-      /**
-       * <code>required .jraft.EntryType type = 2;</code>
-       * @return The type.
-       */
-      @java.lang.Override
-      public com.alipay.sofa.jraft.entity.EnumOutter.EntryType getType() {
-        @SuppressWarnings("deprecation")
-        com.alipay.sofa.jraft.entity.EnumOutter.EntryType result = com.alipay.sofa.jraft.entity.EnumOutter.EntryType
+        /**
+         * <code>required .jraft.EntryType type = 2;</code>
+         */
+        public com.alipay.sofa.jraft.entity.EnumOutter.EntryType getType() {
+            com.alipay.sofa.jraft.entity.EnumOutter.EntryType result = com.alipay.sofa.jraft.entity.EnumOutter.EntryType
                 .valueOf(type_);
-        return result == null ? com.alipay.sofa.jraft.entity.EnumOutter.EntryType.ENTRY_TYPE_UNKNOWN : result;
-      }
-
-      /**
-       * <code>required .jraft.EntryType type = 2;</code>
-       * @param value The type to set.
-       * @return This builder for chaining.
-       */
-      public Builder setType(com.alipay.sofa.jraft.entity.EnumOutter.EntryType value) {
-        if (value == null) {
-          throw new NullPointerException();
+            return result == null ? com.alipay.sofa.jraft.entity.EnumOutter.EntryType.ENTRY_TYPE_UNKNOWN : result;
         }
-        bitField0_ |= 0x00000002;
-        type_ = value.getNumber();
-        onChanged();
-        return this;
-      }
 
-      /**
-       * <code>required .jraft.EntryType type = 2;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearType() {
-        bitField0_ = (bitField0_ & ~0x00000002);
-        type_ = 0;
-        onChanged();
-        return this;
-      }
+        public static final int                    PEERS_FIELD_NUMBER = 3;
+        private com.google.protobuf.LazyStringList peers_;
 
-      private com.google.protobuf.LazyStringList peers_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-
-      private void ensurePeersIsMutable() {
-        if (!((bitField0_ & 0x00000004) != 0)) {
-          peers_ = new com.google.protobuf.LazyStringArrayList(peers_);
-          bitField0_ |= 0x00000004;
+        /**
+         * <code>repeated string peers = 3;</code>
+         */
+        public com.google.protobuf.ProtocolStringList getPeersList() {
+            return peers_;
         }
-      }
 
-      /**
-       * <code>repeated string peers = 3;</code>
-       * @return A list containing the peers.
-       */
-      public com.google.protobuf.ProtocolStringList getPeersList() {
-        return peers_.getUnmodifiableView();
-      }
-
-      /**
-       * <code>repeated string peers = 3;</code>
-       * @return The count of peers.
-       */
-      public int getPeersCount() {
-        return peers_.size();
-      }
-
-      /**
-       * <code>repeated string peers = 3;</code>
-       * @param index The index of the element to return.
-       * @return The peers at the given index.
-       */
-      public java.lang.String getPeers(int index) {
-        return peers_.get(index);
-      }
-
-      /**
-       * <code>repeated string peers = 3;</code>
-       * @param index The index of the value to return.
-       * @return The bytes of the peers at the given index.
-       */
-      public com.google.protobuf.ByteString getPeersBytes(int index) {
-        return peers_.getByteString(index);
-      }
-
-      /**
-       * <code>repeated string peers = 3;</code>
-       * @param index The index to set the value at.
-       * @param value The peers to set.
-       * @return This builder for chaining.
-       */
-      public Builder setPeers(int index, java.lang.String value) {
-        if (value == null) {
-          throw new NullPointerException();
+        /**
+         * <code>repeated string peers = 3;</code>
+         */
+        public int getPeersCount() {
+            return peers_.size();
         }
-        ensurePeersIsMutable();
-        peers_.set(index, value);
-        onChanged();
-        return this;
-      }
 
-      /**
-       * <code>repeated string peers = 3;</code>
-       * @param value The peers to add.
-       * @return This builder for chaining.
-       */
-      public Builder addPeers(java.lang.String value) {
-        if (value == null) {
-          throw new NullPointerException();
+        /**
+         * <code>repeated string peers = 3;</code>
+         */
+        public java.lang.String getPeers(int index) {
+            return peers_.get(index);
         }
-        ensurePeersIsMutable();
-        peers_.add(value);
-        onChanged();
-        return this;
-      }
 
-      /**
-       * <code>repeated string peers = 3;</code>
-       * @param values The peers to add.
-       * @return This builder for chaining.
-       */
-      public Builder addAllPeers(java.lang.Iterable<java.lang.String> values) {
-        ensurePeersIsMutable();
-        com.google.protobuf.AbstractMessageLite.Builder.addAll(values, peers_);
-        onChanged();
-        return this;
-      }
-
-      /**
-       * <code>repeated string peers = 3;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearPeers() {
-        peers_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-        bitField0_ = (bitField0_ & ~0x00000004);
-        onChanged();
-        return this;
-      }
-
-      /**
-       * <code>repeated string peers = 3;</code>
-       * @param value The bytes of the peers to add.
-       * @return This builder for chaining.
-       */
-      public Builder addPeersBytes(com.google.protobuf.ByteString value) {
-        if (value == null) {
-          throw new NullPointerException();
+        /**
+         * <code>repeated string peers = 3;</code>
+         */
+        public com.google.protobuf.ByteString getPeersBytes(int index) {
+            return peers_.getByteString(index);
         }
-        ensurePeersIsMutable();
-        peers_.add(value);
-        onChanged();
-        return this;
-      }
 
-      private long dataLen_;
+        public static final int DATA_LEN_FIELD_NUMBER = 4;
+        private long            dataLen_;
 
-      /**
-       * <code>optional int64 data_len = 4;</code>
-       * @return Whether the dataLen field is set.
-       */
-      @java.lang.Override
-      public boolean hasDataLen() {
-        return ((bitField0_ & 0x00000008) != 0);
-      }
-
-      /**
-       * <code>optional int64 data_len = 4;</code>
-       * @return The dataLen.
-       */
-      @java.lang.Override
-      public long getDataLen() {
-        return dataLen_;
-      }
-
-      /**
-       * <code>optional int64 data_len = 4;</code>
-       * @param value The dataLen to set.
-       * @return This builder for chaining.
-       */
-      public Builder setDataLen(long value) {
-        bitField0_ |= 0x00000008;
-        dataLen_ = value;
-        onChanged();
-        return this;
-      }
-
-      /**
-       * <code>optional int64 data_len = 4;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearDataLen() {
-        bitField0_ = (bitField0_ & ~0x00000008);
-        dataLen_ = 0L;
-        onChanged();
-        return this;
-      }
-
-      private com.google.protobuf.LazyStringList oldPeers_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-
-      private void ensureOldPeersIsMutable() {
-        if (!((bitField0_ & 0x00000010) != 0)) {
-          oldPeers_ = new com.google.protobuf.LazyStringArrayList(oldPeers_);
-          bitField0_ |= 0x00000010;
+        /**
+         * <code>optional int64 data_len = 4;</code>
+         */
+        public boolean hasDataLen() {
+            return ((bitField0_ & 0x00000004) == 0x00000004);
         }
-      }
 
-      /**
-       * <pre>
-       * Don't change field id of `old_peers' in the consideration of backward
-       * compatibility
-       * </pre>
-       *
-       * <code>repeated string old_peers = 5;</code>
-       * @return A list containing the oldPeers.
-       */
-      public com.google.protobuf.ProtocolStringList getOldPeersList() {
-        return oldPeers_.getUnmodifiableView();
-      }
-
-      /**
-       * <pre>
-       * Don't change field id of `old_peers' in the consideration of backward
-       * compatibility
-       * </pre>
-       *
-       * <code>repeated string old_peers = 5;</code>
-       * @return The count of oldPeers.
-       */
-      public int getOldPeersCount() {
-        return oldPeers_.size();
-      }
-
-      /**
-       * <pre>
-       * Don't change field id of `old_peers' in the consideration of backward
-       * compatibility
-       * </pre>
-       *
-       * <code>repeated string old_peers = 5;</code>
-       * @param index The index of the element to return.
-       * @return The oldPeers at the given index.
-       */
-      public java.lang.String getOldPeers(int index) {
-        return oldPeers_.get(index);
-      }
-
-      /**
-       * <pre>
-       * Don't change field id of `old_peers' in the consideration of backward
-       * compatibility
-       * </pre>
-       *
-       * <code>repeated string old_peers = 5;</code>
-       * @param index The index of the value to return.
-       * @return The bytes of the oldPeers at the given index.
-       */
-      public com.google.protobuf.ByteString getOldPeersBytes(int index) {
-        return oldPeers_.getByteString(index);
-      }
-
-      /**
-       * <pre>
-       * Don't change field id of `old_peers' in the consideration of backward
-       * compatibility
-       * </pre>
-       *
-       * <code>repeated string old_peers = 5;</code>
-       * @param index The index to set the value at.
-       * @param value The oldPeers to set.
-       * @return This builder for chaining.
-       */
-      public Builder setOldPeers(int index, java.lang.String value) {
-        if (value == null) {
-          throw new NullPointerException();
+        /**
+         * <code>optional int64 data_len = 4;</code>
+         */
+        public long getDataLen() {
+            return dataLen_;
         }
-        ensureOldPeersIsMutable();
-        oldPeers_.set(index, value);
-        onChanged();
-        return this;
-      }
 
-      /**
-       * <pre>
-       * Don't change field id of `old_peers' in the consideration of backward
-       * compatibility
-       * </pre>
-       *
-       * <code>repeated string old_peers = 5;</code>
-       * @param value The oldPeers to add.
-       * @return This builder for chaining.
-       */
-      public Builder addOldPeers(java.lang.String value) {
-        if (value == null) {
-          throw new NullPointerException();
+        public static final int                    OLD_PEERS_FIELD_NUMBER = 5;
+        private com.google.protobuf.LazyStringList oldPeers_;
+
+        /**
+         * <pre>
+         * Don't change field id of `old_peers' in the consideration of backward
+         * compatibility
+         * </pre>
+         *
+         * <code>repeated string old_peers = 5;</code>
+         */
+        public com.google.protobuf.ProtocolStringList getOldPeersList() {
+            return oldPeers_;
         }
-        ensureOldPeersIsMutable();
-        oldPeers_.add(value);
-        onChanged();
-        return this;
-      }
 
-      /**
-       * <pre>
-       * Don't change field id of `old_peers' in the consideration of backward
-       * compatibility
-       * </pre>
-       *
-       * <code>repeated string old_peers = 5;</code>
-       * @param values The oldPeers to add.
-       * @return This builder for chaining.
-       */
-      public Builder addAllOldPeers(java.lang.Iterable<java.lang.String> values) {
-        ensureOldPeersIsMutable();
-        com.google.protobuf.AbstractMessageLite.Builder.addAll(values, oldPeers_);
-        onChanged();
-        return this;
-      }
-
-      /**
-       * <pre>
-       * Don't change field id of `old_peers' in the consideration of backward
-       * compatibility
-       * </pre>
-       *
-       * <code>repeated string old_peers = 5;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearOldPeers() {
-        oldPeers_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-        bitField0_ = (bitField0_ & ~0x00000010);
-        onChanged();
-        return this;
-      }
-
-      /**
-       * <pre>
-       * Don't change field id of `old_peers' in the consideration of backward
-       * compatibility
-       * </pre>
-       *
-       * <code>repeated string old_peers = 5;</code>
-       * @param value The bytes of the oldPeers to add.
-       * @return This builder for chaining.
-       */
-      public Builder addOldPeersBytes(com.google.protobuf.ByteString value) {
-        if (value == null) {
-          throw new NullPointerException();
+        /**
+         * <pre>
+         * Don't change field id of `old_peers' in the consideration of backward
+         * compatibility
+         * </pre>
+         *
+         * <code>repeated string old_peers = 5;</code>
+         */
+        public int getOldPeersCount() {
+            return oldPeers_.size();
         }
-        ensureOldPeersIsMutable();
-        oldPeers_.add(value);
-        onChanged();
-        return this;
-      }
 
-      private long checksum_;
-
-      /**
-       * <pre>
-       * Checksum fot this log entry, since 1.2.6, added by boyan&#64;antfin.com
-       * </pre>
-       *
-       * <code>optional int64 checksum = 6;</code>
-       * @return Whether the checksum field is set.
-       */
-      @java.lang.Override
-      public boolean hasChecksum() {
-        return ((bitField0_ & 0x00000020) != 0);
-      }
-
-      /**
-       * <pre>
-       * Checksum fot this log entry, since 1.2.6, added by boyan&#64;antfin.com
-       * </pre>
-       *
-       * <code>optional int64 checksum = 6;</code>
-       * @return The checksum.
-       */
-      @java.lang.Override
-      public long getChecksum() {
-        return checksum_;
-      }
-
-      /**
-       * <pre>
-       * Checksum fot this log entry, since 1.2.6, added by boyan&#64;antfin.com
-       * </pre>
-       *
-       * <code>optional int64 checksum = 6;</code>
-       * @param value The checksum to set.
-       * @return This builder for chaining.
-       */
-      public Builder setChecksum(long value) {
-        bitField0_ |= 0x00000020;
-        checksum_ = value;
-        onChanged();
-        return this;
-      }
-
-      /**
-       * <pre>
-       * Checksum fot this log entry, since 1.2.6, added by boyan&#64;antfin.com
-       * </pre>
-       *
-       * <code>optional int64 checksum = 6;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearChecksum() {
-        bitField0_ = (bitField0_ & ~0x00000020);
-        checksum_ = 0L;
-        onChanged();
-        return this;
-      }
-
-      private com.google.protobuf.LazyStringList learners_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-
-      private void ensureLearnersIsMutable() {
-        if (!((bitField0_ & 0x00000040) != 0)) {
-          learners_ = new com.google.protobuf.LazyStringArrayList(learners_);
-          bitField0_ |= 0x00000040;
+        /**
+         * <pre>
+         * Don't change field id of `old_peers' in the consideration of backward
+         * compatibility
+         * </pre>
+         *
+         * <code>repeated string old_peers = 5;</code>
+         */
+        public java.lang.String getOldPeers(int index) {
+            return oldPeers_.get(index);
         }
-      }
 
-      /**
-       * <code>repeated string learners = 7;</code>
-       * @return A list containing the learners.
-       */
-      public com.google.protobuf.ProtocolStringList getLearnersList() {
-        return learners_.getUnmodifiableView();
-      }
-
-      /**
-       * <code>repeated string learners = 7;</code>
-       * @return The count of learners.
-       */
-      public int getLearnersCount() {
-        return learners_.size();
-      }
-
-      /**
-       * <code>repeated string learners = 7;</code>
-       * @param index The index of the element to return.
-       * @return The learners at the given index.
-       */
-      public java.lang.String getLearners(int index) {
-        return learners_.get(index);
-      }
-
-      /**
-       * <code>repeated string learners = 7;</code>
-       * @param index The index of the value to return.
-       * @return The bytes of the learners at the given index.
-       */
-      public com.google.protobuf.ByteString getLearnersBytes(int index) {
-        return learners_.getByteString(index);
-      }
-
-      /**
-       * <code>repeated string learners = 7;</code>
-       * @param index The index to set the value at.
-       * @param value The learners to set.
-       * @return This builder for chaining.
-       */
-      public Builder setLearners(int index, java.lang.String value) {
-        if (value == null) {
-          throw new NullPointerException();
+        /**
+         * <pre>
+         * Don't change field id of `old_peers' in the consideration of backward
+         * compatibility
+         * </pre>
+         *
+         * <code>repeated string old_peers = 5;</code>
+         */
+        public com.google.protobuf.ByteString getOldPeersBytes(int index) {
+            return oldPeers_.getByteString(index);
         }
-        ensureLearnersIsMutable();
-        learners_.set(index, value);
-        onChanged();
-        return this;
-      }
 
-      /**
-       * <code>repeated string learners = 7;</code>
-       * @param value The learners to add.
-       * @return This builder for chaining.
-       */
-      public Builder addLearners(java.lang.String value) {
-        if (value == null) {
-          throw new NullPointerException();
+        public static final int CHECKSUM_FIELD_NUMBER = 6;
+        private long            checksum_;
+
+        /**
+         * <pre>
+         * Checksum fot this log entry, since 1.2.6, added by boyan&#64;antfin.com
+         * </pre>
+         *
+         * <code>optional int64 checksum = 6;</code>
+         */
+        public boolean hasChecksum() {
+            return ((bitField0_ & 0x00000008) == 0x00000008);
         }
-        ensureLearnersIsMutable();
-        learners_.add(value);
-        onChanged();
-        return this;
-      }
 
-      /**
-       * <code>repeated string learners = 7;</code>
-       * @param values The learners to add.
-       * @return This builder for chaining.
-       */
-      public Builder addAllLearners(java.lang.Iterable<java.lang.String> values) {
-        ensureLearnersIsMutable();
-        com.google.protobuf.AbstractMessageLite.Builder.addAll(values, learners_);
-        onChanged();
-        return this;
-      }
-
-      /**
-       * <code>repeated string learners = 7;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearLearners() {
-        learners_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-        bitField0_ = (bitField0_ & ~0x00000040);
-        onChanged();
-        return this;
-      }
-
-      /**
-       * <code>repeated string learners = 7;</code>
-       * @param value The bytes of the learners to add.
-       * @return This builder for chaining.
-       */
-      public Builder addLearnersBytes(com.google.protobuf.ByteString value) {
-        if (value == null) {
-          throw new NullPointerException();
+        /**
+         * <pre>
+         * Checksum fot this log entry, since 1.2.6, added by boyan&#64;antfin.com
+         * </pre>
+         *
+         * <code>optional int64 checksum = 6;</code>
+         */
+        public long getChecksum() {
+            return checksum_;
         }
-        ensureLearnersIsMutable();
-        learners_.add(value);
-        onChanged();
-        return this;
-      }
 
-      private com.google.protobuf.LazyStringList oldLearners_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+        public static final int                    LEARNERS_FIELD_NUMBER = 7;
+        private com.google.protobuf.LazyStringList learners_;
 
-      private void ensureOldLearnersIsMutable() {
-        if (!((bitField0_ & 0x00000080) != 0)) {
-          oldLearners_ = new com.google.protobuf.LazyStringArrayList(oldLearners_);
-          bitField0_ |= 0x00000080;
+        /**
+         * <code>repeated string learners = 7;</code>
+         */
+        public com.google.protobuf.ProtocolStringList getLearnersList() {
+            return learners_;
         }
-      }
 
-      /**
-       * <code>repeated string old_learners = 8;</code>
-       * @return A list containing the oldLearners.
-       */
-      public com.google.protobuf.ProtocolStringList getOldLearnersList() {
-        return oldLearners_.getUnmodifiableView();
-      }
-
-      /**
-       * <code>repeated string old_learners = 8;</code>
-       * @return The count of oldLearners.
-       */
-      public int getOldLearnersCount() {
-        return oldLearners_.size();
-      }
-
-      /**
-       * <code>repeated string old_learners = 8;</code>
-       * @param index The index of the element to return.
-       * @return The oldLearners at the given index.
-       */
-      public java.lang.String getOldLearners(int index) {
-        return oldLearners_.get(index);
-      }
-
-      /**
-       * <code>repeated string old_learners = 8;</code>
-       * @param index The index of the value to return.
-       * @return The bytes of the oldLearners at the given index.
-       */
-      public com.google.protobuf.ByteString getOldLearnersBytes(int index) {
-        return oldLearners_.getByteString(index);
-      }
-
-      /**
-       * <code>repeated string old_learners = 8;</code>
-       * @param index The index to set the value at.
-       * @param value The oldLearners to set.
-       * @return This builder for chaining.
-       */
-      public Builder setOldLearners(int index, java.lang.String value) {
-        if (value == null) {
-          throw new NullPointerException();
+        /**
+         * <code>repeated string learners = 7;</code>
+         */
+        public int getLearnersCount() {
+            return learners_.size();
         }
-        ensureOldLearnersIsMutable();
-        oldLearners_.set(index, value);
-        onChanged();
-        return this;
-      }
 
-      /**
-       * <code>repeated string old_learners = 8;</code>
-       * @param value The oldLearners to add.
-       * @return This builder for chaining.
-       */
-      public Builder addOldLearners(java.lang.String value) {
-        if (value == null) {
-          throw new NullPointerException();
+        /**
+         * <code>repeated string learners = 7;</code>
+         */
+        public java.lang.String getLearners(int index) {
+            return learners_.get(index);
         }
-        ensureOldLearnersIsMutable();
-        oldLearners_.add(value);
-        onChanged();
-        return this;
-      }
 
-      /**
-       * <code>repeated string old_learners = 8;</code>
-       * @param values The oldLearners to add.
-       * @return This builder for chaining.
-       */
-      public Builder addAllOldLearners(java.lang.Iterable<java.lang.String> values) {
-        ensureOldLearnersIsMutable();
-        com.google.protobuf.AbstractMessageLite.Builder.addAll(values, oldLearners_);
-        onChanged();
-        return this;
-      }
-
-      /**
-       * <code>repeated string old_learners = 8;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearOldLearners() {
-        oldLearners_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-        bitField0_ = (bitField0_ & ~0x00000080);
-        onChanged();
-        return this;
-      }
-
-      /**
-       * <code>repeated string old_learners = 8;</code>
-       * @param value The bytes of the oldLearners to add.
-       * @return This builder for chaining.
-       */
-      public Builder addOldLearnersBytes(com.google.protobuf.ByteString value) {
-        if (value == null) {
-          throw new NullPointerException();
+        /**
+         * <code>repeated string learners = 7;</code>
+         */
+        public com.google.protobuf.ByteString getLearnersBytes(int index) {
+            return learners_.getByteString(index);
         }
-        ensureOldLearnersIsMutable();
-        oldLearners_.add(value);
-        onChanged();
-        return this;
-      }
 
-      private long readFactor_;
+        public static final int                    OLD_LEARNERS_FIELD_NUMBER = 8;
+        private com.google.protobuf.LazyStringList oldLearners_;
 
-      /**
-       * <code>optional int64 read_factor = 9;</code>
-       * @return Whether the readFactor field is set.
-       */
-      @java.lang.Override
-      public boolean hasReadFactor() {
-        return ((bitField0_ & 0x00000100) != 0);
-      }
+        /**
+         * <code>repeated string old_learners = 8;</code>
+         */
+        public com.google.protobuf.ProtocolStringList getOldLearnersList() {
+            return oldLearners_;
+        }
 
-      /**
-       * <code>optional int64 read_factor = 9;</code>
-       * @return The readFactor.
-       */
-      @java.lang.Override
-      public long getReadFactor() {
-        return readFactor_;
-      }
+        /**
+         * <code>repeated string old_learners = 8;</code>
+         */
+        public int getOldLearnersCount() {
+            return oldLearners_.size();
+        }
 
-      /**
-       * <code>optional int64 read_factor = 9;</code>
-       * @param value The readFactor to set.
-       * @return This builder for chaining.
-       */
-      public Builder setReadFactor(long value) {
-        bitField0_ |= 0x00000100;
-        readFactor_ = value;
-        onChanged();
-        return this;
-      }
+        /**
+         * <code>repeated string old_learners = 8;</code>
+         */
+        public java.lang.String getOldLearners(int index) {
+            return oldLearners_.get(index);
+        }
 
-      /**
-       * <code>optional int64 read_factor = 9;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearReadFactor() {
-        bitField0_ = (bitField0_ & ~0x00000100);
-        readFactor_ = 0L;
-        onChanged();
-        return this;
-      }
+        /**
+         * <code>repeated string old_learners = 8;</code>
+         */
+        public com.google.protobuf.ByteString getOldLearnersBytes(int index) {
+            return oldLearners_.getByteString(index);
+        }
 
-      private long writeFactor_;
+        public static final int READ_FACTOR_FIELD_NUMBER = 9;
+        private int             readFactor_;
 
-      /**
-       * <code>optional int64 write_factor = 10;</code>
-       * @return Whether the writeFactor field is set.
-       */
-      @java.lang.Override
-      public boolean hasWriteFactor() {
-        return ((bitField0_ & 0x00000200) != 0);
-      }
+        /**
+         * <code>optional int32 read_factor = 9;</code>
+         */
+        public boolean hasReadFactor() {
+            return ((bitField0_ & 0x00000010) == 0x00000010);
+        }
 
-      /**
-       * <code>optional int64 write_factor = 10;</code>
-       * @return The writeFactor.
-       */
-      @java.lang.Override
-      public long getWriteFactor() {
-        return writeFactor_;
-      }
+        /**
+         * <code>optional int32 read_factor = 9;</code>
+         */
+        public int getReadFactor() {
+            return readFactor_;
+        }
 
-      /**
-       * <code>optional int64 write_factor = 10;</code>
-       * @param value The writeFactor to set.
-       * @return This builder for chaining.
-       */
-      public Builder setWriteFactor(long value) {
-        bitField0_ |= 0x00000200;
-        writeFactor_ = value;
-        onChanged();
-        return this;
-      }
+        public static final int WRITE_FACTOR_FIELD_NUMBER = 10;
+        private int             writeFactor_;
 
-      /**
-       * <code>optional int64 write_factor = 10;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearWriteFactor() {
-        bitField0_ = (bitField0_ & ~0x00000200);
-        writeFactor_ = 0L;
-        onChanged();
-        return this;
-      }
+        /**
+         * <code>optional int32 write_factor = 10;</code>
+         */
+        public boolean hasWriteFactor() {
+            return ((bitField0_ & 0x00000020) == 0x00000020);
+        }
 
-      private long oldReadFactor_;
+        /**
+         * <code>optional int32 write_factor = 10;</code>
+         */
+        public int getWriteFactor() {
+            return writeFactor_;
+        }
 
-      /**
-       * <code>optional int64 old_read_factor = 11;</code>
-       * @return Whether the oldReadFactor field is set.
-       */
-      @java.lang.Override
-      public boolean hasOldReadFactor() {
-        return ((bitField0_ & 0x00000400) != 0);
-      }
+        public static final int OLD_READ_FACTOR_FIELD_NUMBER = 11;
+        private int             oldReadFactor_;
 
-      /**
-       * <code>optional int64 old_read_factor = 11;</code>
-       * @return The oldReadFactor.
-       */
-      @java.lang.Override
-      public long getOldReadFactor() {
-        return oldReadFactor_;
-      }
+        /**
+         * <code>optional int32 old_read_factor = 11;</code>
+         */
+        public boolean hasOldReadFactor() {
+            return ((bitField0_ & 0x00000040) == 0x00000040);
+        }
 
-      /**
-       * <code>optional int64 old_read_factor = 11;</code>
-       * @param value The oldReadFactor to set.
-       * @return This builder for chaining.
-       */
-      public Builder setOldReadFactor(long value) {
-        bitField0_ |= 0x00000400;
-        oldReadFactor_ = value;
-        onChanged();
-        return this;
-      }
+        /**
+         * <code>optional int32 old_read_factor = 11;</code>
+         */
+        public int getOldReadFactor() {
+            return oldReadFactor_;
+        }
 
-      /**
-       * <code>optional int64 old_read_factor = 11;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearOldReadFactor() {
-        bitField0_ = (bitField0_ & ~0x00000400);
-        oldReadFactor_ = 0L;
-        onChanged();
-        return this;
-      }
+        public static final int OLD_WRITE_FACTOR_FIELD_NUMBER = 12;
+        private int             oldWriteFactor_;
 
-      private long oldWriteFactor_;
+        /**
+         * <code>optional int32 old_write_factor = 12;</code>
+         */
+        public boolean hasOldWriteFactor() {
+            return ((bitField0_ & 0x00000080) == 0x00000080);
+        }
 
-      /**
-       * <code>optional int64 old_write_factor = 12;</code>
-       * @return Whether the oldWriteFactor field is set.
-       */
-      @java.lang.Override
-      public boolean hasOldWriteFactor() {
-        return ((bitField0_ & 0x00000800) != 0);
-      }
+        /**
+         * <code>optional int32 old_write_factor = 12;</code>
+         */
+        public int getOldWriteFactor() {
+            return oldWriteFactor_;
+        }
 
-      /**
-       * <code>optional int64 old_write_factor = 12;</code>
-       * @return The oldWriteFactor.
-       */
-      @java.lang.Override
-      public long getOldWriteFactor() {
-        return oldWriteFactor_;
-      }
+        public static final int ISENABLEFLEXIBLE_FIELD_NUMBER = 13;
+        private boolean         isEnableFlexible_;
 
-      /**
-       * <code>optional int64 old_write_factor = 12;</code>
-       * @param value The oldWriteFactor to set.
-       * @return This builder for chaining.
-       */
-      public Builder setOldWriteFactor(long value) {
-        bitField0_ |= 0x00000800;
-        oldWriteFactor_ = value;
-        onChanged();
-        return this;
-      }
+        /**
+         * <code>optional bool isEnableFlexible = 13;</code>
+         */
+        public boolean hasIsEnableFlexible() {
+            return ((bitField0_ & 0x00000100) == 0x00000100);
+        }
 
-      /**
-       * <code>optional int64 old_write_factor = 12;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearOldWriteFactor() {
-        bitField0_ = (bitField0_ & ~0x00000800);
-        oldWriteFactor_ = 0L;
-        onChanged();
-        return this;
-      }
+        /**
+         * <code>optional bool isEnableFlexible = 13;</code>
+         */
+        public boolean getIsEnableFlexible() {
+            return isEnableFlexible_;
+        }
 
-      @java.lang.Override
-      public final Builder setUnknownFields(final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFields(unknownFields);
-      }
+        private byte memoizedIsInitialized = -1;
 
-      @java.lang.Override
-      public final Builder mergeUnknownFields(final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.mergeUnknownFields(unknownFields);
-      }
+        public final boolean isInitialized() {
+            byte isInitialized = memoizedIsInitialized;
+            if (isInitialized == 1)
+                return true;
+            if (isInitialized == 0)
+                return false;
 
-      // @@protoc_insertion_point(builder_scope:jraft.EntryMeta)
-    }
+            if (!hasTerm()) {
+                memoizedIsInitialized = 0;
+                return false;
+            }
+            if (!hasType()) {
+                memoizedIsInitialized = 0;
+                return false;
+            }
+            memoizedIsInitialized = 1;
+            return true;
+        }
 
-    // @@protoc_insertion_point(class_scope:jraft.EntryMeta)
-    private static final com.alipay.sofa.jraft.entity.RaftOutter.EntryMeta DEFAULT_INSTANCE;
-    static {
-      DEFAULT_INSTANCE = new com.alipay.sofa.jraft.entity.RaftOutter.EntryMeta();
-    }
+        public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
+            if (((bitField0_ & 0x00000001) == 0x00000001)) {
+                output.writeInt64(1, term_);
+            }
+            if (((bitField0_ & 0x00000002) == 0x00000002)) {
+                output.writeEnum(2, type_);
+            }
+            for (int i = 0; i < peers_.size(); i++) {
+                com.google.protobuf.GeneratedMessageV3.writeString(output, 3, peers_.getRaw(i));
+            }
+            if (((bitField0_ & 0x00000004) == 0x00000004)) {
+                output.writeInt64(4, dataLen_);
+            }
+            for (int i = 0; i < oldPeers_.size(); i++) {
+                com.google.protobuf.GeneratedMessageV3.writeString(output, 5, oldPeers_.getRaw(i));
+            }
+            if (((bitField0_ & 0x00000008) == 0x00000008)) {
+                output.writeInt64(6, checksum_);
+            }
+            for (int i = 0; i < learners_.size(); i++) {
+                com.google.protobuf.GeneratedMessageV3.writeString(output, 7, learners_.getRaw(i));
+            }
+            for (int i = 0; i < oldLearners_.size(); i++) {
+                com.google.protobuf.GeneratedMessageV3.writeString(output, 8, oldLearners_.getRaw(i));
+            }
+            if (((bitField0_ & 0x00000010) == 0x00000010)) {
+                output.writeInt32(9, readFactor_);
+            }
+            if (((bitField0_ & 0x00000020) == 0x00000020)) {
+                output.writeInt32(10, writeFactor_);
+            }
+            if (((bitField0_ & 0x00000040) == 0x00000040)) {
+                output.writeInt32(11, oldReadFactor_);
+            }
+            if (((bitField0_ & 0x00000080) == 0x00000080)) {
+                output.writeInt32(12, oldWriteFactor_);
+            }
+            if (((bitField0_ & 0x00000100) == 0x00000100)) {
+                output.writeBool(13, isEnableFlexible_);
+            }
+            unknownFields.writeTo(output);
+        }
 
-    public static com.alipay.sofa.jraft.entity.RaftOutter.EntryMeta getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
+        public int getSerializedSize() {
+            int size = memoizedSize;
+            if (size != -1)
+                return size;
 
-    @java.lang.Deprecated
-    public static final com.google.protobuf.Parser<EntryMeta> PARSER = new com.google.protobuf.AbstractParser<EntryMeta>() {
-      @java.lang.Override
-      public EntryMeta parsePartialFrom(com.google.protobuf.CodedInputStream input,
-                                        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-              throws com.google.protobuf.InvalidProtocolBufferException {
-        return new EntryMeta(input,
+            size = 0;
+            if (((bitField0_ & 0x00000001) == 0x00000001)) {
+                size += com.google.protobuf.CodedOutputStream.computeInt64Size(1, term_);
+            }
+            if (((bitField0_ & 0x00000002) == 0x00000002)) {
+                size += com.google.protobuf.CodedOutputStream.computeEnumSize(2, type_);
+            }
+            {
+                int dataSize = 0;
+                for (int i = 0; i < peers_.size(); i++) {
+                    dataSize += computeStringSizeNoTag(peers_.getRaw(i));
+                }
+                size += dataSize;
+                size += 1 * getPeersList().size();
+            }
+            if (((bitField0_ & 0x00000004) == 0x00000004)) {
+                size += com.google.protobuf.CodedOutputStream.computeInt64Size(4, dataLen_);
+            }
+            {
+                int dataSize = 0;
+                for (int i = 0; i < oldPeers_.size(); i++) {
+                    dataSize += computeStringSizeNoTag(oldPeers_.getRaw(i));
+                }
+                size += dataSize;
+                size += 1 * getOldPeersList().size();
+            }
+            if (((bitField0_ & 0x00000008) == 0x00000008)) {
+                size += com.google.protobuf.CodedOutputStream.computeInt64Size(6, checksum_);
+            }
+            {
+                int dataSize = 0;
+                for (int i = 0; i < learners_.size(); i++) {
+                    dataSize += computeStringSizeNoTag(learners_.getRaw(i));
+                }
+                size += dataSize;
+                size += 1 * getLearnersList().size();
+            }
+            {
+                int dataSize = 0;
+                for (int i = 0; i < oldLearners_.size(); i++) {
+                    dataSize += computeStringSizeNoTag(oldLearners_.getRaw(i));
+                }
+                size += dataSize;
+                size += 1 * getOldLearnersList().size();
+            }
+            if (((bitField0_ & 0x00000010) == 0x00000010)) {
+                size += com.google.protobuf.CodedOutputStream.computeInt32Size(9, readFactor_);
+            }
+            if (((bitField0_ & 0x00000020) == 0x00000020)) {
+                size += com.google.protobuf.CodedOutputStream.computeInt32Size(10, writeFactor_);
+            }
+            if (((bitField0_ & 0x00000040) == 0x00000040)) {
+                size += com.google.protobuf.CodedOutputStream.computeInt32Size(11, oldReadFactor_);
+            }
+            if (((bitField0_ & 0x00000080) == 0x00000080)) {
+                size += com.google.protobuf.CodedOutputStream.computeInt32Size(12, oldWriteFactor_);
+            }
+            if (((bitField0_ & 0x00000100) == 0x00000100)) {
+                size += com.google.protobuf.CodedOutputStream.computeBoolSize(13, isEnableFlexible_);
+            }
+            size += unknownFields.getSerializedSize();
+            memoizedSize = size;
+            return size;
+        }
+
+        @java.lang.Override
+        public boolean equals(final java.lang.Object obj) {
+            if (obj == this) {
+                return true;
+            }
+            if (!(obj instanceof com.alipay.sofa.jraft.entity.RaftOutter.EntryMeta)) {
+                return super.equals(obj);
+            }
+            com.alipay.sofa.jraft.entity.RaftOutter.EntryMeta other = (com.alipay.sofa.jraft.entity.RaftOutter.EntryMeta) obj;
+
+            boolean result = true;
+            result = result && (hasTerm() == other.hasTerm());
+            if (hasTerm()) {
+                result = result && (getTerm() == other.getTerm());
+            }
+            result = result && (hasType() == other.hasType());
+            if (hasType()) {
+                result = result && type_ == other.type_;
+            }
+            result = result && getPeersList().equals(other.getPeersList());
+            result = result && (hasDataLen() == other.hasDataLen());
+            if (hasDataLen()) {
+                result = result && (getDataLen() == other.getDataLen());
+            }
+            result = result && getOldPeersList().equals(other.getOldPeersList());
+            result = result && (hasChecksum() == other.hasChecksum());
+            if (hasChecksum()) {
+                result = result && (getChecksum() == other.getChecksum());
+            }
+            result = result && getLearnersList().equals(other.getLearnersList());
+            result = result && getOldLearnersList().equals(other.getOldLearnersList());
+            result = result && (hasReadFactor() == other.hasReadFactor());
+            if (hasReadFactor()) {
+                result = result && (getReadFactor() == other.getReadFactor());
+            }
+            result = result && (hasWriteFactor() == other.hasWriteFactor());
+            if (hasWriteFactor()) {
+                result = result && (getWriteFactor() == other.getWriteFactor());
+            }
+            result = result && (hasOldReadFactor() == other.hasOldReadFactor());
+            if (hasOldReadFactor()) {
+                result = result && (getOldReadFactor() == other.getOldReadFactor());
+            }
+            result = result && (hasOldWriteFactor() == other.hasOldWriteFactor());
+            if (hasOldWriteFactor()) {
+                result = result && (getOldWriteFactor() == other.getOldWriteFactor());
+            }
+            result = result && (hasIsEnableFlexible() == other.hasIsEnableFlexible());
+            if (hasIsEnableFlexible()) {
+                result = result && (getIsEnableFlexible() == other.getIsEnableFlexible());
+            }
+            result = result && unknownFields.equals(other.unknownFields);
+            return result;
+        }
+
+        @java.lang.Override
+        public int hashCode() {
+            if (memoizedHashCode != 0) {
+                return memoizedHashCode;
+            }
+            int hash = 41;
+            hash = (19 * hash) + getDescriptor().hashCode();
+            if (hasTerm()) {
+                hash = (37 * hash) + TERM_FIELD_NUMBER;
+                hash = (53 * hash) + com.google.protobuf.Internal.hashLong(getTerm());
+            }
+            if (hasType()) {
+                hash = (37 * hash) + TYPE_FIELD_NUMBER;
+                hash = (53 * hash) + type_;
+            }
+            if (getPeersCount() > 0) {
+                hash = (37 * hash) + PEERS_FIELD_NUMBER;
+                hash = (53 * hash) + getPeersList().hashCode();
+            }
+            if (hasDataLen()) {
+                hash = (37 * hash) + DATA_LEN_FIELD_NUMBER;
+                hash = (53 * hash) + com.google.protobuf.Internal.hashLong(getDataLen());
+            }
+            if (getOldPeersCount() > 0) {
+                hash = (37 * hash) + OLD_PEERS_FIELD_NUMBER;
+                hash = (53 * hash) + getOldPeersList().hashCode();
+            }
+            if (hasChecksum()) {
+                hash = (37 * hash) + CHECKSUM_FIELD_NUMBER;
+                hash = (53 * hash) + com.google.protobuf.Internal.hashLong(getChecksum());
+            }
+            if (getLearnersCount() > 0) {
+                hash = (37 * hash) + LEARNERS_FIELD_NUMBER;
+                hash = (53 * hash) + getLearnersList().hashCode();
+            }
+            if (getOldLearnersCount() > 0) {
+                hash = (37 * hash) + OLD_LEARNERS_FIELD_NUMBER;
+                hash = (53 * hash) + getOldLearnersList().hashCode();
+            }
+            if (hasReadFactor()) {
+                hash = (37 * hash) + READ_FACTOR_FIELD_NUMBER;
+                hash = (53 * hash) + getReadFactor();
+            }
+            if (hasWriteFactor()) {
+                hash = (37 * hash) + WRITE_FACTOR_FIELD_NUMBER;
+                hash = (53 * hash) + getWriteFactor();
+            }
+            if (hasOldReadFactor()) {
+                hash = (37 * hash) + OLD_READ_FACTOR_FIELD_NUMBER;
+                hash = (53 * hash) + getOldReadFactor();
+            }
+            if (hasOldWriteFactor()) {
+                hash = (37 * hash) + OLD_WRITE_FACTOR_FIELD_NUMBER;
+                hash = (53 * hash) + getOldWriteFactor();
+            }
+            if (hasIsEnableFlexible()) {
+                hash = (37 * hash) + ISENABLEFLEXIBLE_FIELD_NUMBER;
+                hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(getIsEnableFlexible());
+            }
+            hash = (29 * hash) + unknownFields.hashCode();
+            memoizedHashCode = hash;
+            return hash;
+        }
+
+        public static com.alipay.sofa.jraft.entity.RaftOutter.EntryMeta parseFrom(java.nio.ByteBuffer data)
+                                                                                                           throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data);
+        }
+
+        public static com.alipay.sofa.jraft.entity.RaftOutter.EntryMeta parseFrom(java.nio.ByteBuffer data,
+                                                                                  com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                                                                                                                                              throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data, extensionRegistry);
+        }
+
+        public static com.alipay.sofa.jraft.entity.RaftOutter.EntryMeta parseFrom(com.google.protobuf.ByteString data)
+                                                                                                                      throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data);
+        }
+
+        public static com.alipay.sofa.jraft.entity.RaftOutter.EntryMeta parseFrom(com.google.protobuf.ByteString data,
+                                                                                  com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                                                                                                                                              throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data, extensionRegistry);
+        }
+
+        public static com.alipay.sofa.jraft.entity.RaftOutter.EntryMeta parseFrom(byte[] data)
+                                                                                              throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data);
+        }
+
+        public static com.alipay.sofa.jraft.entity.RaftOutter.EntryMeta parseFrom(byte[] data,
+                                                                                  com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                                                                                                                                              throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data, extensionRegistry);
+        }
+
+        public static com.alipay.sofa.jraft.entity.RaftOutter.EntryMeta parseFrom(java.io.InputStream input)
+                                                                                                            throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
+        }
+
+        public static com.alipay.sofa.jraft.entity.RaftOutter.EntryMeta parseFrom(java.io.InputStream input,
+                                                                                  com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                                                                                                                                              throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input, extensionRegistry);
+        }
+
+        public static com.alipay.sofa.jraft.entity.RaftOutter.EntryMeta parseDelimitedFrom(java.io.InputStream input)
+                                                                                                                     throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
+        }
+
+        public static com.alipay.sofa.jraft.entity.RaftOutter.EntryMeta parseDelimitedFrom(java.io.InputStream input,
+                                                                                           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                                                                                                                                                       throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input,
                 extensionRegistry);
-      }
-    };
-
-    public static com.google.protobuf.Parser<EntryMeta> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<EntryMeta> getParserForType() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.alipay.sofa.jraft.entity.RaftOutter.EntryMeta getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
-  }
-
-  public interface SnapshotMetaOrBuilder extends
-          // @@protoc_insertion_point(interface_extends:jraft.SnapshotMeta)
-          com.google.protobuf.MessageOrBuilder {
-
-    /**
-     * <code>required int64 last_included_index = 1;</code>
-     * @return Whether the lastIncludedIndex field is set.
-     */
-    boolean hasLastIncludedIndex();
-
-    /**
-     * <code>required int64 last_included_index = 1;</code>
-     * @return The lastIncludedIndex.
-     */
-    long getLastIncludedIndex();
-
-    /**
-     * <code>required int64 last_included_term = 2;</code>
-     * @return Whether the lastIncludedTerm field is set.
-     */
-    boolean hasLastIncludedTerm();
-
-    /**
-     * <code>required int64 last_included_term = 2;</code>
-     * @return The lastIncludedTerm.
-     */
-    long getLastIncludedTerm();
-
-    /**
-     * <code>repeated string peers = 3;</code>
-     * @return A list containing the peers.
-     */
-    java.util.List<java.lang.String> getPeersList();
-
-    /**
-     * <code>repeated string peers = 3;</code>
-     * @return The count of peers.
-     */
-    int getPeersCount();
-
-    /**
-     * <code>repeated string peers = 3;</code>
-     * @param index The index of the element to return.
-     * @return The peers at the given index.
-     */
-    java.lang.String getPeers(int index);
-
-    /**
-     * <code>repeated string peers = 3;</code>
-     * @param index The index of the value to return.
-     * @return The bytes of the peers at the given index.
-     */
-    com.google.protobuf.ByteString getPeersBytes(int index);
-
-    /**
-     * <code>repeated string old_peers = 4;</code>
-     * @return A list containing the oldPeers.
-     */
-    java.util.List<java.lang.String> getOldPeersList();
-
-    /**
-     * <code>repeated string old_peers = 4;</code>
-     * @return The count of oldPeers.
-     */
-    int getOldPeersCount();
-
-    /**
-     * <code>repeated string old_peers = 4;</code>
-     * @param index The index of the element to return.
-     * @return The oldPeers at the given index.
-     */
-    java.lang.String getOldPeers(int index);
-
-    /**
-     * <code>repeated string old_peers = 4;</code>
-     * @param index The index of the value to return.
-     * @return The bytes of the oldPeers at the given index.
-     */
-    com.google.protobuf.ByteString getOldPeersBytes(int index);
-
-    /**
-     * <code>repeated string learners = 5;</code>
-     * @return A list containing the learners.
-     */
-    java.util.List<java.lang.String> getLearnersList();
-
-    /**
-     * <code>repeated string learners = 5;</code>
-     * @return The count of learners.
-     */
-    int getLearnersCount();
-
-    /**
-     * <code>repeated string learners = 5;</code>
-     * @param index The index of the element to return.
-     * @return The learners at the given index.
-     */
-    java.lang.String getLearners(int index);
-
-    /**
-     * <code>repeated string learners = 5;</code>
-     * @param index The index of the value to return.
-     * @return The bytes of the learners at the given index.
-     */
-    com.google.protobuf.ByteString getLearnersBytes(int index);
-
-    /**
-     * <code>repeated string old_learners = 6;</code>
-     * @return A list containing the oldLearners.
-     */
-    java.util.List<java.lang.String> getOldLearnersList();
-
-    /**
-     * <code>repeated string old_learners = 6;</code>
-     * @return The count of oldLearners.
-     */
-    int getOldLearnersCount();
-
-    /**
-     * <code>repeated string old_learners = 6;</code>
-     * @param index The index of the element to return.
-     * @return The oldLearners at the given index.
-     */
-    java.lang.String getOldLearners(int index);
-
-    /**
-     * <code>repeated string old_learners = 6;</code>
-     * @param index The index of the value to return.
-     * @return The bytes of the oldLearners at the given index.
-     */
-    com.google.protobuf.ByteString getOldLearnersBytes(int index);
-
-    /**
-     * <code>optional int64 read_factor = 7;</code>
-     * @return Whether the readFactor field is set.
-     */
-    boolean hasReadFactor();
-
-    /**
-     * <code>optional int64 read_factor = 7;</code>
-     * @return The readFactor.
-     */
-    long getReadFactor();
-
-    /**
-     * <code>optional int64 write_factor = 8;</code>
-     * @return Whether the writeFactor field is set.
-     */
-    boolean hasWriteFactor();
-
-    /**
-     * <code>optional int64 write_factor = 8;</code>
-     * @return The writeFactor.
-     */
-    long getWriteFactor();
-
-    /**
-     * <code>optional int64 old_read_factor = 9;</code>
-     * @return Whether the oldReadFactor field is set.
-     */
-    boolean hasOldReadFactor();
-
-    /**
-     * <code>optional int64 old_read_factor = 9;</code>
-     * @return The oldReadFactor.
-     */
-    long getOldReadFactor();
-
-    /**
-     * <code>optional int64 old_write_factor = 10;</code>
-     * @return Whether the oldWriteFactor field is set.
-     */
-    boolean hasOldWriteFactor();
-
-    /**
-     * <code>optional int64 old_write_factor = 10;</code>
-     * @return The oldWriteFactor.
-     */
-    long getOldWriteFactor();
-  }
-
-  /**
-   * Protobuf type {@code jraft.SnapshotMeta}
-   */
-  public static final class SnapshotMeta extends com.google.protobuf.GeneratedMessageV3 implements
-          // @@protoc_insertion_point(message_implements:jraft.SnapshotMeta)
-          SnapshotMetaOrBuilder {
-    private static final long serialVersionUID = 0L;
-
-    // Use SnapshotMeta.newBuilder() to construct.
-    private SnapshotMeta(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
-      super(builder);
-    }
-
-    private SnapshotMeta() {
-      peers_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-      oldPeers_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-      learners_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-      oldLearners_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-    }
-
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
-      return this.unknownFields;
-    }
-
-    private SnapshotMeta(com.google.protobuf.CodedInputStream input,
-                         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields = com.google.protobuf.UnknownFieldSet
-              .newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            case 8: {
-              bitField0_ |= 0x00000001;
-              lastIncludedIndex_ = input.readInt64();
-              break;
-            }
-            case 16: {
-              bitField0_ |= 0x00000002;
-              lastIncludedTerm_ = input.readInt64();
-              break;
-            }
-            case 26: {
-              com.google.protobuf.ByteString bs = input.readBytes();
-              if (!((mutable_bitField0_ & 0x00000004) != 0)) {
-                peers_ = new com.google.protobuf.LazyStringArrayList();
-                mutable_bitField0_ |= 0x00000004;
-              }
-              peers_.add(bs);
-              break;
-            }
-            case 34: {
-              com.google.protobuf.ByteString bs = input.readBytes();
-              if (!((mutable_bitField0_ & 0x00000008) != 0)) {
-                oldPeers_ = new com.google.protobuf.LazyStringArrayList();
-                mutable_bitField0_ |= 0x00000008;
-              }
-              oldPeers_.add(bs);
-              break;
-            }
-            case 42: {
-              com.google.protobuf.ByteString bs = input.readBytes();
-              if (!((mutable_bitField0_ & 0x00000010) != 0)) {
-                learners_ = new com.google.protobuf.LazyStringArrayList();
-                mutable_bitField0_ |= 0x00000010;
-              }
-              learners_.add(bs);
-              break;
-            }
-            case 50: {
-              com.google.protobuf.ByteString bs = input.readBytes();
-              if (!((mutable_bitField0_ & 0x00000020) != 0)) {
-                oldLearners_ = new com.google.protobuf.LazyStringArrayList();
-                mutable_bitField0_ |= 0x00000020;
-              }
-              oldLearners_.add(bs);
-              break;
-            }
-            case 56: {
-              bitField0_ |= 0x00000004;
-              readFactor_ = input.readInt64();
-              break;
-            }
-            case 64: {
-              bitField0_ |= 0x00000008;
-              writeFactor_ = input.readInt64();
-              break;
-            }
-            case 72: {
-              bitField0_ |= 0x00000010;
-              oldReadFactor_ = input.readInt64();
-              break;
-            }
-            case 80: {
-              bitField0_ |= 0x00000020;
-              oldWriteFactor_ = input.readInt64();
-              break;
-            }
-            default: {
-              if (!parseUnknownField(input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-          }
         }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(e).setUnfinishedMessage(this);
-      } finally {
-        if (((mutable_bitField0_ & 0x00000004) != 0)) {
-          peers_ = peers_.getUnmodifiableView();
+
+        public static com.alipay.sofa.jraft.entity.RaftOutter.EntryMeta parseFrom(com.google.protobuf.CodedInputStream input)
+                                                                                                                             throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
         }
-        if (((mutable_bitField0_ & 0x00000008) != 0)) {
-          oldPeers_ = oldPeers_.getUnmodifiableView();
+
+        public static com.alipay.sofa.jraft.entity.RaftOutter.EntryMeta parseFrom(com.google.protobuf.CodedInputStream input,
+                                                                                  com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                                                                                                                                              throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input, extensionRegistry);
         }
-        if (((mutable_bitField0_ & 0x00000010) != 0)) {
-          learners_ = learners_.getUnmodifiableView();
+
+        public Builder newBuilderForType() {
+            return newBuilder();
         }
-        if (((mutable_bitField0_ & 0x00000020) != 0)) {
-          oldLearners_ = oldLearners_.getUnmodifiableView();
+
+        public static Builder newBuilder() {
+            return DEFAULT_INSTANCE.toBuilder();
         }
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
 
-    public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
-      return com.alipay.sofa.jraft.entity.RaftOutter.internal_static_jraft_SnapshotMeta_descriptor;
-    }
-
-    @java.lang.Override
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable internalGetFieldAccessorTable() {
-      return com.alipay.sofa.jraft.entity.RaftOutter.internal_static_jraft_SnapshotMeta_fieldAccessorTable
-              .ensureFieldAccessorsInitialized(com.alipay.sofa.jraft.entity.RaftOutter.SnapshotMeta.class,
-                      com.alipay.sofa.jraft.entity.RaftOutter.SnapshotMeta.Builder.class);
-    }
-
-    private int             bitField0_;
-    public static final int LAST_INCLUDED_INDEX_FIELD_NUMBER = 1;
-    private long            lastIncludedIndex_;
-
-    /**
-     * <code>required int64 last_included_index = 1;</code>
-     * @return Whether the lastIncludedIndex field is set.
-     */
-    @java.lang.Override
-    public boolean hasLastIncludedIndex() {
-      return ((bitField0_ & 0x00000001) != 0);
-    }
-
-    /**
-     * <code>required int64 last_included_index = 1;</code>
-     * @return The lastIncludedIndex.
-     */
-    @java.lang.Override
-    public long getLastIncludedIndex() {
-      return lastIncludedIndex_;
-    }
-
-    public static final int LAST_INCLUDED_TERM_FIELD_NUMBER = 2;
-    private long            lastIncludedTerm_;
-
-    /**
-     * <code>required int64 last_included_term = 2;</code>
-     * @return Whether the lastIncludedTerm field is set.
-     */
-    @java.lang.Override
-    public boolean hasLastIncludedTerm() {
-      return ((bitField0_ & 0x00000002) != 0);
-    }
-
-    /**
-     * <code>required int64 last_included_term = 2;</code>
-     * @return The lastIncludedTerm.
-     */
-    @java.lang.Override
-    public long getLastIncludedTerm() {
-      return lastIncludedTerm_;
-    }
-
-    public static final int                    PEERS_FIELD_NUMBER = 3;
-    private com.google.protobuf.LazyStringList peers_;
-
-    /**
-     * <code>repeated string peers = 3;</code>
-     * @return A list containing the peers.
-     */
-    public com.google.protobuf.ProtocolStringList getPeersList() {
-      return peers_;
-    }
-
-    /**
-     * <code>repeated string peers = 3;</code>
-     * @return The count of peers.
-     */
-    public int getPeersCount() {
-      return peers_.size();
-    }
-
-    /**
-     * <code>repeated string peers = 3;</code>
-     * @param index The index of the element to return.
-     * @return The peers at the given index.
-     */
-    public java.lang.String getPeers(int index) {
-      return peers_.get(index);
-    }
-
-    /**
-     * <code>repeated string peers = 3;</code>
-     * @param index The index of the value to return.
-     * @return The bytes of the peers at the given index.
-     */
-    public com.google.protobuf.ByteString getPeersBytes(int index) {
-      return peers_.getByteString(index);
-    }
-
-    public static final int                    OLD_PEERS_FIELD_NUMBER = 4;
-    private com.google.protobuf.LazyStringList oldPeers_;
-
-    /**
-     * <code>repeated string old_peers = 4;</code>
-     * @return A list containing the oldPeers.
-     */
-    public com.google.protobuf.ProtocolStringList getOldPeersList() {
-      return oldPeers_;
-    }
-
-    /**
-     * <code>repeated string old_peers = 4;</code>
-     * @return The count of oldPeers.
-     */
-    public int getOldPeersCount() {
-      return oldPeers_.size();
-    }
-
-    /**
-     * <code>repeated string old_peers = 4;</code>
-     * @param index The index of the element to return.
-     * @return The oldPeers at the given index.
-     */
-    public java.lang.String getOldPeers(int index) {
-      return oldPeers_.get(index);
-    }
-
-    /**
-     * <code>repeated string old_peers = 4;</code>
-     * @param index The index of the value to return.
-     * @return The bytes of the oldPeers at the given index.
-     */
-    public com.google.protobuf.ByteString getOldPeersBytes(int index) {
-      return oldPeers_.getByteString(index);
-    }
-
-    public static final int                    LEARNERS_FIELD_NUMBER = 5;
-    private com.google.protobuf.LazyStringList learners_;
-
-    /**
-     * <code>repeated string learners = 5;</code>
-     * @return A list containing the learners.
-     */
-    public com.google.protobuf.ProtocolStringList getLearnersList() {
-      return learners_;
-    }
-
-    /**
-     * <code>repeated string learners = 5;</code>
-     * @return The count of learners.
-     */
-    public int getLearnersCount() {
-      return learners_.size();
-    }
-
-    /**
-     * <code>repeated string learners = 5;</code>
-     * @param index The index of the element to return.
-     * @return The learners at the given index.
-     */
-    public java.lang.String getLearners(int index) {
-      return learners_.get(index);
-    }
-
-    /**
-     * <code>repeated string learners = 5;</code>
-     * @param index The index of the value to return.
-     * @return The bytes of the learners at the given index.
-     */
-    public com.google.protobuf.ByteString getLearnersBytes(int index) {
-      return learners_.getByteString(index);
-    }
-
-    public static final int                    OLD_LEARNERS_FIELD_NUMBER = 6;
-    private com.google.protobuf.LazyStringList oldLearners_;
-
-    /**
-     * <code>repeated string old_learners = 6;</code>
-     * @return A list containing the oldLearners.
-     */
-    public com.google.protobuf.ProtocolStringList getOldLearnersList() {
-      return oldLearners_;
-    }
-
-    /**
-     * <code>repeated string old_learners = 6;</code>
-     * @return The count of oldLearners.
-     */
-    public int getOldLearnersCount() {
-      return oldLearners_.size();
-    }
-
-    /**
-     * <code>repeated string old_learners = 6;</code>
-     * @param index The index of the element to return.
-     * @return The oldLearners at the given index.
-     */
-    public java.lang.String getOldLearners(int index) {
-      return oldLearners_.get(index);
-    }
-
-    /**
-     * <code>repeated string old_learners = 6;</code>
-     * @param index The index of the value to return.
-     * @return The bytes of the oldLearners at the given index.
-     */
-    public com.google.protobuf.ByteString getOldLearnersBytes(int index) {
-      return oldLearners_.getByteString(index);
-    }
-
-    public static final int READ_FACTOR_FIELD_NUMBER = 7;
-    private long            readFactor_;
-
-    /**
-     * <code>optional int64 read_factor = 7;</code>
-     * @return Whether the readFactor field is set.
-     */
-    @java.lang.Override
-    public boolean hasReadFactor() {
-      return ((bitField0_ & 0x00000004) != 0);
-    }
-
-    /**
-     * <code>optional int64 read_factor = 7;</code>
-     * @return The readFactor.
-     */
-    @java.lang.Override
-    public long getReadFactor() {
-      return readFactor_;
-    }
-
-    public static final int WRITE_FACTOR_FIELD_NUMBER = 8;
-    private long            writeFactor_;
-
-    /**
-     * <code>optional int64 write_factor = 8;</code>
-     * @return Whether the writeFactor field is set.
-     */
-    @java.lang.Override
-    public boolean hasWriteFactor() {
-      return ((bitField0_ & 0x00000008) != 0);
-    }
-
-    /**
-     * <code>optional int64 write_factor = 8;</code>
-     * @return The writeFactor.
-     */
-    @java.lang.Override
-    public long getWriteFactor() {
-      return writeFactor_;
-    }
-
-    public static final int OLD_READ_FACTOR_FIELD_NUMBER = 9;
-    private long            oldReadFactor_;
-
-    /**
-     * <code>optional int64 old_read_factor = 9;</code>
-     * @return Whether the oldReadFactor field is set.
-     */
-    @java.lang.Override
-    public boolean hasOldReadFactor() {
-      return ((bitField0_ & 0x00000010) != 0);
-    }
-
-    /**
-     * <code>optional int64 old_read_factor = 9;</code>
-     * @return The oldReadFactor.
-     */
-    @java.lang.Override
-    public long getOldReadFactor() {
-      return oldReadFactor_;
-    }
-
-    public static final int OLD_WRITE_FACTOR_FIELD_NUMBER = 10;
-    private long            oldWriteFactor_;
-
-    /**
-     * <code>optional int64 old_write_factor = 10;</code>
-     * @return Whether the oldWriteFactor field is set.
-     */
-    @java.lang.Override
-    public boolean hasOldWriteFactor() {
-      return ((bitField0_ & 0x00000020) != 0);
-    }
-
-    /**
-     * <code>optional int64 old_write_factor = 10;</code>
-     * @return The oldWriteFactor.
-     */
-    @java.lang.Override
-    public long getOldWriteFactor() {
-      return oldWriteFactor_;
-    }
-
-    private byte memoizedIsInitialized = -1;
-
-    @java.lang.Override
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized == 1)
-        return true;
-      if (isInitialized == 0)
-        return false;
-
-      if (!hasLastIncludedIndex()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!hasLastIncludedTerm()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
-      if (((bitField0_ & 0x00000001) != 0)) {
-        output.writeInt64(1, lastIncludedIndex_);
-      }
-      if (((bitField0_ & 0x00000002) != 0)) {
-        output.writeInt64(2, lastIncludedTerm_);
-      }
-      for (int i = 0; i < peers_.size(); i++) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, peers_.getRaw(i));
-      }
-      for (int i = 0; i < oldPeers_.size(); i++) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 4, oldPeers_.getRaw(i));
-      }
-      for (int i = 0; i < learners_.size(); i++) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 5, learners_.getRaw(i));
-      }
-      for (int i = 0; i < oldLearners_.size(); i++) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 6, oldLearners_.getRaw(i));
-      }
-      if (((bitField0_ & 0x00000004) != 0)) {
-        output.writeInt64(7, readFactor_);
-      }
-      if (((bitField0_ & 0x00000008) != 0)) {
-        output.writeInt64(8, writeFactor_);
-      }
-      if (((bitField0_ & 0x00000010) != 0)) {
-        output.writeInt64(9, oldReadFactor_);
-      }
-      if (((bitField0_ & 0x00000020) != 0)) {
-        output.writeInt64(10, oldWriteFactor_);
-      }
-      unknownFields.writeTo(output);
-    }
-
-    @java.lang.Override
-    public int getSerializedSize() {
-      int size = memoizedSize;
-      if (size != -1)
-        return size;
-
-      size = 0;
-      if (((bitField0_ & 0x00000001) != 0)) {
-        size += com.google.protobuf.CodedOutputStream.computeInt64Size(1, lastIncludedIndex_);
-      }
-      if (((bitField0_ & 0x00000002) != 0)) {
-        size += com.google.protobuf.CodedOutputStream.computeInt64Size(2, lastIncludedTerm_);
-      }
-      {
-        int dataSize = 0;
-        for (int i = 0; i < peers_.size(); i++) {
-          dataSize += computeStringSizeNoTag(peers_.getRaw(i));
+        public static Builder newBuilder(com.alipay.sofa.jraft.entity.RaftOutter.EntryMeta prototype) {
+            return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
         }
-        size += dataSize;
-        size += 1 * getPeersList().size();
-      }
-      {
-        int dataSize = 0;
-        for (int i = 0; i < oldPeers_.size(); i++) {
-          dataSize += computeStringSizeNoTag(oldPeers_.getRaw(i));
+
+        public Builder toBuilder() {
+            return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
         }
-        size += dataSize;
-        size += 1 * getOldPeersList().size();
-      }
-      {
-        int dataSize = 0;
-        for (int i = 0; i < learners_.size(); i++) {
-          dataSize += computeStringSizeNoTag(learners_.getRaw(i));
+
+        @java.lang.Override
+        protected Builder newBuilderForType(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+            Builder builder = new Builder(parent);
+            return builder;
         }
-        size += dataSize;
-        size += 1 * getLearnersList().size();
-      }
-      {
-        int dataSize = 0;
-        for (int i = 0; i < oldLearners_.size(); i++) {
-          dataSize += computeStringSizeNoTag(oldLearners_.getRaw(i));
+
+        /**
+         * Protobuf type {@code jraft.EntryMeta}
+         */
+        public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
+                                                                                                         implements
+                                                                                                         // @@protoc_insertion_point(builder_implements:jraft.EntryMeta)
+                                                                                                         com.alipay.sofa.jraft.entity.RaftOutter.EntryMetaOrBuilder {
+            public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+                return com.alipay.sofa.jraft.entity.RaftOutter.internal_static_jraft_EntryMeta_descriptor;
+            }
+
+            protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable internalGetFieldAccessorTable() {
+                return com.alipay.sofa.jraft.entity.RaftOutter.internal_static_jraft_EntryMeta_fieldAccessorTable
+                    .ensureFieldAccessorsInitialized(com.alipay.sofa.jraft.entity.RaftOutter.EntryMeta.class,
+                        com.alipay.sofa.jraft.entity.RaftOutter.EntryMeta.Builder.class);
+            }
+
+            // Construct using com.alipay.sofa.jraft.entity.RaftOutter.EntryMeta.newBuilder()
+            private Builder() {
+                maybeForceBuilderInitialization();
+            }
+
+            private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+                super(parent);
+                maybeForceBuilderInitialization();
+            }
+
+            private void maybeForceBuilderInitialization() {
+                if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {
+                }
+            }
+
+            public Builder clear() {
+                super.clear();
+                term_ = 0L;
+                bitField0_ = (bitField0_ & ~0x00000001);
+                type_ = 0;
+                bitField0_ = (bitField0_ & ~0x00000002);
+                peers_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+                bitField0_ = (bitField0_ & ~0x00000004);
+                dataLen_ = 0L;
+                bitField0_ = (bitField0_ & ~0x00000008);
+                oldPeers_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+                bitField0_ = (bitField0_ & ~0x00000010);
+                checksum_ = 0L;
+                bitField0_ = (bitField0_ & ~0x00000020);
+                learners_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+                bitField0_ = (bitField0_ & ~0x00000040);
+                oldLearners_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+                bitField0_ = (bitField0_ & ~0x00000080);
+                readFactor_ = 0;
+                bitField0_ = (bitField0_ & ~0x00000100);
+                writeFactor_ = 0;
+                bitField0_ = (bitField0_ & ~0x00000200);
+                oldReadFactor_ = 0;
+                bitField0_ = (bitField0_ & ~0x00000400);
+                oldWriteFactor_ = 0;
+                bitField0_ = (bitField0_ & ~0x00000800);
+                isEnableFlexible_ = false;
+                bitField0_ = (bitField0_ & ~0x00001000);
+                return this;
+            }
+
+            public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
+                return com.alipay.sofa.jraft.entity.RaftOutter.internal_static_jraft_EntryMeta_descriptor;
+            }
+
+            public com.alipay.sofa.jraft.entity.RaftOutter.EntryMeta getDefaultInstanceForType() {
+                return com.alipay.sofa.jraft.entity.RaftOutter.EntryMeta.getDefaultInstance();
+            }
+
+            public com.alipay.sofa.jraft.entity.RaftOutter.EntryMeta build() {
+                com.alipay.sofa.jraft.entity.RaftOutter.EntryMeta result = buildPartial();
+                if (!result.isInitialized()) {
+                    throw newUninitializedMessageException(result);
+                }
+                return result;
+            }
+
+            public com.alipay.sofa.jraft.entity.RaftOutter.EntryMeta buildPartial() {
+                com.alipay.sofa.jraft.entity.RaftOutter.EntryMeta result = new com.alipay.sofa.jraft.entity.RaftOutter.EntryMeta(
+                    this);
+                int from_bitField0_ = bitField0_;
+                int to_bitField0_ = 0;
+                if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+                    to_bitField0_ |= 0x00000001;
+                }
+                result.term_ = term_;
+                if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+                    to_bitField0_ |= 0x00000002;
+                }
+                result.type_ = type_;
+                if (((bitField0_ & 0x00000004) == 0x00000004)) {
+                    peers_ = peers_.getUnmodifiableView();
+                    bitField0_ = (bitField0_ & ~0x00000004);
+                }
+                result.peers_ = peers_;
+                if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+                    to_bitField0_ |= 0x00000004;
+                }
+                result.dataLen_ = dataLen_;
+                if (((bitField0_ & 0x00000010) == 0x00000010)) {
+                    oldPeers_ = oldPeers_.getUnmodifiableView();
+                    bitField0_ = (bitField0_ & ~0x00000010);
+                }
+                result.oldPeers_ = oldPeers_;
+                if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
+                    to_bitField0_ |= 0x00000008;
+                }
+                result.checksum_ = checksum_;
+                if (((bitField0_ & 0x00000040) == 0x00000040)) {
+                    learners_ = learners_.getUnmodifiableView();
+                    bitField0_ = (bitField0_ & ~0x00000040);
+                }
+                result.learners_ = learners_;
+                if (((bitField0_ & 0x00000080) == 0x00000080)) {
+                    oldLearners_ = oldLearners_.getUnmodifiableView();
+                    bitField0_ = (bitField0_ & ~0x00000080);
+                }
+                result.oldLearners_ = oldLearners_;
+                if (((from_bitField0_ & 0x00000100) == 0x00000100)) {
+                    to_bitField0_ |= 0x00000010;
+                }
+                result.readFactor_ = readFactor_;
+                if (((from_bitField0_ & 0x00000200) == 0x00000200)) {
+                    to_bitField0_ |= 0x00000020;
+                }
+                result.writeFactor_ = writeFactor_;
+                if (((from_bitField0_ & 0x00000400) == 0x00000400)) {
+                    to_bitField0_ |= 0x00000040;
+                }
+                result.oldReadFactor_ = oldReadFactor_;
+                if (((from_bitField0_ & 0x00000800) == 0x00000800)) {
+                    to_bitField0_ |= 0x00000080;
+                }
+                result.oldWriteFactor_ = oldWriteFactor_;
+                if (((from_bitField0_ & 0x00001000) == 0x00001000)) {
+                    to_bitField0_ |= 0x00000100;
+                }
+                result.isEnableFlexible_ = isEnableFlexible_;
+                result.bitField0_ = to_bitField0_;
+                onBuilt();
+                return result;
+            }
+
+            public Builder clone() {
+                return (Builder) super.clone();
+            }
+
+            public Builder setField(com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
+                return (Builder) super.setField(field, value);
+            }
+
+            public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
+                return (Builder) super.clearField(field);
+            }
+
+            public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+                return (Builder) super.clearOneof(oneof);
+            }
+
+            public Builder setRepeatedField(com.google.protobuf.Descriptors.FieldDescriptor field, int index,
+                                            java.lang.Object value) {
+                return (Builder) super.setRepeatedField(field, index, value);
+            }
+
+            public Builder addRepeatedField(com.google.protobuf.Descriptors.FieldDescriptor field,
+                                            java.lang.Object value) {
+                return (Builder) super.addRepeatedField(field, value);
+            }
+
+            public Builder mergeFrom(com.google.protobuf.Message other) {
+                if (other instanceof com.alipay.sofa.jraft.entity.RaftOutter.EntryMeta) {
+                    return mergeFrom((com.alipay.sofa.jraft.entity.RaftOutter.EntryMeta) other);
+                } else {
+                    super.mergeFrom(other);
+                    return this;
+                }
+            }
+
+            public Builder mergeFrom(com.alipay.sofa.jraft.entity.RaftOutter.EntryMeta other) {
+                if (other == com.alipay.sofa.jraft.entity.RaftOutter.EntryMeta.getDefaultInstance())
+                    return this;
+                if (other.hasTerm()) {
+                    setTerm(other.getTerm());
+                }
+                if (other.hasType()) {
+                    setType(other.getType());
+                }
+                if (!other.peers_.isEmpty()) {
+                    if (peers_.isEmpty()) {
+                        peers_ = other.peers_;
+                        bitField0_ = (bitField0_ & ~0x00000004);
+                    } else {
+                        ensurePeersIsMutable();
+                        peers_.addAll(other.peers_);
+                    }
+                    onChanged();
+                }
+                if (other.hasDataLen()) {
+                    setDataLen(other.getDataLen());
+                }
+                if (!other.oldPeers_.isEmpty()) {
+                    if (oldPeers_.isEmpty()) {
+                        oldPeers_ = other.oldPeers_;
+                        bitField0_ = (bitField0_ & ~0x00000010);
+                    } else {
+                        ensureOldPeersIsMutable();
+                        oldPeers_.addAll(other.oldPeers_);
+                    }
+                    onChanged();
+                }
+                if (other.hasChecksum()) {
+                    setChecksum(other.getChecksum());
+                }
+                if (!other.learners_.isEmpty()) {
+                    if (learners_.isEmpty()) {
+                        learners_ = other.learners_;
+                        bitField0_ = (bitField0_ & ~0x00000040);
+                    } else {
+                        ensureLearnersIsMutable();
+                        learners_.addAll(other.learners_);
+                    }
+                    onChanged();
+                }
+                if (!other.oldLearners_.isEmpty()) {
+                    if (oldLearners_.isEmpty()) {
+                        oldLearners_ = other.oldLearners_;
+                        bitField0_ = (bitField0_ & ~0x00000080);
+                    } else {
+                        ensureOldLearnersIsMutable();
+                        oldLearners_.addAll(other.oldLearners_);
+                    }
+                    onChanged();
+                }
+                if (other.hasReadFactor()) {
+                    setReadFactor(other.getReadFactor());
+                }
+                if (other.hasWriteFactor()) {
+                    setWriteFactor(other.getWriteFactor());
+                }
+                if (other.hasOldReadFactor()) {
+                    setOldReadFactor(other.getOldReadFactor());
+                }
+                if (other.hasOldWriteFactor()) {
+                    setOldWriteFactor(other.getOldWriteFactor());
+                }
+                if (other.hasIsEnableFlexible()) {
+                    setIsEnableFlexible(other.getIsEnableFlexible());
+                }
+                this.mergeUnknownFields(other.unknownFields);
+                onChanged();
+                return this;
+            }
+
+            public final boolean isInitialized() {
+                if (!hasTerm()) {
+                    return false;
+                }
+                if (!hasType()) {
+                    return false;
+                }
+                return true;
+            }
+
+            public Builder mergeFrom(com.google.protobuf.CodedInputStream input,
+                                     com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                                                                                                 throws java.io.IOException {
+                com.alipay.sofa.jraft.entity.RaftOutter.EntryMeta parsedMessage = null;
+                try {
+                    parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+                } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+                    parsedMessage = (com.alipay.sofa.jraft.entity.RaftOutter.EntryMeta) e.getUnfinishedMessage();
+                    throw e.unwrapIOException();
+                } finally {
+                    if (parsedMessage != null) {
+                        mergeFrom(parsedMessage);
+                    }
+                }
+                return this;
+            }
+
+            private int  bitField0_;
+
+            private long term_;
+
+            /**
+             * <code>required int64 term = 1;</code>
+             */
+            public boolean hasTerm() {
+                return ((bitField0_ & 0x00000001) == 0x00000001);
+            }
+
+            /**
+             * <code>required int64 term = 1;</code>
+             */
+            public long getTerm() {
+                return term_;
+            }
+
+            /**
+             * <code>required int64 term = 1;</code>
+             */
+            public Builder setTerm(long value) {
+                bitField0_ |= 0x00000001;
+                term_ = value;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>required int64 term = 1;</code>
+             */
+            public Builder clearTerm() {
+                bitField0_ = (bitField0_ & ~0x00000001);
+                term_ = 0L;
+                onChanged();
+                return this;
+            }
+
+            private int type_ = 0;
+
+            /**
+             * <code>required .jraft.EntryType type = 2;</code>
+             */
+            public boolean hasType() {
+                return ((bitField0_ & 0x00000002) == 0x00000002);
+            }
+
+            /**
+             * <code>required .jraft.EntryType type = 2;</code>
+             */
+            public com.alipay.sofa.jraft.entity.EnumOutter.EntryType getType() {
+                com.alipay.sofa.jraft.entity.EnumOutter.EntryType result = com.alipay.sofa.jraft.entity.EnumOutter.EntryType
+                    .valueOf(type_);
+                return result == null ? com.alipay.sofa.jraft.entity.EnumOutter.EntryType.ENTRY_TYPE_UNKNOWN : result;
+            }
+
+            /**
+             * <code>required .jraft.EntryType type = 2;</code>
+             */
+            public Builder setType(com.alipay.sofa.jraft.entity.EnumOutter.EntryType value) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
+                bitField0_ |= 0x00000002;
+                type_ = value.getNumber();
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>required .jraft.EntryType type = 2;</code>
+             */
+            public Builder clearType() {
+                bitField0_ = (bitField0_ & ~0x00000002);
+                type_ = 0;
+                onChanged();
+                return this;
+            }
+
+            private com.google.protobuf.LazyStringList peers_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+
+            private void ensurePeersIsMutable() {
+                if (!((bitField0_ & 0x00000004) == 0x00000004)) {
+                    peers_ = new com.google.protobuf.LazyStringArrayList(peers_);
+                    bitField0_ |= 0x00000004;
+                }
+            }
+
+            /**
+             * <code>repeated string peers = 3;</code>
+             */
+            public com.google.protobuf.ProtocolStringList getPeersList() {
+                return peers_.getUnmodifiableView();
+            }
+
+            /**
+             * <code>repeated string peers = 3;</code>
+             */
+            public int getPeersCount() {
+                return peers_.size();
+            }
+
+            /**
+             * <code>repeated string peers = 3;</code>
+             */
+            public java.lang.String getPeers(int index) {
+                return peers_.get(index);
+            }
+
+            /**
+             * <code>repeated string peers = 3;</code>
+             */
+            public com.google.protobuf.ByteString getPeersBytes(int index) {
+                return peers_.getByteString(index);
+            }
+
+            /**
+             * <code>repeated string peers = 3;</code>
+             */
+            public Builder setPeers(int index, java.lang.String value) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
+                ensurePeersIsMutable();
+                peers_.set(index, value);
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>repeated string peers = 3;</code>
+             */
+            public Builder addPeers(java.lang.String value) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
+                ensurePeersIsMutable();
+                peers_.add(value);
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>repeated string peers = 3;</code>
+             */
+            public Builder addAllPeers(java.lang.Iterable<java.lang.String> values) {
+                ensurePeersIsMutable();
+                com.google.protobuf.AbstractMessageLite.Builder.addAll(values, peers_);
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>repeated string peers = 3;</code>
+             */
+            public Builder clearPeers() {
+                peers_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+                bitField0_ = (bitField0_ & ~0x00000004);
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>repeated string peers = 3;</code>
+             */
+            public Builder addPeersBytes(com.google.protobuf.ByteString value) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
+                ensurePeersIsMutable();
+                peers_.add(value);
+                onChanged();
+                return this;
+            }
+
+            private long dataLen_;
+
+            /**
+             * <code>optional int64 data_len = 4;</code>
+             */
+            public boolean hasDataLen() {
+                return ((bitField0_ & 0x00000008) == 0x00000008);
+            }
+
+            /**
+             * <code>optional int64 data_len = 4;</code>
+             */
+            public long getDataLen() {
+                return dataLen_;
+            }
+
+            /**
+             * <code>optional int64 data_len = 4;</code>
+             */
+            public Builder setDataLen(long value) {
+                bitField0_ |= 0x00000008;
+                dataLen_ = value;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>optional int64 data_len = 4;</code>
+             */
+            public Builder clearDataLen() {
+                bitField0_ = (bitField0_ & ~0x00000008);
+                dataLen_ = 0L;
+                onChanged();
+                return this;
+            }
+
+            private com.google.protobuf.LazyStringList oldPeers_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+
+            private void ensureOldPeersIsMutable() {
+                if (!((bitField0_ & 0x00000010) == 0x00000010)) {
+                    oldPeers_ = new com.google.protobuf.LazyStringArrayList(oldPeers_);
+                    bitField0_ |= 0x00000010;
+                }
+            }
+
+            /**
+             * <pre>
+             * Don't change field id of `old_peers' in the consideration of backward
+             * compatibility
+             * </pre>
+             *
+             * <code>repeated string old_peers = 5;</code>
+             */
+            public com.google.protobuf.ProtocolStringList getOldPeersList() {
+                return oldPeers_.getUnmodifiableView();
+            }
+
+            /**
+             * <pre>
+             * Don't change field id of `old_peers' in the consideration of backward
+             * compatibility
+             * </pre>
+             *
+             * <code>repeated string old_peers = 5;</code>
+             */
+            public int getOldPeersCount() {
+                return oldPeers_.size();
+            }
+
+            /**
+             * <pre>
+             * Don't change field id of `old_peers' in the consideration of backward
+             * compatibility
+             * </pre>
+             *
+             * <code>repeated string old_peers = 5;</code>
+             */
+            public java.lang.String getOldPeers(int index) {
+                return oldPeers_.get(index);
+            }
+
+            /**
+             * <pre>
+             * Don't change field id of `old_peers' in the consideration of backward
+             * compatibility
+             * </pre>
+             *
+             * <code>repeated string old_peers = 5;</code>
+             */
+            public com.google.protobuf.ByteString getOldPeersBytes(int index) {
+                return oldPeers_.getByteString(index);
+            }
+
+            /**
+             * <pre>
+             * Don't change field id of `old_peers' in the consideration of backward
+             * compatibility
+             * </pre>
+             *
+             * <code>repeated string old_peers = 5;</code>
+             */
+            public Builder setOldPeers(int index, java.lang.String value) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
+                ensureOldPeersIsMutable();
+                oldPeers_.set(index, value);
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <pre>
+             * Don't change field id of `old_peers' in the consideration of backward
+             * compatibility
+             * </pre>
+             *
+             * <code>repeated string old_peers = 5;</code>
+             */
+            public Builder addOldPeers(java.lang.String value) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
+                ensureOldPeersIsMutable();
+                oldPeers_.add(value);
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <pre>
+             * Don't change field id of `old_peers' in the consideration of backward
+             * compatibility
+             * </pre>
+             *
+             * <code>repeated string old_peers = 5;</code>
+             */
+            public Builder addAllOldPeers(java.lang.Iterable<java.lang.String> values) {
+                ensureOldPeersIsMutable();
+                com.google.protobuf.AbstractMessageLite.Builder.addAll(values, oldPeers_);
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <pre>
+             * Don't change field id of `old_peers' in the consideration of backward
+             * compatibility
+             * </pre>
+             *
+             * <code>repeated string old_peers = 5;</code>
+             */
+            public Builder clearOldPeers() {
+                oldPeers_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+                bitField0_ = (bitField0_ & ~0x00000010);
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <pre>
+             * Don't change field id of `old_peers' in the consideration of backward
+             * compatibility
+             * </pre>
+             *
+             * <code>repeated string old_peers = 5;</code>
+             */
+            public Builder addOldPeersBytes(com.google.protobuf.ByteString value) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
+                ensureOldPeersIsMutable();
+                oldPeers_.add(value);
+                onChanged();
+                return this;
+            }
+
+            private long checksum_;
+
+            /**
+             * <pre>
+             * Checksum fot this log entry, since 1.2.6, added by boyan&#64;antfin.com
+             * </pre>
+             *
+             * <code>optional int64 checksum = 6;</code>
+             */
+            public boolean hasChecksum() {
+                return ((bitField0_ & 0x00000020) == 0x00000020);
+            }
+
+            /**
+             * <pre>
+             * Checksum fot this log entry, since 1.2.6, added by boyan&#64;antfin.com
+             * </pre>
+             *
+             * <code>optional int64 checksum = 6;</code>
+             */
+            public long getChecksum() {
+                return checksum_;
+            }
+
+            /**
+             * <pre>
+             * Checksum fot this log entry, since 1.2.6, added by boyan&#64;antfin.com
+             * </pre>
+             *
+             * <code>optional int64 checksum = 6;</code>
+             */
+            public Builder setChecksum(long value) {
+                bitField0_ |= 0x00000020;
+                checksum_ = value;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <pre>
+             * Checksum fot this log entry, since 1.2.6, added by boyan&#64;antfin.com
+             * </pre>
+             *
+             * <code>optional int64 checksum = 6;</code>
+             */
+            public Builder clearChecksum() {
+                bitField0_ = (bitField0_ & ~0x00000020);
+                checksum_ = 0L;
+                onChanged();
+                return this;
+            }
+
+            private com.google.protobuf.LazyStringList learners_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+
+            private void ensureLearnersIsMutable() {
+                if (!((bitField0_ & 0x00000040) == 0x00000040)) {
+                    learners_ = new com.google.protobuf.LazyStringArrayList(learners_);
+                    bitField0_ |= 0x00000040;
+                }
+            }
+
+            /**
+             * <code>repeated string learners = 7;</code>
+             */
+            public com.google.protobuf.ProtocolStringList getLearnersList() {
+                return learners_.getUnmodifiableView();
+            }
+
+            /**
+             * <code>repeated string learners = 7;</code>
+             */
+            public int getLearnersCount() {
+                return learners_.size();
+            }
+
+            /**
+             * <code>repeated string learners = 7;</code>
+             */
+            public java.lang.String getLearners(int index) {
+                return learners_.get(index);
+            }
+
+            /**
+             * <code>repeated string learners = 7;</code>
+             */
+            public com.google.protobuf.ByteString getLearnersBytes(int index) {
+                return learners_.getByteString(index);
+            }
+
+            /**
+             * <code>repeated string learners = 7;</code>
+             */
+            public Builder setLearners(int index, java.lang.String value) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
+                ensureLearnersIsMutable();
+                learners_.set(index, value);
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>repeated string learners = 7;</code>
+             */
+            public Builder addLearners(java.lang.String value) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
+                ensureLearnersIsMutable();
+                learners_.add(value);
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>repeated string learners = 7;</code>
+             */
+            public Builder addAllLearners(java.lang.Iterable<java.lang.String> values) {
+                ensureLearnersIsMutable();
+                com.google.protobuf.AbstractMessageLite.Builder.addAll(values, learners_);
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>repeated string learners = 7;</code>
+             */
+            public Builder clearLearners() {
+                learners_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+                bitField0_ = (bitField0_ & ~0x00000040);
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>repeated string learners = 7;</code>
+             */
+            public Builder addLearnersBytes(com.google.protobuf.ByteString value) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
+                ensureLearnersIsMutable();
+                learners_.add(value);
+                onChanged();
+                return this;
+            }
+
+            private com.google.protobuf.LazyStringList oldLearners_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+
+            private void ensureOldLearnersIsMutable() {
+                if (!((bitField0_ & 0x00000080) == 0x00000080)) {
+                    oldLearners_ = new com.google.protobuf.LazyStringArrayList(oldLearners_);
+                    bitField0_ |= 0x00000080;
+                }
+            }
+
+            /**
+             * <code>repeated string old_learners = 8;</code>
+             */
+            public com.google.protobuf.ProtocolStringList getOldLearnersList() {
+                return oldLearners_.getUnmodifiableView();
+            }
+
+            /**
+             * <code>repeated string old_learners = 8;</code>
+             */
+            public int getOldLearnersCount() {
+                return oldLearners_.size();
+            }
+
+            /**
+             * <code>repeated string old_learners = 8;</code>
+             */
+            public java.lang.String getOldLearners(int index) {
+                return oldLearners_.get(index);
+            }
+
+            /**
+             * <code>repeated string old_learners = 8;</code>
+             */
+            public com.google.protobuf.ByteString getOldLearnersBytes(int index) {
+                return oldLearners_.getByteString(index);
+            }
+
+            /**
+             * <code>repeated string old_learners = 8;</code>
+             */
+            public Builder setOldLearners(int index, java.lang.String value) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
+                ensureOldLearnersIsMutable();
+                oldLearners_.set(index, value);
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>repeated string old_learners = 8;</code>
+             */
+            public Builder addOldLearners(java.lang.String value) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
+                ensureOldLearnersIsMutable();
+                oldLearners_.add(value);
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>repeated string old_learners = 8;</code>
+             */
+            public Builder addAllOldLearners(java.lang.Iterable<java.lang.String> values) {
+                ensureOldLearnersIsMutable();
+                com.google.protobuf.AbstractMessageLite.Builder.addAll(values, oldLearners_);
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>repeated string old_learners = 8;</code>
+             */
+            public Builder clearOldLearners() {
+                oldLearners_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+                bitField0_ = (bitField0_ & ~0x00000080);
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>repeated string old_learners = 8;</code>
+             */
+            public Builder addOldLearnersBytes(com.google.protobuf.ByteString value) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
+                ensureOldLearnersIsMutable();
+                oldLearners_.add(value);
+                onChanged();
+                return this;
+            }
+
+            private int readFactor_;
+
+            /**
+             * <code>optional int32 read_factor = 9;</code>
+             */
+            public boolean hasReadFactor() {
+                return ((bitField0_ & 0x00000100) == 0x00000100);
+            }
+
+            /**
+             * <code>optional int32 read_factor = 9;</code>
+             */
+            public int getReadFactor() {
+                return readFactor_;
+            }
+
+            /**
+             * <code>optional int32 read_factor = 9;</code>
+             */
+            public Builder setReadFactor(int value) {
+                bitField0_ |= 0x00000100;
+                readFactor_ = value;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>optional int32 read_factor = 9;</code>
+             */
+            public Builder clearReadFactor() {
+                bitField0_ = (bitField0_ & ~0x00000100);
+                readFactor_ = 0;
+                onChanged();
+                return this;
+            }
+
+            private int writeFactor_;
+
+            /**
+             * <code>optional int32 write_factor = 10;</code>
+             */
+            public boolean hasWriteFactor() {
+                return ((bitField0_ & 0x00000200) == 0x00000200);
+            }
+
+            /**
+             * <code>optional int32 write_factor = 10;</code>
+             */
+            public int getWriteFactor() {
+                return writeFactor_;
+            }
+
+            /**
+             * <code>optional int32 write_factor = 10;</code>
+             */
+            public Builder setWriteFactor(int value) {
+                bitField0_ |= 0x00000200;
+                writeFactor_ = value;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>optional int32 write_factor = 10;</code>
+             */
+            public Builder clearWriteFactor() {
+                bitField0_ = (bitField0_ & ~0x00000200);
+                writeFactor_ = 0;
+                onChanged();
+                return this;
+            }
+
+            private int oldReadFactor_;
+
+            /**
+             * <code>optional int32 old_read_factor = 11;</code>
+             */
+            public boolean hasOldReadFactor() {
+                return ((bitField0_ & 0x00000400) == 0x00000400);
+            }
+
+            /**
+             * <code>optional int32 old_read_factor = 11;</code>
+             */
+            public int getOldReadFactor() {
+                return oldReadFactor_;
+            }
+
+            /**
+             * <code>optional int32 old_read_factor = 11;</code>
+             */
+            public Builder setOldReadFactor(int value) {
+                bitField0_ |= 0x00000400;
+                oldReadFactor_ = value;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>optional int32 old_read_factor = 11;</code>
+             */
+            public Builder clearOldReadFactor() {
+                bitField0_ = (bitField0_ & ~0x00000400);
+                oldReadFactor_ = 0;
+                onChanged();
+                return this;
+            }
+
+            private int oldWriteFactor_;
+
+            /**
+             * <code>optional int32 old_write_factor = 12;</code>
+             */
+            public boolean hasOldWriteFactor() {
+                return ((bitField0_ & 0x00000800) == 0x00000800);
+            }
+
+            /**
+             * <code>optional int32 old_write_factor = 12;</code>
+             */
+            public int getOldWriteFactor() {
+                return oldWriteFactor_;
+            }
+
+            /**
+             * <code>optional int32 old_write_factor = 12;</code>
+             */
+            public Builder setOldWriteFactor(int value) {
+                bitField0_ |= 0x00000800;
+                oldWriteFactor_ = value;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>optional int32 old_write_factor = 12;</code>
+             */
+            public Builder clearOldWriteFactor() {
+                bitField0_ = (bitField0_ & ~0x00000800);
+                oldWriteFactor_ = 0;
+                onChanged();
+                return this;
+            }
+
+            private boolean isEnableFlexible_;
+
+            /**
+             * <code>optional bool isEnableFlexible = 13;</code>
+             */
+            public boolean hasIsEnableFlexible() {
+                return ((bitField0_ & 0x00001000) == 0x00001000);
+            }
+
+            /**
+             * <code>optional bool isEnableFlexible = 13;</code>
+             */
+            public boolean getIsEnableFlexible() {
+                return isEnableFlexible_;
+            }
+
+            /**
+             * <code>optional bool isEnableFlexible = 13;</code>
+             */
+            public Builder setIsEnableFlexible(boolean value) {
+                bitField0_ |= 0x00001000;
+                isEnableFlexible_ = value;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>optional bool isEnableFlexible = 13;</code>
+             */
+            public Builder clearIsEnableFlexible() {
+                bitField0_ = (bitField0_ & ~0x00001000);
+                isEnableFlexible_ = false;
+                onChanged();
+                return this;
+            }
+
+            public final Builder setUnknownFields(final com.google.protobuf.UnknownFieldSet unknownFields) {
+                return super.setUnknownFields(unknownFields);
+            }
+
+            public final Builder mergeUnknownFields(final com.google.protobuf.UnknownFieldSet unknownFields) {
+                return super.mergeUnknownFields(unknownFields);
+            }
+
+            // @@protoc_insertion_point(builder_scope:jraft.EntryMeta)
         }
-        size += dataSize;
-        size += 1 * getOldLearnersList().size();
-      }
-      if (((bitField0_ & 0x00000004) != 0)) {
-        size += com.google.protobuf.CodedOutputStream.computeInt64Size(7, readFactor_);
-      }
-      if (((bitField0_ & 0x00000008) != 0)) {
-        size += com.google.protobuf.CodedOutputStream.computeInt64Size(8, writeFactor_);
-      }
-      if (((bitField0_ & 0x00000010) != 0)) {
-        size += com.google.protobuf.CodedOutputStream.computeInt64Size(9, oldReadFactor_);
-      }
-      if (((bitField0_ & 0x00000020) != 0)) {
-        size += com.google.protobuf.CodedOutputStream.computeInt64Size(10, oldWriteFactor_);
-      }
-      size += unknownFields.getSerializedSize();
-      memoizedSize = size;
-      return size;
+
+        // @@protoc_insertion_point(class_scope:jraft.EntryMeta)
+        private static final com.alipay.sofa.jraft.entity.RaftOutter.EntryMeta DEFAULT_INSTANCE;
+        static {
+            DEFAULT_INSTANCE = new com.alipay.sofa.jraft.entity.RaftOutter.EntryMeta();
+        }
+
+        public static com.alipay.sofa.jraft.entity.RaftOutter.EntryMeta getDefaultInstance() {
+            return DEFAULT_INSTANCE;
+        }
+
+        @java.lang.Deprecated
+        public static final com.google.protobuf.Parser<EntryMeta> PARSER = new com.google.protobuf.AbstractParser<EntryMeta>() {
+                                                                             public EntryMeta parsePartialFrom(com.google.protobuf.CodedInputStream input,
+                                                                                                               com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                                                                                                                                                                           throws com.google.protobuf.InvalidProtocolBufferException {
+                                                                                 return new EntryMeta(input,
+                                                                                     extensionRegistry);
+                                                                             }
+                                                                         };
+
+        public static com.google.protobuf.Parser<EntryMeta> parser() {
+            return PARSER;
+        }
+
+        @java.lang.Override
+        public com.google.protobuf.Parser<EntryMeta> getParserForType() {
+            return PARSER;
+        }
+
+        public com.alipay.sofa.jraft.entity.RaftOutter.EntryMeta getDefaultInstanceForType() {
+            return DEFAULT_INSTANCE;
+        }
+
     }
 
-    @java.lang.Override
-    public boolean equals(final java.lang.Object obj) {
-      if (obj == this) {
-        return true;
-      }
-      if (!(obj instanceof com.alipay.sofa.jraft.entity.RaftOutter.SnapshotMeta)) {
-        return super.equals(obj);
-      }
-      com.alipay.sofa.jraft.entity.RaftOutter.SnapshotMeta other = (com.alipay.sofa.jraft.entity.RaftOutter.SnapshotMeta) obj;
+    public interface SnapshotMetaOrBuilder extends
+    // @@protoc_insertion_point(interface_extends:jraft.SnapshotMeta)
+                                          com.google.protobuf.MessageOrBuilder {
 
-      if (hasLastIncludedIndex() != other.hasLastIncludedIndex())
-        return false;
-      if (hasLastIncludedIndex()) {
-        if (getLastIncludedIndex() != other.getLastIncludedIndex())
-          return false;
-      }
-      if (hasLastIncludedTerm() != other.hasLastIncludedTerm())
-        return false;
-      if (hasLastIncludedTerm()) {
-        if (getLastIncludedTerm() != other.getLastIncludedTerm())
-          return false;
-      }
-      if (!getPeersList().equals(other.getPeersList()))
-        return false;
-      if (!getOldPeersList().equals(other.getOldPeersList()))
-        return false;
-      if (!getLearnersList().equals(other.getLearnersList()))
-        return false;
-      if (!getOldLearnersList().equals(other.getOldLearnersList()))
-        return false;
-      if (hasReadFactor() != other.hasReadFactor())
-        return false;
-      if (hasReadFactor()) {
-        if (getReadFactor() != other.getReadFactor())
-          return false;
-      }
-      if (hasWriteFactor() != other.hasWriteFactor())
-        return false;
-      if (hasWriteFactor()) {
-        if (getWriteFactor() != other.getWriteFactor())
-          return false;
-      }
-      if (hasOldReadFactor() != other.hasOldReadFactor())
-        return false;
-      if (hasOldReadFactor()) {
-        if (getOldReadFactor() != other.getOldReadFactor())
-          return false;
-      }
-      if (hasOldWriteFactor() != other.hasOldWriteFactor())
-        return false;
-      if (hasOldWriteFactor()) {
-        if (getOldWriteFactor() != other.getOldWriteFactor())
-          return false;
-      }
-      if (!unknownFields.equals(other.unknownFields))
-        return false;
-      return true;
-    }
+        /**
+         * <code>required int64 last_included_index = 1;</code>
+         */
+        boolean hasLastIncludedIndex();
 
-    @java.lang.Override
-    public int hashCode() {
-      if (memoizedHashCode != 0) {
-        return memoizedHashCode;
-      }
-      int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
-      if (hasLastIncludedIndex()) {
-        hash = (37 * hash) + LAST_INCLUDED_INDEX_FIELD_NUMBER;
-        hash = (53 * hash) + com.google.protobuf.Internal.hashLong(getLastIncludedIndex());
-      }
-      if (hasLastIncludedTerm()) {
-        hash = (37 * hash) + LAST_INCLUDED_TERM_FIELD_NUMBER;
-        hash = (53 * hash) + com.google.protobuf.Internal.hashLong(getLastIncludedTerm());
-      }
-      if (getPeersCount() > 0) {
-        hash = (37 * hash) + PEERS_FIELD_NUMBER;
-        hash = (53 * hash) + getPeersList().hashCode();
-      }
-      if (getOldPeersCount() > 0) {
-        hash = (37 * hash) + OLD_PEERS_FIELD_NUMBER;
-        hash = (53 * hash) + getOldPeersList().hashCode();
-      }
-      if (getLearnersCount() > 0) {
-        hash = (37 * hash) + LEARNERS_FIELD_NUMBER;
-        hash = (53 * hash) + getLearnersList().hashCode();
-      }
-      if (getOldLearnersCount() > 0) {
-        hash = (37 * hash) + OLD_LEARNERS_FIELD_NUMBER;
-        hash = (53 * hash) + getOldLearnersList().hashCode();
-      }
-      if (hasReadFactor()) {
-        hash = (37 * hash) + READ_FACTOR_FIELD_NUMBER;
-        hash = (53 * hash) + com.google.protobuf.Internal.hashLong(getReadFactor());
-      }
-      if (hasWriteFactor()) {
-        hash = (37 * hash) + WRITE_FACTOR_FIELD_NUMBER;
-        hash = (53 * hash) + com.google.protobuf.Internal.hashLong(getWriteFactor());
-      }
-      if (hasOldReadFactor()) {
-        hash = (37 * hash) + OLD_READ_FACTOR_FIELD_NUMBER;
-        hash = (53 * hash) + com.google.protobuf.Internal.hashLong(getOldReadFactor());
-      }
-      if (hasOldWriteFactor()) {
-        hash = (37 * hash) + OLD_WRITE_FACTOR_FIELD_NUMBER;
-        hash = (53 * hash) + com.google.protobuf.Internal.hashLong(getOldWriteFactor());
-      }
-      hash = (29 * hash) + unknownFields.hashCode();
-      memoizedHashCode = hash;
-      return hash;
-    }
+        /**
+         * <code>required int64 last_included_index = 1;</code>
+         */
+        long getLastIncludedIndex();
 
-    public static com.alipay.sofa.jraft.entity.RaftOutter.SnapshotMeta parseFrom(java.nio.ByteBuffer data)
-            throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
+        /**
+         * <code>required int64 last_included_term = 2;</code>
+         */
+        boolean hasLastIncludedTerm();
 
-    public static com.alipay.sofa.jraft.entity.RaftOutter.SnapshotMeta parseFrom(java.nio.ByteBuffer data,
-                                                                                 com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
+        /**
+         * <code>required int64 last_included_term = 2;</code>
+         */
+        long getLastIncludedTerm();
 
-    public static com.alipay.sofa.jraft.entity.RaftOutter.SnapshotMeta parseFrom(com.google.protobuf.ByteString data)
-            throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
+        /**
+         * <code>repeated string peers = 3;</code>
+         */
+        java.util.List<java.lang.String> getPeersList();
 
-    public static com.alipay.sofa.jraft.entity.RaftOutter.SnapshotMeta parseFrom(com.google.protobuf.ByteString data,
-                                                                                 com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
+        /**
+         * <code>repeated string peers = 3;</code>
+         */
+        int getPeersCount();
 
-    public static com.alipay.sofa.jraft.entity.RaftOutter.SnapshotMeta parseFrom(byte[] data)
-            throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
+        /**
+         * <code>repeated string peers = 3;</code>
+         */
+        java.lang.String getPeers(int index);
 
-    public static com.alipay.sofa.jraft.entity.RaftOutter.SnapshotMeta parseFrom(byte[] data,
-                                                                                 com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
+        /**
+         * <code>repeated string peers = 3;</code>
+         */
+        com.google.protobuf.ByteString getPeersBytes(int index);
 
-    public static com.alipay.sofa.jraft.entity.RaftOutter.SnapshotMeta parseFrom(java.io.InputStream input)
-            throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
-    }
+        /**
+         * <code>repeated string old_peers = 4;</code>
+         */
+        java.util.List<java.lang.String> getOldPeersList();
 
-    public static com.alipay.sofa.jraft.entity.RaftOutter.SnapshotMeta parseFrom(java.io.InputStream input,
-                                                                                 com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input, extensionRegistry);
-    }
+        /**
+         * <code>repeated string old_peers = 4;</code>
+         */
+        int getOldPeersCount();
 
-    public static com.alipay.sofa.jraft.entity.RaftOutter.SnapshotMeta parseDelimitedFrom(java.io.InputStream input)
-            throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
-    }
+        /**
+         * <code>repeated string old_peers = 4;</code>
+         */
+        java.lang.String getOldPeers(int index);
 
-    public static com.alipay.sofa.jraft.entity.RaftOutter.SnapshotMeta parseDelimitedFrom(java.io.InputStream input,
-                                                                                          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input,
-              extensionRegistry);
-    }
+        /**
+         * <code>repeated string old_peers = 4;</code>
+         */
+        com.google.protobuf.ByteString getOldPeersBytes(int index);
 
-    public static com.alipay.sofa.jraft.entity.RaftOutter.SnapshotMeta parseFrom(com.google.protobuf.CodedInputStream input)
-            throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
-    }
+        /**
+         * <code>repeated string learners = 5;</code>
+         */
+        java.util.List<java.lang.String> getLearnersList();
 
-    public static com.alipay.sofa.jraft.entity.RaftOutter.SnapshotMeta parseFrom(com.google.protobuf.CodedInputStream input,
-                                                                                 com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input, extensionRegistry);
-    }
+        /**
+         * <code>repeated string learners = 5;</code>
+         */
+        int getLearnersCount();
 
-    @java.lang.Override
-    public Builder newBuilderForType() {
-      return newBuilder();
-    }
+        /**
+         * <code>repeated string learners = 5;</code>
+         */
+        java.lang.String getLearners(int index);
 
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
+        /**
+         * <code>repeated string learners = 5;</code>
+         */
+        com.google.protobuf.ByteString getLearnersBytes(int index);
 
-    public static Builder newBuilder(com.alipay.sofa.jraft.entity.RaftOutter.SnapshotMeta prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-    }
+        /**
+         * <code>repeated string old_learners = 6;</code>
+         */
+        java.util.List<java.lang.String> getOldLearnersList();
 
-    @java.lang.Override
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
-    }
+        /**
+         * <code>repeated string old_learners = 6;</code>
+         */
+        int getOldLearnersCount();
 
-    @java.lang.Override
-    protected Builder newBuilderForType(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
+        /**
+         * <code>repeated string old_learners = 6;</code>
+         */
+        java.lang.String getOldLearners(int index);
+
+        /**
+         * <code>repeated string old_learners = 6;</code>
+         */
+        com.google.protobuf.ByteString getOldLearnersBytes(int index);
+
+        /**
+         * <code>optional int32 read_factor = 7;</code>
+         */
+        boolean hasReadFactor();
+
+        /**
+         * <code>optional int32 read_factor = 7;</code>
+         */
+        int getReadFactor();
+
+        /**
+         * <code>optional int32 write_factor = 8;</code>
+         */
+        boolean hasWriteFactor();
+
+        /**
+         * <code>optional int32 write_factor = 8;</code>
+         */
+        int getWriteFactor();
+
+        /**
+         * <code>optional int32 old_read_factor = 9;</code>
+         */
+        boolean hasOldReadFactor();
+
+        /**
+         * <code>optional int32 old_read_factor = 9;</code>
+         */
+        int getOldReadFactor();
+
+        /**
+         * <code>optional int32 old_write_factor = 10;</code>
+         */
+        boolean hasOldWriteFactor();
+
+        /**
+         * <code>optional int32 old_write_factor = 10;</code>
+         */
+        int getOldWriteFactor();
+
+        /**
+         * <code>optional bool isEnableFlexible = 11;</code>
+         */
+        boolean hasIsEnableFlexible();
+
+        /**
+         * <code>optional bool isEnableFlexible = 11;</code>
+         */
+        boolean getIsEnableFlexible();
     }
 
     /**
      * Protobuf type {@code jraft.SnapshotMeta}
      */
-    public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
-            implements
-            // @@protoc_insertion_point(builder_implements:jraft.SnapshotMeta)
-            com.alipay.sofa.jraft.entity.RaftOutter.SnapshotMetaOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
-        return com.alipay.sofa.jraft.entity.RaftOutter.internal_static_jraft_SnapshotMeta_descriptor;
-      }
+    public static final class SnapshotMeta extends com.google.protobuf.GeneratedMessageV3 implements
+    // @@protoc_insertion_point(message_implements:jraft.SnapshotMeta)
+                                                                                         SnapshotMetaOrBuilder {
+        private static final long serialVersionUID = 0L;
 
-      @java.lang.Override
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable internalGetFieldAccessorTable() {
-        return com.alipay.sofa.jraft.entity.RaftOutter.internal_static_jraft_SnapshotMeta_fieldAccessorTable
+        // Use SnapshotMeta.newBuilder() to construct.
+        private SnapshotMeta(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+            super(builder);
+        }
+
+        private SnapshotMeta() {
+            lastIncludedIndex_ = 0L;
+            lastIncludedTerm_ = 0L;
+            peers_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+            oldPeers_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+            learners_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+            oldLearners_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+            readFactor_ = 0;
+            writeFactor_ = 0;
+            oldReadFactor_ = 0;
+            oldWriteFactor_ = 0;
+            isEnableFlexible_ = false;
+        }
+
+        @java.lang.Override
+        public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
+            return this.unknownFields;
+        }
+
+        private SnapshotMeta(com.google.protobuf.CodedInputStream input,
+                             com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                                                                                         throws com.google.protobuf.InvalidProtocolBufferException {
+            this();
+            if (extensionRegistry == null) {
+                throw new java.lang.NullPointerException();
+            }
+            int mutable_bitField0_ = 0;
+            com.google.protobuf.UnknownFieldSet.Builder unknownFields = com.google.protobuf.UnknownFieldSet
+                .newBuilder();
+            try {
+                boolean done = false;
+                while (!done) {
+                    int tag = input.readTag();
+                    switch (tag) {
+                        case 0:
+                            done = true;
+                            break;
+                        default: {
+                            if (!parseUnknownField(input, unknownFields, extensionRegistry, tag)) {
+                                done = true;
+                            }
+                            break;
+                        }
+                        case 8: {
+                            bitField0_ |= 0x00000001;
+                            lastIncludedIndex_ = input.readInt64();
+                            break;
+                        }
+                        case 16: {
+                            bitField0_ |= 0x00000002;
+                            lastIncludedTerm_ = input.readInt64();
+                            break;
+                        }
+                        case 26: {
+                            com.google.protobuf.ByteString bs = input.readBytes();
+                            if (!((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
+                                peers_ = new com.google.protobuf.LazyStringArrayList();
+                                mutable_bitField0_ |= 0x00000004;
+                            }
+                            peers_.add(bs);
+                            break;
+                        }
+                        case 34: {
+                            com.google.protobuf.ByteString bs = input.readBytes();
+                            if (!((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
+                                oldPeers_ = new com.google.protobuf.LazyStringArrayList();
+                                mutable_bitField0_ |= 0x00000008;
+                            }
+                            oldPeers_.add(bs);
+                            break;
+                        }
+                        case 42: {
+                            com.google.protobuf.ByteString bs = input.readBytes();
+                            if (!((mutable_bitField0_ & 0x00000010) == 0x00000010)) {
+                                learners_ = new com.google.protobuf.LazyStringArrayList();
+                                mutable_bitField0_ |= 0x00000010;
+                            }
+                            learners_.add(bs);
+                            break;
+                        }
+                        case 50: {
+                            com.google.protobuf.ByteString bs = input.readBytes();
+                            if (!((mutable_bitField0_ & 0x00000020) == 0x00000020)) {
+                                oldLearners_ = new com.google.protobuf.LazyStringArrayList();
+                                mutable_bitField0_ |= 0x00000020;
+                            }
+                            oldLearners_.add(bs);
+                            break;
+                        }
+                        case 56: {
+                            bitField0_ |= 0x00000004;
+                            readFactor_ = input.readInt32();
+                            break;
+                        }
+                        case 64: {
+                            bitField0_ |= 0x00000008;
+                            writeFactor_ = input.readInt32();
+                            break;
+                        }
+                        case 72: {
+                            bitField0_ |= 0x00000010;
+                            oldReadFactor_ = input.readInt32();
+                            break;
+                        }
+                        case 80: {
+                            bitField0_ |= 0x00000020;
+                            oldWriteFactor_ = input.readInt32();
+                            break;
+                        }
+                        case 88: {
+                            bitField0_ |= 0x00000040;
+                            isEnableFlexible_ = input.readBool();
+                            break;
+                        }
+                    }
+                }
+            } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+                throw e.setUnfinishedMessage(this);
+            } catch (java.io.IOException e) {
+                throw new com.google.protobuf.InvalidProtocolBufferException(e).setUnfinishedMessage(this);
+            } finally {
+                if (((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
+                    peers_ = peers_.getUnmodifiableView();
+                }
+                if (((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
+                    oldPeers_ = oldPeers_.getUnmodifiableView();
+                }
+                if (((mutable_bitField0_ & 0x00000010) == 0x00000010)) {
+                    learners_ = learners_.getUnmodifiableView();
+                }
+                if (((mutable_bitField0_ & 0x00000020) == 0x00000020)) {
+                    oldLearners_ = oldLearners_.getUnmodifiableView();
+                }
+                this.unknownFields = unknownFields.build();
+                makeExtensionsImmutable();
+            }
+        }
+
+        public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+            return com.alipay.sofa.jraft.entity.RaftOutter.internal_static_jraft_SnapshotMeta_descriptor;
+        }
+
+        protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable internalGetFieldAccessorTable() {
+            return com.alipay.sofa.jraft.entity.RaftOutter.internal_static_jraft_SnapshotMeta_fieldAccessorTable
                 .ensureFieldAccessorsInitialized(com.alipay.sofa.jraft.entity.RaftOutter.SnapshotMeta.class,
-                        com.alipay.sofa.jraft.entity.RaftOutter.SnapshotMeta.Builder.class);
-      }
-
-      // Construct using com.alipay.sofa.jraft.entity.RaftOutter.SnapshotMeta.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
-
-      private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {
+                    com.alipay.sofa.jraft.entity.RaftOutter.SnapshotMeta.Builder.class);
         }
-      }
 
-      @java.lang.Override
-      public Builder clear() {
-        super.clear();
-        lastIncludedIndex_ = 0L;
-        bitField0_ = (bitField0_ & ~0x00000001);
-        lastIncludedTerm_ = 0L;
-        bitField0_ = (bitField0_ & ~0x00000002);
-        peers_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-        bitField0_ = (bitField0_ & ~0x00000004);
-        oldPeers_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-        bitField0_ = (bitField0_ & ~0x00000008);
-        learners_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-        bitField0_ = (bitField0_ & ~0x00000010);
-        oldLearners_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-        bitField0_ = (bitField0_ & ~0x00000020);
-        readFactor_ = 0L;
-        bitField0_ = (bitField0_ & ~0x00000040);
-        writeFactor_ = 0L;
-        bitField0_ = (bitField0_ & ~0x00000080);
-        oldReadFactor_ = 0L;
-        bitField0_ = (bitField0_ & ~0x00000100);
-        oldWriteFactor_ = 0L;
-        bitField0_ = (bitField0_ & ~0x00000200);
-        return this;
-      }
+        private int             bitField0_;
+        public static final int LAST_INCLUDED_INDEX_FIELD_NUMBER = 1;
+        private long            lastIncludedIndex_;
 
-      @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
-        return com.alipay.sofa.jraft.entity.RaftOutter.internal_static_jraft_SnapshotMeta_descriptor;
-      }
-
-      @java.lang.Override
-      public com.alipay.sofa.jraft.entity.RaftOutter.SnapshotMeta getDefaultInstanceForType() {
-        return com.alipay.sofa.jraft.entity.RaftOutter.SnapshotMeta.getDefaultInstance();
-      }
-
-      @java.lang.Override
-      public com.alipay.sofa.jraft.entity.RaftOutter.SnapshotMeta build() {
-        com.alipay.sofa.jraft.entity.RaftOutter.SnapshotMeta result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
+        /**
+         * <code>required int64 last_included_index = 1;</code>
+         */
+        public boolean hasLastIncludedIndex() {
+            return ((bitField0_ & 0x00000001) == 0x00000001);
         }
-        return result;
-      }
 
-      @java.lang.Override
-      public com.alipay.sofa.jraft.entity.RaftOutter.SnapshotMeta buildPartial() {
-        com.alipay.sofa.jraft.entity.RaftOutter.SnapshotMeta result = new com.alipay.sofa.jraft.entity.RaftOutter.SnapshotMeta(
-                this);
-        int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) != 0)) {
-          result.lastIncludedIndex_ = lastIncludedIndex_;
-          to_bitField0_ |= 0x00000001;
+        /**
+         * <code>required int64 last_included_index = 1;</code>
+         */
+        public long getLastIncludedIndex() {
+            return lastIncludedIndex_;
         }
-        if (((from_bitField0_ & 0x00000002) != 0)) {
-          result.lastIncludedTerm_ = lastIncludedTerm_;
-          to_bitField0_ |= 0x00000002;
+
+        public static final int LAST_INCLUDED_TERM_FIELD_NUMBER = 2;
+        private long            lastIncludedTerm_;
+
+        /**
+         * <code>required int64 last_included_term = 2;</code>
+         */
+        public boolean hasLastIncludedTerm() {
+            return ((bitField0_ & 0x00000002) == 0x00000002);
         }
-        if (((bitField0_ & 0x00000004) != 0)) {
-          peers_ = peers_.getUnmodifiableView();
-          bitField0_ = (bitField0_ & ~0x00000004);
+
+        /**
+         * <code>required int64 last_included_term = 2;</code>
+         */
+        public long getLastIncludedTerm() {
+            return lastIncludedTerm_;
         }
-        result.peers_ = peers_;
-        if (((bitField0_ & 0x00000008) != 0)) {
-          oldPeers_ = oldPeers_.getUnmodifiableView();
-          bitField0_ = (bitField0_ & ~0x00000008);
+
+        public static final int                    PEERS_FIELD_NUMBER = 3;
+        private com.google.protobuf.LazyStringList peers_;
+
+        /**
+         * <code>repeated string peers = 3;</code>
+         */
+        public com.google.protobuf.ProtocolStringList getPeersList() {
+            return peers_;
         }
-        result.oldPeers_ = oldPeers_;
-        if (((bitField0_ & 0x00000010) != 0)) {
-          learners_ = learners_.getUnmodifiableView();
-          bitField0_ = (bitField0_ & ~0x00000010);
+
+        /**
+         * <code>repeated string peers = 3;</code>
+         */
+        public int getPeersCount() {
+            return peers_.size();
         }
-        result.learners_ = learners_;
-        if (((bitField0_ & 0x00000020) != 0)) {
-          oldLearners_ = oldLearners_.getUnmodifiableView();
-          bitField0_ = (bitField0_ & ~0x00000020);
+
+        /**
+         * <code>repeated string peers = 3;</code>
+         */
+        public java.lang.String getPeers(int index) {
+            return peers_.get(index);
         }
-        result.oldLearners_ = oldLearners_;
-        if (((from_bitField0_ & 0x00000040) != 0)) {
-          result.readFactor_ = readFactor_;
-          to_bitField0_ |= 0x00000004;
+
+        /**
+         * <code>repeated string peers = 3;</code>
+         */
+        public com.google.protobuf.ByteString getPeersBytes(int index) {
+            return peers_.getByteString(index);
         }
-        if (((from_bitField0_ & 0x00000080) != 0)) {
-          result.writeFactor_ = writeFactor_;
-          to_bitField0_ |= 0x00000008;
+
+        public static final int                    OLD_PEERS_FIELD_NUMBER = 4;
+        private com.google.protobuf.LazyStringList oldPeers_;
+
+        /**
+         * <code>repeated string old_peers = 4;</code>
+         */
+        public com.google.protobuf.ProtocolStringList getOldPeersList() {
+            return oldPeers_;
         }
-        if (((from_bitField0_ & 0x00000100) != 0)) {
-          result.oldReadFactor_ = oldReadFactor_;
-          to_bitField0_ |= 0x00000010;
+
+        /**
+         * <code>repeated string old_peers = 4;</code>
+         */
+        public int getOldPeersCount() {
+            return oldPeers_.size();
         }
-        if (((from_bitField0_ & 0x00000200) != 0)) {
-          result.oldWriteFactor_ = oldWriteFactor_;
-          to_bitField0_ |= 0x00000020;
+
+        /**
+         * <code>repeated string old_peers = 4;</code>
+         */
+        public java.lang.String getOldPeers(int index) {
+            return oldPeers_.get(index);
         }
-        result.bitField0_ = to_bitField0_;
-        onBuilt();
-        return result;
-      }
 
-      @java.lang.Override
-      public Builder clone() {
-        return super.clone();
-      }
-
-      @java.lang.Override
-      public Builder setField(com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
-        return super.setField(field, value);
-      }
-
-      @java.lang.Override
-      public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return super.clearField(field);
-      }
-
-      @java.lang.Override
-      public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return super.clearOneof(oneof);
-      }
-
-      @java.lang.Override
-      public Builder setRepeatedField(com.google.protobuf.Descriptors.FieldDescriptor field, int index,
-                                      java.lang.Object value) {
-        return super.setRepeatedField(field, index, value);
-      }
-
-      @java.lang.Override
-      public Builder addRepeatedField(com.google.protobuf.Descriptors.FieldDescriptor field,
-                                      java.lang.Object value) {
-        return super.addRepeatedField(field, value);
-      }
-
-      @java.lang.Override
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof com.alipay.sofa.jraft.entity.RaftOutter.SnapshotMeta) {
-          return mergeFrom((com.alipay.sofa.jraft.entity.RaftOutter.SnapshotMeta) other);
-        } else {
-          super.mergeFrom(other);
-          return this;
+        /**
+         * <code>repeated string old_peers = 4;</code>
+         */
+        public com.google.protobuf.ByteString getOldPeersBytes(int index) {
+            return oldPeers_.getByteString(index);
         }
-      }
 
-      public Builder mergeFrom(com.alipay.sofa.jraft.entity.RaftOutter.SnapshotMeta other) {
-        if (other == com.alipay.sofa.jraft.entity.RaftOutter.SnapshotMeta.getDefaultInstance())
-          return this;
-        if (other.hasLastIncludedIndex()) {
-          setLastIncludedIndex(other.getLastIncludedIndex());
+        public static final int                    LEARNERS_FIELD_NUMBER = 5;
+        private com.google.protobuf.LazyStringList learners_;
+
+        /**
+         * <code>repeated string learners = 5;</code>
+         */
+        public com.google.protobuf.ProtocolStringList getLearnersList() {
+            return learners_;
         }
-        if (other.hasLastIncludedTerm()) {
-          setLastIncludedTerm(other.getLastIncludedTerm());
+
+        /**
+         * <code>repeated string learners = 5;</code>
+         */
+        public int getLearnersCount() {
+            return learners_.size();
         }
-        if (!other.peers_.isEmpty()) {
-          if (peers_.isEmpty()) {
-            peers_ = other.peers_;
-            bitField0_ = (bitField0_ & ~0x00000004);
-          } else {
-            ensurePeersIsMutable();
-            peers_.addAll(other.peers_);
-          }
-          onChanged();
+
+        /**
+         * <code>repeated string learners = 5;</code>
+         */
+        public java.lang.String getLearners(int index) {
+            return learners_.get(index);
         }
-        if (!other.oldPeers_.isEmpty()) {
-          if (oldPeers_.isEmpty()) {
-            oldPeers_ = other.oldPeers_;
-            bitField0_ = (bitField0_ & ~0x00000008);
-          } else {
-            ensureOldPeersIsMutable();
-            oldPeers_.addAll(other.oldPeers_);
-          }
-          onChanged();
+
+        /**
+         * <code>repeated string learners = 5;</code>
+         */
+        public com.google.protobuf.ByteString getLearnersBytes(int index) {
+            return learners_.getByteString(index);
         }
-        if (!other.learners_.isEmpty()) {
-          if (learners_.isEmpty()) {
-            learners_ = other.learners_;
-            bitField0_ = (bitField0_ & ~0x00000010);
-          } else {
-            ensureLearnersIsMutable();
-            learners_.addAll(other.learners_);
-          }
-          onChanged();
+
+        public static final int                    OLD_LEARNERS_FIELD_NUMBER = 6;
+        private com.google.protobuf.LazyStringList oldLearners_;
+
+        /**
+         * <code>repeated string old_learners = 6;</code>
+         */
+        public com.google.protobuf.ProtocolStringList getOldLearnersList() {
+            return oldLearners_;
         }
-        if (!other.oldLearners_.isEmpty()) {
-          if (oldLearners_.isEmpty()) {
-            oldLearners_ = other.oldLearners_;
-            bitField0_ = (bitField0_ & ~0x00000020);
-          } else {
-            ensureOldLearnersIsMutable();
-            oldLearners_.addAll(other.oldLearners_);
-          }
-          onChanged();
+
+        /**
+         * <code>repeated string old_learners = 6;</code>
+         */
+        public int getOldLearnersCount() {
+            return oldLearners_.size();
         }
-        if (other.hasReadFactor()) {
-          setReadFactor(other.getReadFactor());
+
+        /**
+         * <code>repeated string old_learners = 6;</code>
+         */
+        public java.lang.String getOldLearners(int index) {
+            return oldLearners_.get(index);
         }
-        if (other.hasWriteFactor()) {
-          setWriteFactor(other.getWriteFactor());
+
+        /**
+         * <code>repeated string old_learners = 6;</code>
+         */
+        public com.google.protobuf.ByteString getOldLearnersBytes(int index) {
+            return oldLearners_.getByteString(index);
         }
-        if (other.hasOldReadFactor()) {
-          setOldReadFactor(other.getOldReadFactor());
+
+        public static final int READ_FACTOR_FIELD_NUMBER = 7;
+        private int             readFactor_;
+
+        /**
+         * <code>optional int32 read_factor = 7;</code>
+         */
+        public boolean hasReadFactor() {
+            return ((bitField0_ & 0x00000004) == 0x00000004);
         }
-        if (other.hasOldWriteFactor()) {
-          setOldWriteFactor(other.getOldWriteFactor());
+
+        /**
+         * <code>optional int32 read_factor = 7;</code>
+         */
+        public int getReadFactor() {
+            return readFactor_;
         }
-        this.mergeUnknownFields(other.unknownFields);
-        onChanged();
-        return this;
-      }
 
-      @java.lang.Override
-      public final boolean isInitialized() {
-        if (!hasLastIncludedIndex()) {
-          return false;
+        public static final int WRITE_FACTOR_FIELD_NUMBER = 8;
+        private int             writeFactor_;
+
+        /**
+         * <code>optional int32 write_factor = 8;</code>
+         */
+        public boolean hasWriteFactor() {
+            return ((bitField0_ & 0x00000008) == 0x00000008);
         }
-        if (!hasLastIncludedTerm()) {
-          return false;
+
+        /**
+         * <code>optional int32 write_factor = 8;</code>
+         */
+        public int getWriteFactor() {
+            return writeFactor_;
         }
-        return true;
-      }
 
-      @java.lang.Override
-      public Builder mergeFrom(com.google.protobuf.CodedInputStream input,
-                               com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-              throws java.io.IOException {
-        com.alipay.sofa.jraft.entity.RaftOutter.SnapshotMeta parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (com.alipay.sofa.jraft.entity.RaftOutter.SnapshotMeta) e.getUnfinishedMessage();
-          throw e.unwrapIOException();
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
+        public static final int OLD_READ_FACTOR_FIELD_NUMBER = 9;
+        private int             oldReadFactor_;
+
+        /**
+         * <code>optional int32 old_read_factor = 9;</code>
+         */
+        public boolean hasOldReadFactor() {
+            return ((bitField0_ & 0x00000010) == 0x00000010);
         }
-        return this;
-      }
 
-      private int  bitField0_;
-
-      private long lastIncludedIndex_;
-
-      /**
-       * <code>required int64 last_included_index = 1;</code>
-       * @return Whether the lastIncludedIndex field is set.
-       */
-      @java.lang.Override
-      public boolean hasLastIncludedIndex() {
-        return ((bitField0_ & 0x00000001) != 0);
-      }
-
-      /**
-       * <code>required int64 last_included_index = 1;</code>
-       * @return The lastIncludedIndex.
-       */
-      @java.lang.Override
-      public long getLastIncludedIndex() {
-        return lastIncludedIndex_;
-      }
-
-      /**
-       * <code>required int64 last_included_index = 1;</code>
-       * @param value The lastIncludedIndex to set.
-       * @return This builder for chaining.
-       */
-      public Builder setLastIncludedIndex(long value) {
-        bitField0_ |= 0x00000001;
-        lastIncludedIndex_ = value;
-        onChanged();
-        return this;
-      }
-
-      /**
-       * <code>required int64 last_included_index = 1;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearLastIncludedIndex() {
-        bitField0_ = (bitField0_ & ~0x00000001);
-        lastIncludedIndex_ = 0L;
-        onChanged();
-        return this;
-      }
-
-      private long lastIncludedTerm_;
-
-      /**
-       * <code>required int64 last_included_term = 2;</code>
-       * @return Whether the lastIncludedTerm field is set.
-       */
-      @java.lang.Override
-      public boolean hasLastIncludedTerm() {
-        return ((bitField0_ & 0x00000002) != 0);
-      }
-
-      /**
-       * <code>required int64 last_included_term = 2;</code>
-       * @return The lastIncludedTerm.
-       */
-      @java.lang.Override
-      public long getLastIncludedTerm() {
-        return lastIncludedTerm_;
-      }
-
-      /**
-       * <code>required int64 last_included_term = 2;</code>
-       * @param value The lastIncludedTerm to set.
-       * @return This builder for chaining.
-       */
-      public Builder setLastIncludedTerm(long value) {
-        bitField0_ |= 0x00000002;
-        lastIncludedTerm_ = value;
-        onChanged();
-        return this;
-      }
-
-      /**
-       * <code>required int64 last_included_term = 2;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearLastIncludedTerm() {
-        bitField0_ = (bitField0_ & ~0x00000002);
-        lastIncludedTerm_ = 0L;
-        onChanged();
-        return this;
-      }
-
-      private com.google.protobuf.LazyStringList peers_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-
-      private void ensurePeersIsMutable() {
-        if (!((bitField0_ & 0x00000004) != 0)) {
-          peers_ = new com.google.protobuf.LazyStringArrayList(peers_);
-          bitField0_ |= 0x00000004;
+        /**
+         * <code>optional int32 old_read_factor = 9;</code>
+         */
+        public int getOldReadFactor() {
+            return oldReadFactor_;
         }
-      }
 
-      /**
-       * <code>repeated string peers = 3;</code>
-       * @return A list containing the peers.
-       */
-      public com.google.protobuf.ProtocolStringList getPeersList() {
-        return peers_.getUnmodifiableView();
-      }
+        public static final int OLD_WRITE_FACTOR_FIELD_NUMBER = 10;
+        private int             oldWriteFactor_;
 
-      /**
-       * <code>repeated string peers = 3;</code>
-       * @return The count of peers.
-       */
-      public int getPeersCount() {
-        return peers_.size();
-      }
-
-      /**
-       * <code>repeated string peers = 3;</code>
-       * @param index The index of the element to return.
-       * @return The peers at the given index.
-       */
-      public java.lang.String getPeers(int index) {
-        return peers_.get(index);
-      }
-
-      /**
-       * <code>repeated string peers = 3;</code>
-       * @param index The index of the value to return.
-       * @return The bytes of the peers at the given index.
-       */
-      public com.google.protobuf.ByteString getPeersBytes(int index) {
-        return peers_.getByteString(index);
-      }
-
-      /**
-       * <code>repeated string peers = 3;</code>
-       * @param index The index to set the value at.
-       * @param value The peers to set.
-       * @return This builder for chaining.
-       */
-      public Builder setPeers(int index, java.lang.String value) {
-        if (value == null) {
-          throw new NullPointerException();
+        /**
+         * <code>optional int32 old_write_factor = 10;</code>
+         */
+        public boolean hasOldWriteFactor() {
+            return ((bitField0_ & 0x00000020) == 0x00000020);
         }
-        ensurePeersIsMutable();
-        peers_.set(index, value);
-        onChanged();
-        return this;
-      }
 
-      /**
-       * <code>repeated string peers = 3;</code>
-       * @param value The peers to add.
-       * @return This builder for chaining.
-       */
-      public Builder addPeers(java.lang.String value) {
-        if (value == null) {
-          throw new NullPointerException();
+        /**
+         * <code>optional int32 old_write_factor = 10;</code>
+         */
+        public int getOldWriteFactor() {
+            return oldWriteFactor_;
         }
-        ensurePeersIsMutable();
-        peers_.add(value);
-        onChanged();
-        return this;
-      }
 
-      /**
-       * <code>repeated string peers = 3;</code>
-       * @param values The peers to add.
-       * @return This builder for chaining.
-       */
-      public Builder addAllPeers(java.lang.Iterable<java.lang.String> values) {
-        ensurePeersIsMutable();
-        com.google.protobuf.AbstractMessageLite.Builder.addAll(values, peers_);
-        onChanged();
-        return this;
-      }
+        public static final int ISENABLEFLEXIBLE_FIELD_NUMBER = 11;
+        private boolean         isEnableFlexible_;
 
-      /**
-       * <code>repeated string peers = 3;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearPeers() {
-        peers_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-        bitField0_ = (bitField0_ & ~0x00000004);
-        onChanged();
-        return this;
-      }
-
-      /**
-       * <code>repeated string peers = 3;</code>
-       * @param value The bytes of the peers to add.
-       * @return This builder for chaining.
-       */
-      public Builder addPeersBytes(com.google.protobuf.ByteString value) {
-        if (value == null) {
-          throw new NullPointerException();
+        /**
+         * <code>optional bool isEnableFlexible = 11;</code>
+         */
+        public boolean hasIsEnableFlexible() {
+            return ((bitField0_ & 0x00000040) == 0x00000040);
         }
-        ensurePeersIsMutable();
-        peers_.add(value);
-        onChanged();
-        return this;
-      }
 
-      private com.google.protobuf.LazyStringList oldPeers_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-
-      private void ensureOldPeersIsMutable() {
-        if (!((bitField0_ & 0x00000008) != 0)) {
-          oldPeers_ = new com.google.protobuf.LazyStringArrayList(oldPeers_);
-          bitField0_ |= 0x00000008;
+        /**
+         * <code>optional bool isEnableFlexible = 11;</code>
+         */
+        public boolean getIsEnableFlexible() {
+            return isEnableFlexible_;
         }
-      }
 
-      /**
-       * <code>repeated string old_peers = 4;</code>
-       * @return A list containing the oldPeers.
-       */
-      public com.google.protobuf.ProtocolStringList getOldPeersList() {
-        return oldPeers_.getUnmodifiableView();
-      }
+        private byte memoizedIsInitialized = -1;
 
-      /**
-       * <code>repeated string old_peers = 4;</code>
-       * @return The count of oldPeers.
-       */
-      public int getOldPeersCount() {
-        return oldPeers_.size();
-      }
+        public final boolean isInitialized() {
+            byte isInitialized = memoizedIsInitialized;
+            if (isInitialized == 1)
+                return true;
+            if (isInitialized == 0)
+                return false;
 
-      /**
-       * <code>repeated string old_peers = 4;</code>
-       * @param index The index of the element to return.
-       * @return The oldPeers at the given index.
-       */
-      public java.lang.String getOldPeers(int index) {
-        return oldPeers_.get(index);
-      }
-
-      /**
-       * <code>repeated string old_peers = 4;</code>
-       * @param index The index of the value to return.
-       * @return The bytes of the oldPeers at the given index.
-       */
-      public com.google.protobuf.ByteString getOldPeersBytes(int index) {
-        return oldPeers_.getByteString(index);
-      }
-
-      /**
-       * <code>repeated string old_peers = 4;</code>
-       * @param index The index to set the value at.
-       * @param value The oldPeers to set.
-       * @return This builder for chaining.
-       */
-      public Builder setOldPeers(int index, java.lang.String value) {
-        if (value == null) {
-          throw new NullPointerException();
+            if (!hasLastIncludedIndex()) {
+                memoizedIsInitialized = 0;
+                return false;
+            }
+            if (!hasLastIncludedTerm()) {
+                memoizedIsInitialized = 0;
+                return false;
+            }
+            memoizedIsInitialized = 1;
+            return true;
         }
-        ensureOldPeersIsMutable();
-        oldPeers_.set(index, value);
-        onChanged();
-        return this;
-      }
 
-      /**
-       * <code>repeated string old_peers = 4;</code>
-       * @param value The oldPeers to add.
-       * @return This builder for chaining.
-       */
-      public Builder addOldPeers(java.lang.String value) {
-        if (value == null) {
-          throw new NullPointerException();
+        public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
+            if (((bitField0_ & 0x00000001) == 0x00000001)) {
+                output.writeInt64(1, lastIncludedIndex_);
+            }
+            if (((bitField0_ & 0x00000002) == 0x00000002)) {
+                output.writeInt64(2, lastIncludedTerm_);
+            }
+            for (int i = 0; i < peers_.size(); i++) {
+                com.google.protobuf.GeneratedMessageV3.writeString(output, 3, peers_.getRaw(i));
+            }
+            for (int i = 0; i < oldPeers_.size(); i++) {
+                com.google.protobuf.GeneratedMessageV3.writeString(output, 4, oldPeers_.getRaw(i));
+            }
+            for (int i = 0; i < learners_.size(); i++) {
+                com.google.protobuf.GeneratedMessageV3.writeString(output, 5, learners_.getRaw(i));
+            }
+            for (int i = 0; i < oldLearners_.size(); i++) {
+                com.google.protobuf.GeneratedMessageV3.writeString(output, 6, oldLearners_.getRaw(i));
+            }
+            if (((bitField0_ & 0x00000004) == 0x00000004)) {
+                output.writeInt32(7, readFactor_);
+            }
+            if (((bitField0_ & 0x00000008) == 0x00000008)) {
+                output.writeInt32(8, writeFactor_);
+            }
+            if (((bitField0_ & 0x00000010) == 0x00000010)) {
+                output.writeInt32(9, oldReadFactor_);
+            }
+            if (((bitField0_ & 0x00000020) == 0x00000020)) {
+                output.writeInt32(10, oldWriteFactor_);
+            }
+            if (((bitField0_ & 0x00000040) == 0x00000040)) {
+                output.writeBool(11, isEnableFlexible_);
+            }
+            unknownFields.writeTo(output);
         }
-        ensureOldPeersIsMutable();
-        oldPeers_.add(value);
-        onChanged();
-        return this;
-      }
 
-      /**
-       * <code>repeated string old_peers = 4;</code>
-       * @param values The oldPeers to add.
-       * @return This builder for chaining.
-       */
-      public Builder addAllOldPeers(java.lang.Iterable<java.lang.String> values) {
-        ensureOldPeersIsMutable();
-        com.google.protobuf.AbstractMessageLite.Builder.addAll(values, oldPeers_);
-        onChanged();
-        return this;
-      }
+        public int getSerializedSize() {
+            int size = memoizedSize;
+            if (size != -1)
+                return size;
 
-      /**
-       * <code>repeated string old_peers = 4;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearOldPeers() {
-        oldPeers_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-        bitField0_ = (bitField0_ & ~0x00000008);
-        onChanged();
-        return this;
-      }
-
-      /**
-       * <code>repeated string old_peers = 4;</code>
-       * @param value The bytes of the oldPeers to add.
-       * @return This builder for chaining.
-       */
-      public Builder addOldPeersBytes(com.google.protobuf.ByteString value) {
-        if (value == null) {
-          throw new NullPointerException();
+            size = 0;
+            if (((bitField0_ & 0x00000001) == 0x00000001)) {
+                size += com.google.protobuf.CodedOutputStream.computeInt64Size(1, lastIncludedIndex_);
+            }
+            if (((bitField0_ & 0x00000002) == 0x00000002)) {
+                size += com.google.protobuf.CodedOutputStream.computeInt64Size(2, lastIncludedTerm_);
+            }
+            {
+                int dataSize = 0;
+                for (int i = 0; i < peers_.size(); i++) {
+                    dataSize += computeStringSizeNoTag(peers_.getRaw(i));
+                }
+                size += dataSize;
+                size += 1 * getPeersList().size();
+            }
+            {
+                int dataSize = 0;
+                for (int i = 0; i < oldPeers_.size(); i++) {
+                    dataSize += computeStringSizeNoTag(oldPeers_.getRaw(i));
+                }
+                size += dataSize;
+                size += 1 * getOldPeersList().size();
+            }
+            {
+                int dataSize = 0;
+                for (int i = 0; i < learners_.size(); i++) {
+                    dataSize += computeStringSizeNoTag(learners_.getRaw(i));
+                }
+                size += dataSize;
+                size += 1 * getLearnersList().size();
+            }
+            {
+                int dataSize = 0;
+                for (int i = 0; i < oldLearners_.size(); i++) {
+                    dataSize += computeStringSizeNoTag(oldLearners_.getRaw(i));
+                }
+                size += dataSize;
+                size += 1 * getOldLearnersList().size();
+            }
+            if (((bitField0_ & 0x00000004) == 0x00000004)) {
+                size += com.google.protobuf.CodedOutputStream.computeInt32Size(7, readFactor_);
+            }
+            if (((bitField0_ & 0x00000008) == 0x00000008)) {
+                size += com.google.protobuf.CodedOutputStream.computeInt32Size(8, writeFactor_);
+            }
+            if (((bitField0_ & 0x00000010) == 0x00000010)) {
+                size += com.google.protobuf.CodedOutputStream.computeInt32Size(9, oldReadFactor_);
+            }
+            if (((bitField0_ & 0x00000020) == 0x00000020)) {
+                size += com.google.protobuf.CodedOutputStream.computeInt32Size(10, oldWriteFactor_);
+            }
+            if (((bitField0_ & 0x00000040) == 0x00000040)) {
+                size += com.google.protobuf.CodedOutputStream.computeBoolSize(11, isEnableFlexible_);
+            }
+            size += unknownFields.getSerializedSize();
+            memoizedSize = size;
+            return size;
         }
-        ensureOldPeersIsMutable();
-        oldPeers_.add(value);
-        onChanged();
-        return this;
-      }
 
-      private com.google.protobuf.LazyStringList learners_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+        @java.lang.Override
+        public boolean equals(final java.lang.Object obj) {
+            if (obj == this) {
+                return true;
+            }
+            if (!(obj instanceof com.alipay.sofa.jraft.entity.RaftOutter.SnapshotMeta)) {
+                return super.equals(obj);
+            }
+            com.alipay.sofa.jraft.entity.RaftOutter.SnapshotMeta other = (com.alipay.sofa.jraft.entity.RaftOutter.SnapshotMeta) obj;
 
-      private void ensureLearnersIsMutable() {
-        if (!((bitField0_ & 0x00000010) != 0)) {
-          learners_ = new com.google.protobuf.LazyStringArrayList(learners_);
-          bitField0_ |= 0x00000010;
+            boolean result = true;
+            result = result && (hasLastIncludedIndex() == other.hasLastIncludedIndex());
+            if (hasLastIncludedIndex()) {
+                result = result && (getLastIncludedIndex() == other.getLastIncludedIndex());
+            }
+            result = result && (hasLastIncludedTerm() == other.hasLastIncludedTerm());
+            if (hasLastIncludedTerm()) {
+                result = result && (getLastIncludedTerm() == other.getLastIncludedTerm());
+            }
+            result = result && getPeersList().equals(other.getPeersList());
+            result = result && getOldPeersList().equals(other.getOldPeersList());
+            result = result && getLearnersList().equals(other.getLearnersList());
+            result = result && getOldLearnersList().equals(other.getOldLearnersList());
+            result = result && (hasReadFactor() == other.hasReadFactor());
+            if (hasReadFactor()) {
+                result = result && (getReadFactor() == other.getReadFactor());
+            }
+            result = result && (hasWriteFactor() == other.hasWriteFactor());
+            if (hasWriteFactor()) {
+                result = result && (getWriteFactor() == other.getWriteFactor());
+            }
+            result = result && (hasOldReadFactor() == other.hasOldReadFactor());
+            if (hasOldReadFactor()) {
+                result = result && (getOldReadFactor() == other.getOldReadFactor());
+            }
+            result = result && (hasOldWriteFactor() == other.hasOldWriteFactor());
+            if (hasOldWriteFactor()) {
+                result = result && (getOldWriteFactor() == other.getOldWriteFactor());
+            }
+            result = result && (hasIsEnableFlexible() == other.hasIsEnableFlexible());
+            if (hasIsEnableFlexible()) {
+                result = result && (getIsEnableFlexible() == other.getIsEnableFlexible());
+            }
+            result = result && unknownFields.equals(other.unknownFields);
+            return result;
         }
-      }
 
-      /**
-       * <code>repeated string learners = 5;</code>
-       * @return A list containing the learners.
-       */
-      public com.google.protobuf.ProtocolStringList getLearnersList() {
-        return learners_.getUnmodifiableView();
-      }
-
-      /**
-       * <code>repeated string learners = 5;</code>
-       * @return The count of learners.
-       */
-      public int getLearnersCount() {
-        return learners_.size();
-      }
-
-      /**
-       * <code>repeated string learners = 5;</code>
-       * @param index The index of the element to return.
-       * @return The learners at the given index.
-       */
-      public java.lang.String getLearners(int index) {
-        return learners_.get(index);
-      }
-
-      /**
-       * <code>repeated string learners = 5;</code>
-       * @param index The index of the value to return.
-       * @return The bytes of the learners at the given index.
-       */
-      public com.google.protobuf.ByteString getLearnersBytes(int index) {
-        return learners_.getByteString(index);
-      }
-
-      /**
-       * <code>repeated string learners = 5;</code>
-       * @param index The index to set the value at.
-       * @param value The learners to set.
-       * @return This builder for chaining.
-       */
-      public Builder setLearners(int index, java.lang.String value) {
-        if (value == null) {
-          throw new NullPointerException();
+        @java.lang.Override
+        public int hashCode() {
+            if (memoizedHashCode != 0) {
+                return memoizedHashCode;
+            }
+            int hash = 41;
+            hash = (19 * hash) + getDescriptor().hashCode();
+            if (hasLastIncludedIndex()) {
+                hash = (37 * hash) + LAST_INCLUDED_INDEX_FIELD_NUMBER;
+                hash = (53 * hash) + com.google.protobuf.Internal.hashLong(getLastIncludedIndex());
+            }
+            if (hasLastIncludedTerm()) {
+                hash = (37 * hash) + LAST_INCLUDED_TERM_FIELD_NUMBER;
+                hash = (53 * hash) + com.google.protobuf.Internal.hashLong(getLastIncludedTerm());
+            }
+            if (getPeersCount() > 0) {
+                hash = (37 * hash) + PEERS_FIELD_NUMBER;
+                hash = (53 * hash) + getPeersList().hashCode();
+            }
+            if (getOldPeersCount() > 0) {
+                hash = (37 * hash) + OLD_PEERS_FIELD_NUMBER;
+                hash = (53 * hash) + getOldPeersList().hashCode();
+            }
+            if (getLearnersCount() > 0) {
+                hash = (37 * hash) + LEARNERS_FIELD_NUMBER;
+                hash = (53 * hash) + getLearnersList().hashCode();
+            }
+            if (getOldLearnersCount() > 0) {
+                hash = (37 * hash) + OLD_LEARNERS_FIELD_NUMBER;
+                hash = (53 * hash) + getOldLearnersList().hashCode();
+            }
+            if (hasReadFactor()) {
+                hash = (37 * hash) + READ_FACTOR_FIELD_NUMBER;
+                hash = (53 * hash) + getReadFactor();
+            }
+            if (hasWriteFactor()) {
+                hash = (37 * hash) + WRITE_FACTOR_FIELD_NUMBER;
+                hash = (53 * hash) + getWriteFactor();
+            }
+            if (hasOldReadFactor()) {
+                hash = (37 * hash) + OLD_READ_FACTOR_FIELD_NUMBER;
+                hash = (53 * hash) + getOldReadFactor();
+            }
+            if (hasOldWriteFactor()) {
+                hash = (37 * hash) + OLD_WRITE_FACTOR_FIELD_NUMBER;
+                hash = (53 * hash) + getOldWriteFactor();
+            }
+            if (hasIsEnableFlexible()) {
+                hash = (37 * hash) + ISENABLEFLEXIBLE_FIELD_NUMBER;
+                hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(getIsEnableFlexible());
+            }
+            hash = (29 * hash) + unknownFields.hashCode();
+            memoizedHashCode = hash;
+            return hash;
         }
-        ensureLearnersIsMutable();
-        learners_.set(index, value);
-        onChanged();
-        return this;
-      }
 
-      /**
-       * <code>repeated string learners = 5;</code>
-       * @param value The learners to add.
-       * @return This builder for chaining.
-       */
-      public Builder addLearners(java.lang.String value) {
-        if (value == null) {
-          throw new NullPointerException();
+        public static com.alipay.sofa.jraft.entity.RaftOutter.SnapshotMeta parseFrom(java.nio.ByteBuffer data)
+                                                                                                              throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data);
         }
-        ensureLearnersIsMutable();
-        learners_.add(value);
-        onChanged();
-        return this;
-      }
 
-      /**
-       * <code>repeated string learners = 5;</code>
-       * @param values The learners to add.
-       * @return This builder for chaining.
-       */
-      public Builder addAllLearners(java.lang.Iterable<java.lang.String> values) {
-        ensureLearnersIsMutable();
-        com.google.protobuf.AbstractMessageLite.Builder.addAll(values, learners_);
-        onChanged();
-        return this;
-      }
-
-      /**
-       * <code>repeated string learners = 5;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearLearners() {
-        learners_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-        bitField0_ = (bitField0_ & ~0x00000010);
-        onChanged();
-        return this;
-      }
-
-      /**
-       * <code>repeated string learners = 5;</code>
-       * @param value The bytes of the learners to add.
-       * @return This builder for chaining.
-       */
-      public Builder addLearnersBytes(com.google.protobuf.ByteString value) {
-        if (value == null) {
-          throw new NullPointerException();
+        public static com.alipay.sofa.jraft.entity.RaftOutter.SnapshotMeta parseFrom(java.nio.ByteBuffer data,
+                                                                                     com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                                                                                                                                                 throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data, extensionRegistry);
         }
-        ensureLearnersIsMutable();
-        learners_.add(value);
-        onChanged();
-        return this;
-      }
 
-      private com.google.protobuf.LazyStringList oldLearners_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-
-      private void ensureOldLearnersIsMutable() {
-        if (!((bitField0_ & 0x00000020) != 0)) {
-          oldLearners_ = new com.google.protobuf.LazyStringArrayList(oldLearners_);
-          bitField0_ |= 0x00000020;
+        public static com.alipay.sofa.jraft.entity.RaftOutter.SnapshotMeta parseFrom(com.google.protobuf.ByteString data)
+                                                                                                                         throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data);
         }
-      }
 
-      /**
-       * <code>repeated string old_learners = 6;</code>
-       * @return A list containing the oldLearners.
-       */
-      public com.google.protobuf.ProtocolStringList getOldLearnersList() {
-        return oldLearners_.getUnmodifiableView();
-      }
-
-      /**
-       * <code>repeated string old_learners = 6;</code>
-       * @return The count of oldLearners.
-       */
-      public int getOldLearnersCount() {
-        return oldLearners_.size();
-      }
-
-      /**
-       * <code>repeated string old_learners = 6;</code>
-       * @param index The index of the element to return.
-       * @return The oldLearners at the given index.
-       */
-      public java.lang.String getOldLearners(int index) {
-        return oldLearners_.get(index);
-      }
-
-      /**
-       * <code>repeated string old_learners = 6;</code>
-       * @param index The index of the value to return.
-       * @return The bytes of the oldLearners at the given index.
-       */
-      public com.google.protobuf.ByteString getOldLearnersBytes(int index) {
-        return oldLearners_.getByteString(index);
-      }
-
-      /**
-       * <code>repeated string old_learners = 6;</code>
-       * @param index The index to set the value at.
-       * @param value The oldLearners to set.
-       * @return This builder for chaining.
-       */
-      public Builder setOldLearners(int index, java.lang.String value) {
-        if (value == null) {
-          throw new NullPointerException();
+        public static com.alipay.sofa.jraft.entity.RaftOutter.SnapshotMeta parseFrom(com.google.protobuf.ByteString data,
+                                                                                     com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                                                                                                                                                 throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data, extensionRegistry);
         }
-        ensureOldLearnersIsMutable();
-        oldLearners_.set(index, value);
-        onChanged();
-        return this;
-      }
 
-      /**
-       * <code>repeated string old_learners = 6;</code>
-       * @param value The oldLearners to add.
-       * @return This builder for chaining.
-       */
-      public Builder addOldLearners(java.lang.String value) {
-        if (value == null) {
-          throw new NullPointerException();
+        public static com.alipay.sofa.jraft.entity.RaftOutter.SnapshotMeta parseFrom(byte[] data)
+                                                                                                 throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data);
         }
-        ensureOldLearnersIsMutable();
-        oldLearners_.add(value);
-        onChanged();
-        return this;
-      }
 
-      /**
-       * <code>repeated string old_learners = 6;</code>
-       * @param values The oldLearners to add.
-       * @return This builder for chaining.
-       */
-      public Builder addAllOldLearners(java.lang.Iterable<java.lang.String> values) {
-        ensureOldLearnersIsMutable();
-        com.google.protobuf.AbstractMessageLite.Builder.addAll(values, oldLearners_);
-        onChanged();
-        return this;
-      }
-
-      /**
-       * <code>repeated string old_learners = 6;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearOldLearners() {
-        oldLearners_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-        bitField0_ = (bitField0_ & ~0x00000020);
-        onChanged();
-        return this;
-      }
-
-      /**
-       * <code>repeated string old_learners = 6;</code>
-       * @param value The bytes of the oldLearners to add.
-       * @return This builder for chaining.
-       */
-      public Builder addOldLearnersBytes(com.google.protobuf.ByteString value) {
-        if (value == null) {
-          throw new NullPointerException();
+        public static com.alipay.sofa.jraft.entity.RaftOutter.SnapshotMeta parseFrom(byte[] data,
+                                                                                     com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                                                                                                                                                 throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data, extensionRegistry);
         }
-        ensureOldLearnersIsMutable();
-        oldLearners_.add(value);
-        onChanged();
-        return this;
-      }
 
-      private long readFactor_;
+        public static com.alipay.sofa.jraft.entity.RaftOutter.SnapshotMeta parseFrom(java.io.InputStream input)
+                                                                                                               throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
+        }
 
-      /**
-       * <code>optional int64 read_factor = 7;</code>
-       * @return Whether the readFactor field is set.
-       */
-      @java.lang.Override
-      public boolean hasReadFactor() {
-        return ((bitField0_ & 0x00000040) != 0);
-      }
+        public static com.alipay.sofa.jraft.entity.RaftOutter.SnapshotMeta parseFrom(java.io.InputStream input,
+                                                                                     com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                                                                                                                                                 throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input, extensionRegistry);
+        }
 
-      /**
-       * <code>optional int64 read_factor = 7;</code>
-       * @return The readFactor.
-       */
-      @java.lang.Override
-      public long getReadFactor() {
-        return readFactor_;
-      }
+        public static com.alipay.sofa.jraft.entity.RaftOutter.SnapshotMeta parseDelimitedFrom(java.io.InputStream input)
+                                                                                                                        throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
+        }
 
-      /**
-       * <code>optional int64 read_factor = 7;</code>
-       * @param value The readFactor to set.
-       * @return This builder for chaining.
-       */
-      public Builder setReadFactor(long value) {
-        bitField0_ |= 0x00000040;
-        readFactor_ = value;
-        onChanged();
-        return this;
-      }
-
-      /**
-       * <code>optional int64 read_factor = 7;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearReadFactor() {
-        bitField0_ = (bitField0_ & ~0x00000040);
-        readFactor_ = 0L;
-        onChanged();
-        return this;
-      }
-
-      private long writeFactor_;
-
-      /**
-       * <code>optional int64 write_factor = 8;</code>
-       * @return Whether the writeFactor field is set.
-       */
-      @java.lang.Override
-      public boolean hasWriteFactor() {
-        return ((bitField0_ & 0x00000080) != 0);
-      }
-
-      /**
-       * <code>optional int64 write_factor = 8;</code>
-       * @return The writeFactor.
-       */
-      @java.lang.Override
-      public long getWriteFactor() {
-        return writeFactor_;
-      }
-
-      /**
-       * <code>optional int64 write_factor = 8;</code>
-       * @param value The writeFactor to set.
-       * @return This builder for chaining.
-       */
-      public Builder setWriteFactor(long value) {
-        bitField0_ |= 0x00000080;
-        writeFactor_ = value;
-        onChanged();
-        return this;
-      }
-
-      /**
-       * <code>optional int64 write_factor = 8;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearWriteFactor() {
-        bitField0_ = (bitField0_ & ~0x00000080);
-        writeFactor_ = 0L;
-        onChanged();
-        return this;
-      }
-
-      private long oldReadFactor_;
-
-      /**
-       * <code>optional int64 old_read_factor = 9;</code>
-       * @return Whether the oldReadFactor field is set.
-       */
-      @java.lang.Override
-      public boolean hasOldReadFactor() {
-        return ((bitField0_ & 0x00000100) != 0);
-      }
-
-      /**
-       * <code>optional int64 old_read_factor = 9;</code>
-       * @return The oldReadFactor.
-       */
-      @java.lang.Override
-      public long getOldReadFactor() {
-        return oldReadFactor_;
-      }
-
-      /**
-       * <code>optional int64 old_read_factor = 9;</code>
-       * @param value The oldReadFactor to set.
-       * @return This builder for chaining.
-       */
-      public Builder setOldReadFactor(long value) {
-        bitField0_ |= 0x00000100;
-        oldReadFactor_ = value;
-        onChanged();
-        return this;
-      }
-
-      /**
-       * <code>optional int64 old_read_factor = 9;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearOldReadFactor() {
-        bitField0_ = (bitField0_ & ~0x00000100);
-        oldReadFactor_ = 0L;
-        onChanged();
-        return this;
-      }
-
-      private long oldWriteFactor_;
-
-      /**
-       * <code>optional int64 old_write_factor = 10;</code>
-       * @return Whether the oldWriteFactor field is set.
-       */
-      @java.lang.Override
-      public boolean hasOldWriteFactor() {
-        return ((bitField0_ & 0x00000200) != 0);
-      }
-
-      /**
-       * <code>optional int64 old_write_factor = 10;</code>
-       * @return The oldWriteFactor.
-       */
-      @java.lang.Override
-      public long getOldWriteFactor() {
-        return oldWriteFactor_;
-      }
-
-      /**
-       * <code>optional int64 old_write_factor = 10;</code>
-       * @param value The oldWriteFactor to set.
-       * @return This builder for chaining.
-       */
-      public Builder setOldWriteFactor(long value) {
-        bitField0_ |= 0x00000200;
-        oldWriteFactor_ = value;
-        onChanged();
-        return this;
-      }
-
-      /**
-       * <code>optional int64 old_write_factor = 10;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearOldWriteFactor() {
-        bitField0_ = (bitField0_ & ~0x00000200);
-        oldWriteFactor_ = 0L;
-        onChanged();
-        return this;
-      }
-
-      @java.lang.Override
-      public final Builder setUnknownFields(final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFields(unknownFields);
-      }
-
-      @java.lang.Override
-      public final Builder mergeUnknownFields(final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.mergeUnknownFields(unknownFields);
-      }
-
-      // @@protoc_insertion_point(builder_scope:jraft.SnapshotMeta)
-    }
-
-    // @@protoc_insertion_point(class_scope:jraft.SnapshotMeta)
-    private static final com.alipay.sofa.jraft.entity.RaftOutter.SnapshotMeta DEFAULT_INSTANCE;
-    static {
-      DEFAULT_INSTANCE = new com.alipay.sofa.jraft.entity.RaftOutter.SnapshotMeta();
-    }
-
-    public static com.alipay.sofa.jraft.entity.RaftOutter.SnapshotMeta getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    @java.lang.Deprecated
-    public static final com.google.protobuf.Parser<SnapshotMeta> PARSER = new com.google.protobuf.AbstractParser<SnapshotMeta>() {
-      @java.lang.Override
-      public SnapshotMeta parsePartialFrom(com.google.protobuf.CodedInputStream input,
-                                           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-              throws com.google.protobuf.InvalidProtocolBufferException {
-        return new SnapshotMeta(input,
+        public static com.alipay.sofa.jraft.entity.RaftOutter.SnapshotMeta parseDelimitedFrom(java.io.InputStream input,
+                                                                                              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                                                                                                                                                          throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input,
                 extensionRegistry);
-      }
-    };
+        }
 
-    public static com.google.protobuf.Parser<SnapshotMeta> parser() {
-      return PARSER;
+        public static com.alipay.sofa.jraft.entity.RaftOutter.SnapshotMeta parseFrom(com.google.protobuf.CodedInputStream input)
+                                                                                                                                throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
+        }
+
+        public static com.alipay.sofa.jraft.entity.RaftOutter.SnapshotMeta parseFrom(com.google.protobuf.CodedInputStream input,
+                                                                                     com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                                                                                                                                                 throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input, extensionRegistry);
+        }
+
+        public Builder newBuilderForType() {
+            return newBuilder();
+        }
+
+        public static Builder newBuilder() {
+            return DEFAULT_INSTANCE.toBuilder();
+        }
+
+        public static Builder newBuilder(com.alipay.sofa.jraft.entity.RaftOutter.SnapshotMeta prototype) {
+            return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+        }
+
+        public Builder toBuilder() {
+            return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
+        }
+
+        @java.lang.Override
+        protected Builder newBuilderForType(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+            Builder builder = new Builder(parent);
+            return builder;
+        }
+
+        /**
+         * Protobuf type {@code jraft.SnapshotMeta}
+         */
+        public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
+                                                                                                         implements
+                                                                                                         // @@protoc_insertion_point(builder_implements:jraft.SnapshotMeta)
+                                                                                                         com.alipay.sofa.jraft.entity.RaftOutter.SnapshotMetaOrBuilder {
+            public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+                return com.alipay.sofa.jraft.entity.RaftOutter.internal_static_jraft_SnapshotMeta_descriptor;
+            }
+
+            protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable internalGetFieldAccessorTable() {
+                return com.alipay.sofa.jraft.entity.RaftOutter.internal_static_jraft_SnapshotMeta_fieldAccessorTable
+                    .ensureFieldAccessorsInitialized(com.alipay.sofa.jraft.entity.RaftOutter.SnapshotMeta.class,
+                        com.alipay.sofa.jraft.entity.RaftOutter.SnapshotMeta.Builder.class);
+            }
+
+            // Construct using com.alipay.sofa.jraft.entity.RaftOutter.SnapshotMeta.newBuilder()
+            private Builder() {
+                maybeForceBuilderInitialization();
+            }
+
+            private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+                super(parent);
+                maybeForceBuilderInitialization();
+            }
+
+            private void maybeForceBuilderInitialization() {
+                if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {
+                }
+            }
+
+            public Builder clear() {
+                super.clear();
+                lastIncludedIndex_ = 0L;
+                bitField0_ = (bitField0_ & ~0x00000001);
+                lastIncludedTerm_ = 0L;
+                bitField0_ = (bitField0_ & ~0x00000002);
+                peers_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+                bitField0_ = (bitField0_ & ~0x00000004);
+                oldPeers_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+                bitField0_ = (bitField0_ & ~0x00000008);
+                learners_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+                bitField0_ = (bitField0_ & ~0x00000010);
+                oldLearners_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+                bitField0_ = (bitField0_ & ~0x00000020);
+                readFactor_ = 0;
+                bitField0_ = (bitField0_ & ~0x00000040);
+                writeFactor_ = 0;
+                bitField0_ = (bitField0_ & ~0x00000080);
+                oldReadFactor_ = 0;
+                bitField0_ = (bitField0_ & ~0x00000100);
+                oldWriteFactor_ = 0;
+                bitField0_ = (bitField0_ & ~0x00000200);
+                isEnableFlexible_ = false;
+                bitField0_ = (bitField0_ & ~0x00000400);
+                return this;
+            }
+
+            public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
+                return com.alipay.sofa.jraft.entity.RaftOutter.internal_static_jraft_SnapshotMeta_descriptor;
+            }
+
+            public com.alipay.sofa.jraft.entity.RaftOutter.SnapshotMeta getDefaultInstanceForType() {
+                return com.alipay.sofa.jraft.entity.RaftOutter.SnapshotMeta.getDefaultInstance();
+            }
+
+            public com.alipay.sofa.jraft.entity.RaftOutter.SnapshotMeta build() {
+                com.alipay.sofa.jraft.entity.RaftOutter.SnapshotMeta result = buildPartial();
+                if (!result.isInitialized()) {
+                    throw newUninitializedMessageException(result);
+                }
+                return result;
+            }
+
+            public com.alipay.sofa.jraft.entity.RaftOutter.SnapshotMeta buildPartial() {
+                com.alipay.sofa.jraft.entity.RaftOutter.SnapshotMeta result = new com.alipay.sofa.jraft.entity.RaftOutter.SnapshotMeta(
+                    this);
+                int from_bitField0_ = bitField0_;
+                int to_bitField0_ = 0;
+                if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+                    to_bitField0_ |= 0x00000001;
+                }
+                result.lastIncludedIndex_ = lastIncludedIndex_;
+                if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+                    to_bitField0_ |= 0x00000002;
+                }
+                result.lastIncludedTerm_ = lastIncludedTerm_;
+                if (((bitField0_ & 0x00000004) == 0x00000004)) {
+                    peers_ = peers_.getUnmodifiableView();
+                    bitField0_ = (bitField0_ & ~0x00000004);
+                }
+                result.peers_ = peers_;
+                if (((bitField0_ & 0x00000008) == 0x00000008)) {
+                    oldPeers_ = oldPeers_.getUnmodifiableView();
+                    bitField0_ = (bitField0_ & ~0x00000008);
+                }
+                result.oldPeers_ = oldPeers_;
+                if (((bitField0_ & 0x00000010) == 0x00000010)) {
+                    learners_ = learners_.getUnmodifiableView();
+                    bitField0_ = (bitField0_ & ~0x00000010);
+                }
+                result.learners_ = learners_;
+                if (((bitField0_ & 0x00000020) == 0x00000020)) {
+                    oldLearners_ = oldLearners_.getUnmodifiableView();
+                    bitField0_ = (bitField0_ & ~0x00000020);
+                }
+                result.oldLearners_ = oldLearners_;
+                if (((from_bitField0_ & 0x00000040) == 0x00000040)) {
+                    to_bitField0_ |= 0x00000004;
+                }
+                result.readFactor_ = readFactor_;
+                if (((from_bitField0_ & 0x00000080) == 0x00000080)) {
+                    to_bitField0_ |= 0x00000008;
+                }
+                result.writeFactor_ = writeFactor_;
+                if (((from_bitField0_ & 0x00000100) == 0x00000100)) {
+                    to_bitField0_ |= 0x00000010;
+                }
+                result.oldReadFactor_ = oldReadFactor_;
+                if (((from_bitField0_ & 0x00000200) == 0x00000200)) {
+                    to_bitField0_ |= 0x00000020;
+                }
+                result.oldWriteFactor_ = oldWriteFactor_;
+                if (((from_bitField0_ & 0x00000400) == 0x00000400)) {
+                    to_bitField0_ |= 0x00000040;
+                }
+                result.isEnableFlexible_ = isEnableFlexible_;
+                result.bitField0_ = to_bitField0_;
+                onBuilt();
+                return result;
+            }
+
+            public Builder clone() {
+                return (Builder) super.clone();
+            }
+
+            public Builder setField(com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
+                return (Builder) super.setField(field, value);
+            }
+
+            public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
+                return (Builder) super.clearField(field);
+            }
+
+            public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+                return (Builder) super.clearOneof(oneof);
+            }
+
+            public Builder setRepeatedField(com.google.protobuf.Descriptors.FieldDescriptor field, int index,
+                                            java.lang.Object value) {
+                return (Builder) super.setRepeatedField(field, index, value);
+            }
+
+            public Builder addRepeatedField(com.google.protobuf.Descriptors.FieldDescriptor field,
+                                            java.lang.Object value) {
+                return (Builder) super.addRepeatedField(field, value);
+            }
+
+            public Builder mergeFrom(com.google.protobuf.Message other) {
+                if (other instanceof com.alipay.sofa.jraft.entity.RaftOutter.SnapshotMeta) {
+                    return mergeFrom((com.alipay.sofa.jraft.entity.RaftOutter.SnapshotMeta) other);
+                } else {
+                    super.mergeFrom(other);
+                    return this;
+                }
+            }
+
+            public Builder mergeFrom(com.alipay.sofa.jraft.entity.RaftOutter.SnapshotMeta other) {
+                if (other == com.alipay.sofa.jraft.entity.RaftOutter.SnapshotMeta.getDefaultInstance())
+                    return this;
+                if (other.hasLastIncludedIndex()) {
+                    setLastIncludedIndex(other.getLastIncludedIndex());
+                }
+                if (other.hasLastIncludedTerm()) {
+                    setLastIncludedTerm(other.getLastIncludedTerm());
+                }
+                if (!other.peers_.isEmpty()) {
+                    if (peers_.isEmpty()) {
+                        peers_ = other.peers_;
+                        bitField0_ = (bitField0_ & ~0x00000004);
+                    } else {
+                        ensurePeersIsMutable();
+                        peers_.addAll(other.peers_);
+                    }
+                    onChanged();
+                }
+                if (!other.oldPeers_.isEmpty()) {
+                    if (oldPeers_.isEmpty()) {
+                        oldPeers_ = other.oldPeers_;
+                        bitField0_ = (bitField0_ & ~0x00000008);
+                    } else {
+                        ensureOldPeersIsMutable();
+                        oldPeers_.addAll(other.oldPeers_);
+                    }
+                    onChanged();
+                }
+                if (!other.learners_.isEmpty()) {
+                    if (learners_.isEmpty()) {
+                        learners_ = other.learners_;
+                        bitField0_ = (bitField0_ & ~0x00000010);
+                    } else {
+                        ensureLearnersIsMutable();
+                        learners_.addAll(other.learners_);
+                    }
+                    onChanged();
+                }
+                if (!other.oldLearners_.isEmpty()) {
+                    if (oldLearners_.isEmpty()) {
+                        oldLearners_ = other.oldLearners_;
+                        bitField0_ = (bitField0_ & ~0x00000020);
+                    } else {
+                        ensureOldLearnersIsMutable();
+                        oldLearners_.addAll(other.oldLearners_);
+                    }
+                    onChanged();
+                }
+                if (other.hasReadFactor()) {
+                    setReadFactor(other.getReadFactor());
+                }
+                if (other.hasWriteFactor()) {
+                    setWriteFactor(other.getWriteFactor());
+                }
+                if (other.hasOldReadFactor()) {
+                    setOldReadFactor(other.getOldReadFactor());
+                }
+                if (other.hasOldWriteFactor()) {
+                    setOldWriteFactor(other.getOldWriteFactor());
+                }
+                if (other.hasIsEnableFlexible()) {
+                    setIsEnableFlexible(other.getIsEnableFlexible());
+                }
+                this.mergeUnknownFields(other.unknownFields);
+                onChanged();
+                return this;
+            }
+
+            public final boolean isInitialized() {
+                if (!hasLastIncludedIndex()) {
+                    return false;
+                }
+                if (!hasLastIncludedTerm()) {
+                    return false;
+                }
+                return true;
+            }
+
+            public Builder mergeFrom(com.google.protobuf.CodedInputStream input,
+                                     com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                                                                                                 throws java.io.IOException {
+                com.alipay.sofa.jraft.entity.RaftOutter.SnapshotMeta parsedMessage = null;
+                try {
+                    parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+                } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+                    parsedMessage = (com.alipay.sofa.jraft.entity.RaftOutter.SnapshotMeta) e.getUnfinishedMessage();
+                    throw e.unwrapIOException();
+                } finally {
+                    if (parsedMessage != null) {
+                        mergeFrom(parsedMessage);
+                    }
+                }
+                return this;
+            }
+
+            private int  bitField0_;
+
+            private long lastIncludedIndex_;
+
+            /**
+             * <code>required int64 last_included_index = 1;</code>
+             */
+            public boolean hasLastIncludedIndex() {
+                return ((bitField0_ & 0x00000001) == 0x00000001);
+            }
+
+            /**
+             * <code>required int64 last_included_index = 1;</code>
+             */
+            public long getLastIncludedIndex() {
+                return lastIncludedIndex_;
+            }
+
+            /**
+             * <code>required int64 last_included_index = 1;</code>
+             */
+            public Builder setLastIncludedIndex(long value) {
+                bitField0_ |= 0x00000001;
+                lastIncludedIndex_ = value;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>required int64 last_included_index = 1;</code>
+             */
+            public Builder clearLastIncludedIndex() {
+                bitField0_ = (bitField0_ & ~0x00000001);
+                lastIncludedIndex_ = 0L;
+                onChanged();
+                return this;
+            }
+
+            private long lastIncludedTerm_;
+
+            /**
+             * <code>required int64 last_included_term = 2;</code>
+             */
+            public boolean hasLastIncludedTerm() {
+                return ((bitField0_ & 0x00000002) == 0x00000002);
+            }
+
+            /**
+             * <code>required int64 last_included_term = 2;</code>
+             */
+            public long getLastIncludedTerm() {
+                return lastIncludedTerm_;
+            }
+
+            /**
+             * <code>required int64 last_included_term = 2;</code>
+             */
+            public Builder setLastIncludedTerm(long value) {
+                bitField0_ |= 0x00000002;
+                lastIncludedTerm_ = value;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>required int64 last_included_term = 2;</code>
+             */
+            public Builder clearLastIncludedTerm() {
+                bitField0_ = (bitField0_ & ~0x00000002);
+                lastIncludedTerm_ = 0L;
+                onChanged();
+                return this;
+            }
+
+            private com.google.protobuf.LazyStringList peers_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+
+            private void ensurePeersIsMutable() {
+                if (!((bitField0_ & 0x00000004) == 0x00000004)) {
+                    peers_ = new com.google.protobuf.LazyStringArrayList(peers_);
+                    bitField0_ |= 0x00000004;
+                }
+            }
+
+            /**
+             * <code>repeated string peers = 3;</code>
+             */
+            public com.google.protobuf.ProtocolStringList getPeersList() {
+                return peers_.getUnmodifiableView();
+            }
+
+            /**
+             * <code>repeated string peers = 3;</code>
+             */
+            public int getPeersCount() {
+                return peers_.size();
+            }
+
+            /**
+             * <code>repeated string peers = 3;</code>
+             */
+            public java.lang.String getPeers(int index) {
+                return peers_.get(index);
+            }
+
+            /**
+             * <code>repeated string peers = 3;</code>
+             */
+            public com.google.protobuf.ByteString getPeersBytes(int index) {
+                return peers_.getByteString(index);
+            }
+
+            /**
+             * <code>repeated string peers = 3;</code>
+             */
+            public Builder setPeers(int index, java.lang.String value) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
+                ensurePeersIsMutable();
+                peers_.set(index, value);
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>repeated string peers = 3;</code>
+             */
+            public Builder addPeers(java.lang.String value) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
+                ensurePeersIsMutable();
+                peers_.add(value);
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>repeated string peers = 3;</code>
+             */
+            public Builder addAllPeers(java.lang.Iterable<java.lang.String> values) {
+                ensurePeersIsMutable();
+                com.google.protobuf.AbstractMessageLite.Builder.addAll(values, peers_);
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>repeated string peers = 3;</code>
+             */
+            public Builder clearPeers() {
+                peers_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+                bitField0_ = (bitField0_ & ~0x00000004);
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>repeated string peers = 3;</code>
+             */
+            public Builder addPeersBytes(com.google.protobuf.ByteString value) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
+                ensurePeersIsMutable();
+                peers_.add(value);
+                onChanged();
+                return this;
+            }
+
+            private com.google.protobuf.LazyStringList oldPeers_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+
+            private void ensureOldPeersIsMutable() {
+                if (!((bitField0_ & 0x00000008) == 0x00000008)) {
+                    oldPeers_ = new com.google.protobuf.LazyStringArrayList(oldPeers_);
+                    bitField0_ |= 0x00000008;
+                }
+            }
+
+            /**
+             * <code>repeated string old_peers = 4;</code>
+             */
+            public com.google.protobuf.ProtocolStringList getOldPeersList() {
+                return oldPeers_.getUnmodifiableView();
+            }
+
+            /**
+             * <code>repeated string old_peers = 4;</code>
+             */
+            public int getOldPeersCount() {
+                return oldPeers_.size();
+            }
+
+            /**
+             * <code>repeated string old_peers = 4;</code>
+             */
+            public java.lang.String getOldPeers(int index) {
+                return oldPeers_.get(index);
+            }
+
+            /**
+             * <code>repeated string old_peers = 4;</code>
+             */
+            public com.google.protobuf.ByteString getOldPeersBytes(int index) {
+                return oldPeers_.getByteString(index);
+            }
+
+            /**
+             * <code>repeated string old_peers = 4;</code>
+             */
+            public Builder setOldPeers(int index, java.lang.String value) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
+                ensureOldPeersIsMutable();
+                oldPeers_.set(index, value);
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>repeated string old_peers = 4;</code>
+             */
+            public Builder addOldPeers(java.lang.String value) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
+                ensureOldPeersIsMutable();
+                oldPeers_.add(value);
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>repeated string old_peers = 4;</code>
+             */
+            public Builder addAllOldPeers(java.lang.Iterable<java.lang.String> values) {
+                ensureOldPeersIsMutable();
+                com.google.protobuf.AbstractMessageLite.Builder.addAll(values, oldPeers_);
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>repeated string old_peers = 4;</code>
+             */
+            public Builder clearOldPeers() {
+                oldPeers_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+                bitField0_ = (bitField0_ & ~0x00000008);
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>repeated string old_peers = 4;</code>
+             */
+            public Builder addOldPeersBytes(com.google.protobuf.ByteString value) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
+                ensureOldPeersIsMutable();
+                oldPeers_.add(value);
+                onChanged();
+                return this;
+            }
+
+            private com.google.protobuf.LazyStringList learners_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+
+            private void ensureLearnersIsMutable() {
+                if (!((bitField0_ & 0x00000010) == 0x00000010)) {
+                    learners_ = new com.google.protobuf.LazyStringArrayList(learners_);
+                    bitField0_ |= 0x00000010;
+                }
+            }
+
+            /**
+             * <code>repeated string learners = 5;</code>
+             */
+            public com.google.protobuf.ProtocolStringList getLearnersList() {
+                return learners_.getUnmodifiableView();
+            }
+
+            /**
+             * <code>repeated string learners = 5;</code>
+             */
+            public int getLearnersCount() {
+                return learners_.size();
+            }
+
+            /**
+             * <code>repeated string learners = 5;</code>
+             */
+            public java.lang.String getLearners(int index) {
+                return learners_.get(index);
+            }
+
+            /**
+             * <code>repeated string learners = 5;</code>
+             */
+            public com.google.protobuf.ByteString getLearnersBytes(int index) {
+                return learners_.getByteString(index);
+            }
+
+            /**
+             * <code>repeated string learners = 5;</code>
+             */
+            public Builder setLearners(int index, java.lang.String value) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
+                ensureLearnersIsMutable();
+                learners_.set(index, value);
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>repeated string learners = 5;</code>
+             */
+            public Builder addLearners(java.lang.String value) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
+                ensureLearnersIsMutable();
+                learners_.add(value);
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>repeated string learners = 5;</code>
+             */
+            public Builder addAllLearners(java.lang.Iterable<java.lang.String> values) {
+                ensureLearnersIsMutable();
+                com.google.protobuf.AbstractMessageLite.Builder.addAll(values, learners_);
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>repeated string learners = 5;</code>
+             */
+            public Builder clearLearners() {
+                learners_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+                bitField0_ = (bitField0_ & ~0x00000010);
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>repeated string learners = 5;</code>
+             */
+            public Builder addLearnersBytes(com.google.protobuf.ByteString value) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
+                ensureLearnersIsMutable();
+                learners_.add(value);
+                onChanged();
+                return this;
+            }
+
+            private com.google.protobuf.LazyStringList oldLearners_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+
+            private void ensureOldLearnersIsMutable() {
+                if (!((bitField0_ & 0x00000020) == 0x00000020)) {
+                    oldLearners_ = new com.google.protobuf.LazyStringArrayList(oldLearners_);
+                    bitField0_ |= 0x00000020;
+                }
+            }
+
+            /**
+             * <code>repeated string old_learners = 6;</code>
+             */
+            public com.google.protobuf.ProtocolStringList getOldLearnersList() {
+                return oldLearners_.getUnmodifiableView();
+            }
+
+            /**
+             * <code>repeated string old_learners = 6;</code>
+             */
+            public int getOldLearnersCount() {
+                return oldLearners_.size();
+            }
+
+            /**
+             * <code>repeated string old_learners = 6;</code>
+             */
+            public java.lang.String getOldLearners(int index) {
+                return oldLearners_.get(index);
+            }
+
+            /**
+             * <code>repeated string old_learners = 6;</code>
+             */
+            public com.google.protobuf.ByteString getOldLearnersBytes(int index) {
+                return oldLearners_.getByteString(index);
+            }
+
+            /**
+             * <code>repeated string old_learners = 6;</code>
+             */
+            public Builder setOldLearners(int index, java.lang.String value) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
+                ensureOldLearnersIsMutable();
+                oldLearners_.set(index, value);
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>repeated string old_learners = 6;</code>
+             */
+            public Builder addOldLearners(java.lang.String value) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
+                ensureOldLearnersIsMutable();
+                oldLearners_.add(value);
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>repeated string old_learners = 6;</code>
+             */
+            public Builder addAllOldLearners(java.lang.Iterable<java.lang.String> values) {
+                ensureOldLearnersIsMutable();
+                com.google.protobuf.AbstractMessageLite.Builder.addAll(values, oldLearners_);
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>repeated string old_learners = 6;</code>
+             */
+            public Builder clearOldLearners() {
+                oldLearners_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+                bitField0_ = (bitField0_ & ~0x00000020);
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>repeated string old_learners = 6;</code>
+             */
+            public Builder addOldLearnersBytes(com.google.protobuf.ByteString value) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
+                ensureOldLearnersIsMutable();
+                oldLearners_.add(value);
+                onChanged();
+                return this;
+            }
+
+            private int readFactor_;
+
+            /**
+             * <code>optional int32 read_factor = 7;</code>
+             */
+            public boolean hasReadFactor() {
+                return ((bitField0_ & 0x00000040) == 0x00000040);
+            }
+
+            /**
+             * <code>optional int32 read_factor = 7;</code>
+             */
+            public int getReadFactor() {
+                return readFactor_;
+            }
+
+            /**
+             * <code>optional int32 read_factor = 7;</code>
+             */
+            public Builder setReadFactor(int value) {
+                bitField0_ |= 0x00000040;
+                readFactor_ = value;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>optional int32 read_factor = 7;</code>
+             */
+            public Builder clearReadFactor() {
+                bitField0_ = (bitField0_ & ~0x00000040);
+                readFactor_ = 0;
+                onChanged();
+                return this;
+            }
+
+            private int writeFactor_;
+
+            /**
+             * <code>optional int32 write_factor = 8;</code>
+             */
+            public boolean hasWriteFactor() {
+                return ((bitField0_ & 0x00000080) == 0x00000080);
+            }
+
+            /**
+             * <code>optional int32 write_factor = 8;</code>
+             */
+            public int getWriteFactor() {
+                return writeFactor_;
+            }
+
+            /**
+             * <code>optional int32 write_factor = 8;</code>
+             */
+            public Builder setWriteFactor(int value) {
+                bitField0_ |= 0x00000080;
+                writeFactor_ = value;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>optional int32 write_factor = 8;</code>
+             */
+            public Builder clearWriteFactor() {
+                bitField0_ = (bitField0_ & ~0x00000080);
+                writeFactor_ = 0;
+                onChanged();
+                return this;
+            }
+
+            private int oldReadFactor_;
+
+            /**
+             * <code>optional int32 old_read_factor = 9;</code>
+             */
+            public boolean hasOldReadFactor() {
+                return ((bitField0_ & 0x00000100) == 0x00000100);
+            }
+
+            /**
+             * <code>optional int32 old_read_factor = 9;</code>
+             */
+            public int getOldReadFactor() {
+                return oldReadFactor_;
+            }
+
+            /**
+             * <code>optional int32 old_read_factor = 9;</code>
+             */
+            public Builder setOldReadFactor(int value) {
+                bitField0_ |= 0x00000100;
+                oldReadFactor_ = value;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>optional int32 old_read_factor = 9;</code>
+             */
+            public Builder clearOldReadFactor() {
+                bitField0_ = (bitField0_ & ~0x00000100);
+                oldReadFactor_ = 0;
+                onChanged();
+                return this;
+            }
+
+            private int oldWriteFactor_;
+
+            /**
+             * <code>optional int32 old_write_factor = 10;</code>
+             */
+            public boolean hasOldWriteFactor() {
+                return ((bitField0_ & 0x00000200) == 0x00000200);
+            }
+
+            /**
+             * <code>optional int32 old_write_factor = 10;</code>
+             */
+            public int getOldWriteFactor() {
+                return oldWriteFactor_;
+            }
+
+            /**
+             * <code>optional int32 old_write_factor = 10;</code>
+             */
+            public Builder setOldWriteFactor(int value) {
+                bitField0_ |= 0x00000200;
+                oldWriteFactor_ = value;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>optional int32 old_write_factor = 10;</code>
+             */
+            public Builder clearOldWriteFactor() {
+                bitField0_ = (bitField0_ & ~0x00000200);
+                oldWriteFactor_ = 0;
+                onChanged();
+                return this;
+            }
+
+            private boolean isEnableFlexible_;
+
+            /**
+             * <code>optional bool isEnableFlexible = 11;</code>
+             */
+            public boolean hasIsEnableFlexible() {
+                return ((bitField0_ & 0x00000400) == 0x00000400);
+            }
+
+            /**
+             * <code>optional bool isEnableFlexible = 11;</code>
+             */
+            public boolean getIsEnableFlexible() {
+                return isEnableFlexible_;
+            }
+
+            /**
+             * <code>optional bool isEnableFlexible = 11;</code>
+             */
+            public Builder setIsEnableFlexible(boolean value) {
+                bitField0_ |= 0x00000400;
+                isEnableFlexible_ = value;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>optional bool isEnableFlexible = 11;</code>
+             */
+            public Builder clearIsEnableFlexible() {
+                bitField0_ = (bitField0_ & ~0x00000400);
+                isEnableFlexible_ = false;
+                onChanged();
+                return this;
+            }
+
+            public final Builder setUnknownFields(final com.google.protobuf.UnknownFieldSet unknownFields) {
+                return super.setUnknownFields(unknownFields);
+            }
+
+            public final Builder mergeUnknownFields(final com.google.protobuf.UnknownFieldSet unknownFields) {
+                return super.mergeUnknownFields(unknownFields);
+            }
+
+            // @@protoc_insertion_point(builder_scope:jraft.SnapshotMeta)
+        }
+
+        // @@protoc_insertion_point(class_scope:jraft.SnapshotMeta)
+        private static final com.alipay.sofa.jraft.entity.RaftOutter.SnapshotMeta DEFAULT_INSTANCE;
+        static {
+            DEFAULT_INSTANCE = new com.alipay.sofa.jraft.entity.RaftOutter.SnapshotMeta();
+        }
+
+        public static com.alipay.sofa.jraft.entity.RaftOutter.SnapshotMeta getDefaultInstance() {
+            return DEFAULT_INSTANCE;
+        }
+
+        @java.lang.Deprecated
+        public static final com.google.protobuf.Parser<SnapshotMeta> PARSER = new com.google.protobuf.AbstractParser<SnapshotMeta>() {
+                                                                                public SnapshotMeta parsePartialFrom(com.google.protobuf.CodedInputStream input,
+                                                                                                                     com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                                                                                                                                                                                 throws com.google.protobuf.InvalidProtocolBufferException {
+                                                                                    return new SnapshotMeta(input,
+                                                                                        extensionRegistry);
+                                                                                }
+                                                                            };
+
+        public static com.google.protobuf.Parser<SnapshotMeta> parser() {
+            return PARSER;
+        }
+
+        @java.lang.Override
+        public com.google.protobuf.Parser<SnapshotMeta> getParserForType() {
+            return PARSER;
+        }
+
+        public com.alipay.sofa.jraft.entity.RaftOutter.SnapshotMeta getDefaultInstanceForType() {
+            return DEFAULT_INSTANCE;
+        }
+
     }
 
-    @java.lang.Override
-    public com.google.protobuf.Parser<SnapshotMeta> getParserForType() {
-      return PARSER;
+    private static final com.google.protobuf.Descriptors.Descriptor                internal_static_jraft_EntryMeta_descriptor;
+    private static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable internal_static_jraft_EntryMeta_fieldAccessorTable;
+    private static final com.google.protobuf.Descriptors.Descriptor                internal_static_jraft_SnapshotMeta_descriptor;
+    private static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable internal_static_jraft_SnapshotMeta_fieldAccessorTable;
+
+    public static com.google.protobuf.Descriptors.FileDescriptor getDescriptor() {
+        return descriptor;
     }
 
-    @java.lang.Override
-    public com.alipay.sofa.jraft.entity.RaftOutter.SnapshotMeta getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
-  }
-
-  private static final com.google.protobuf.Descriptors.Descriptor                internal_static_jraft_EntryMeta_descriptor;
-  private static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable internal_static_jraft_EntryMeta_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor                internal_static_jraft_SnapshotMeta_descriptor;
-  private static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable internal_static_jraft_SnapshotMeta_fieldAccessorTable;
-
-  public static com.google.protobuf.Descriptors.FileDescriptor getDescriptor() {
-    return descriptor;
-  }
-
-  private static com.google.protobuf.Descriptors.FileDescriptor descriptor;
-  static {
-    java.lang.String[] descriptorData = { "\n\nraft.proto\022\005jraft\032\nenum.proto\"\205\002\n\tEntr"
-            + "yMeta\022\014\n\004term\030\001 \002(\003\022\036\n\004type\030\002 \002(\0162\020.jraf"
-            + "t.EntryType\022\r\n\005peers\030\003 \003(\t\022\020\n\010data_len\030\004"
-            + " \001(\003\022\021\n\told_peers\030\005 \003(\t\022\020\n\010checksum\030\006 \001("
-            + "\003\022\020\n\010learners\030\007 \003(\t\022\024\n\014old_learners\030\010 \003("
-            + "\t\022\023\n\013read_factor\030\t \001(\003\022\024\n\014write_factor\030\n"
-            + " \001(\003\022\027\n\017old_read_factor\030\013 \001(\003\022\030\n\020old_wri"
-            + "te_factor\030\014 \001(\003\"\357\001\n\014SnapshotMeta\022\033\n\023last"
-            + "_included_index\030\001 \002(\003\022\032\n\022last_included_t"
-            + "erm\030\002 \002(\003\022\r\n\005peers\030\003 \003(\t\022\021\n\told_peers\030\004 "
-            + "\003(\t\022\020\n\010learners\030\005 \003(\t\022\024\n\014old_learners\030\006 "
-            + "\003(\t\022\023\n\013read_factor\030\007 \001(\003\022\024\n\014write_factor"
-            + "\030\010 \001(\003\022\027\n\017old_read_factor\030\t \001(\003\022\030\n\020old_w"
-            + "rite_factor\030\n \001(\003B*\n\034com.alipay.sofa.jra"
-            + "ft.entityB\nRaftOutter" };
-    com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner = new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
-      public com.google.protobuf.ExtensionRegistry assignDescriptors(com.google.protobuf.Descriptors.FileDescriptor root) {
-        descriptor = root;
-        return null;
-      }
-    };
-    com.google.protobuf.Descriptors.FileDescriptor.internalBuildGeneratedFileFrom(descriptorData,
+    private static com.google.protobuf.Descriptors.FileDescriptor descriptor;
+    static {
+        java.lang.String[] descriptorData = { "\n\nraft.proto\022\005jraft\032\nenum.proto\"\237\002\n\tEntr"
+                                              + "yMeta\022\014\n\004term\030\001 \002(\003\022\036\n\004type\030\002 \002(\0162\020.jraf"
+                                              + "t.EntryType\022\r\n\005peers\030\003 \003(\t\022\020\n\010data_len\030\004"
+                                              + " \001(\003\022\021\n\told_peers\030\005 \003(\t\022\020\n\010checksum\030\006 \001("
+                                              + "\003\022\020\n\010learners\030\007 \003(\t\022\024\n\014old_learners\030\010 \003("
+                                              + "\t\022\023\n\013read_factor\030\t \001(\005\022\024\n\014write_factor\030\n"
+                                              + " \001(\005\022\027\n\017old_read_factor\030\013 \001(\005\022\030\n\020old_wri"
+                                              + "te_factor\030\014 \001(\005\022\030\n\020isEnableFlexible\030\r \001("
+                                              + "\010\"\211\002\n\014SnapshotMeta\022\033\n\023last_included_inde"
+                                              + "x\030\001 \002(\003\022\032\n\022last_included_term\030\002 \002(\003\022\r\n\005p"
+                                              + "eers\030\003 \003(\t\022\021\n\told_peers\030\004 \003(\t\022\020\n\010learner"
+                                              + "s\030\005 \003(\t\022\024\n\014old_learners\030\006 \003(\t\022\023\n\013read_fa"
+                                              + "ctor\030\007 \001(\005\022\024\n\014write_factor\030\010 \001(\005\022\027\n\017old_"
+                                              + "read_factor\030\t \001(\005\022\030\n\020old_write_factor\030\n "
+                                              + "\001(\005\022\030\n\020isEnableFlexible\030\013 \001(\010B*\n\034com.ali"
+                                              + "pay.sofa.jraft.entityB\nRaftOutter" };
+        com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner = new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
+            public com.google.protobuf.ExtensionRegistry assignDescriptors(com.google.protobuf.Descriptors.FileDescriptor root) {
+                descriptor = root;
+                return null;
+            }
+        };
+        com.google.protobuf.Descriptors.FileDescriptor.internalBuildGeneratedFileFrom(descriptorData,
             new com.google.protobuf.Descriptors.FileDescriptor[] { com.alipay.sofa.jraft.entity.EnumOutter
-                    .getDescriptor(), }, assigner);
-    internal_static_jraft_EntryMeta_descriptor = getDescriptor().getMessageTypes().get(0);
-    internal_static_jraft_EntryMeta_fieldAccessorTable = new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+                .getDescriptor(), }, assigner);
+        internal_static_jraft_EntryMeta_descriptor = getDescriptor().getMessageTypes().get(0);
+        internal_static_jraft_EntryMeta_fieldAccessorTable = new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
             internal_static_jraft_EntryMeta_descriptor, new java.lang.String[] { "Term", "Type", "Peers", "DataLen",
             "OldPeers", "Checksum", "Learners", "OldLearners", "ReadFactor", "WriteFactor", "OldReadFactor",
-            "OldWriteFactor", });
-    internal_static_jraft_SnapshotMeta_descriptor = getDescriptor().getMessageTypes().get(1);
-    internal_static_jraft_SnapshotMeta_fieldAccessorTable = new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            "OldWriteFactor", "IsEnableFlexible", });
+        internal_static_jraft_SnapshotMeta_descriptor = getDescriptor().getMessageTypes().get(1);
+        internal_static_jraft_SnapshotMeta_fieldAccessorTable = new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
             internal_static_jraft_SnapshotMeta_descriptor, new java.lang.String[] { "LastIncludedIndex",
             "LastIncludedTerm", "Peers", "OldPeers", "Learners", "OldLearners", "ReadFactor", "WriteFactor",
-            "OldReadFactor", "OldWriteFactor", });
-    com.alipay.sofa.jraft.entity.EnumOutter.getDescriptor();
-  }
+            "OldReadFactor", "OldWriteFactor", "IsEnableFlexible", });
+        com.alipay.sofa.jraft.entity.EnumOutter.getDescriptor();
+    }
 
-  // @@protoc_insertion_point(outer_class_scope)
+    // @@protoc_insertion_point(outer_class_scope)
 }

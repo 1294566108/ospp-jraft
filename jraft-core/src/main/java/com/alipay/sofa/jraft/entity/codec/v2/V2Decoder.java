@@ -36,7 +36,7 @@ import com.google.protobuf.ZeroByteStringHelper;
 /**
  * V2 log entry decoder based on protobuf, see src/main/resources/log.proto
  *
- * @author boyan(boyan@antfin.com)
+ * @author boyan(boyan @ antfin.com)
  */
 public class V2Decoder implements LogEntryDecoder {
 
@@ -64,6 +64,7 @@ public class V2Decoder implements LogEntryDecoder {
         i += LogEntryV2CodecFactory.RESERVED.length;
         try {
             final PBLogEntry entry = PBLogEntry.parseFrom(ZeroByteStringHelper.wrap(bs, i, bs.length - i));
+
             final LogEntry log = new LogEntry();
             log.setType(entry.getType());
             log.getId().setIndex(entry.getIndex());
@@ -103,14 +104,18 @@ public class V2Decoder implements LogEntryDecoder {
                 log.setOldLearners(peers);
             }
 
-            if(entry.hasWriteFactor() || entry.hasReadFactor()){
-                log.setWriteFactor((int) entry.getWriteFactor());
-                log.setReadFactor((int) entry.getReadFactor());
+            if (entry.hasWriteFactor() || entry.hasReadFactor()) {
+                log.setWriteFactor(entry.getWriteFactor());
+                log.setReadFactor(entry.getReadFactor());
             }
 
-            if(entry.hasOldWriteFactor() || entry.hasOldReadFactor()){
-                log.setOldWriteFactor((int) entry.getOldWriteFactor());
-                log.setOldReadFactor((int) entry.getOldReadFactor());
+            if (entry.hasOldWriteFactor() || entry.hasOldReadFactor()) {
+                log.setOldWriteFactor(entry.getOldWriteFactor());
+                log.setOldReadFactor(entry.getOldReadFactor());
+            }
+
+            if (entry.hasIsEnableFlexible()) {
+                log.setEnableFlexible(entry.getIsEnableFlexible());
             }
 
             final ByteString data = entry.getData();

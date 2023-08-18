@@ -21,6 +21,7 @@ import com.alipay.sofa.jraft.JRaftServiceFactory;
 import com.alipay.sofa.jraft.StateMachine;
 import com.alipay.sofa.jraft.conf.Configuration;
 import com.alipay.sofa.jraft.core.ElectionPriority;
+import com.alipay.sofa.jraft.entity.BallotFactory;
 import com.alipay.sofa.jraft.storage.SnapshotThrottle;
 import com.alipay.sofa.jraft.util.Copiable;
 import com.alipay.sofa.jraft.util.JRaftServiceLoader;
@@ -166,18 +167,6 @@ public class NodeOptions extends RpcOptions implements Copiable<NodeOptions> {
      */
     private boolean                         sharedSnapshotTimer    = false;
 
-    /**
-     * Read Quorum's factor
-     */
-    private Integer                         readQuorumFactor;
-    /**
-     * Write Quorum's factor
-     */
-    private Integer                         writeQuorumFactor;
-    /**
-     * Enable FlexibleMode or Not
-     */
-    private boolean                         enableFlexibleRaft     = false;
     /**
      * Custom service factory.
      */
@@ -437,28 +426,18 @@ public class NodeOptions extends RpcOptions implements Copiable<NodeOptions> {
         this.sharedSnapshotTimer = sharedSnapshotTimer;
     }
 
-    public Integer getReadQuorumFactor() {
-        return readQuorumFactor;
+    public void setReadFactor(int readFactor) {
+        this.initialConf.setReadFactor(readFactor);
+        this.initialConf.setQuorum(BallotFactory.buildFlexibleQuorum(readFactor, null, initialConf.getPeers().size()));
     }
 
-    public void setReadQuorumFactor(int readQuorumFactor) {
-        this.readQuorumFactor = readQuorumFactor;
-    }
-
-    public Integer getWriteQuorumFactor() {
-        return writeQuorumFactor;
-    }
-
-    public void setWriteQuorumFactor(int writeQuorumFactor) {
-        this.writeQuorumFactor = writeQuorumFactor;
-    }
-
-    public boolean isEnableFlexibleRaft() {
-        return enableFlexibleRaft;
+    public void setWriteFactor(int writeFactor) {
+        this.initialConf.setWriteFactor(writeFactor);
+        this.initialConf.setQuorum(BallotFactory.buildFlexibleQuorum(null, writeFactor, initialConf.getPeers().size()));
     }
 
     public void enableFlexibleRaft(boolean enabled) {
-        this.enableFlexibleRaft = enabled;
+        this.initialConf.setEnableFlexible(enabled);
     }
 
     @Override
@@ -489,11 +468,6 @@ public class NodeOptions extends RpcOptions implements Copiable<NodeOptions> {
         nodeOptions.setRpcProcessorThreadPoolSize(super.getRpcProcessorThreadPoolSize());
         nodeOptions.setEnableRpcChecksum(super.isEnableRpcChecksum());
         nodeOptions.setMetricRegistry(super.getMetricRegistry());
-        if (nodeOptions.isEnableFlexibleRaft()) {
-            nodeOptions.enableFlexibleRaft(true);
-            nodeOptions.setWriteQuorumFactor(this.writeQuorumFactor);
-            nodeOptions.setReadQuorumFactor(this.readQuorumFactor);
-        }
         return nodeOptions;
     }
 

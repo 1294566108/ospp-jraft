@@ -57,13 +57,15 @@ public class LogEntry implements Checksum {
     /** true when the log has checksum **/
     private boolean                hasChecksum;
     /** read factor for flexible raft **/
-    private int                    readFactor;
+    private Integer                readFactor;
     /** write factor for flexible raft **/
-    private int                    writeFactor;
+    private Integer                writeFactor;
     /** old read factor for flexible raft **/
-    private int                    oldReadFactor;
+    private Integer                oldReadFactor;
     /** old write factor for flexible raft **/
-    private int                    oldWriteFactor;
+    private Integer                oldWriteFactor;
+    /** enable flexible raft or not **/
+    private Boolean                isEnableFlexible;
 
     public List<PeerId> getLearners() {
         return this.learners;
@@ -236,12 +238,20 @@ public class LogEntry implements Checksum {
         this.oldWriteFactor = oldWriteFactor;
     }
 
+    public Boolean getEnableFlexible() {
+        return isEnableFlexible;
+    }
+
+    public void setEnableFlexible(Boolean enableFlexible) {
+        isEnableFlexible = enableFlexible;
+    }
+
     public boolean haveFactorValue() {
-        return readFactor > 0 || writeFactor > 0;
+        return Objects.nonNull(readFactor) || Objects.nonNull(writeFactor);
     }
 
     public boolean haveOldFactorValue() {
-        return oldReadFactor > 0 || oldWriteFactor > 0;
+        return Objects.nonNull(oldReadFactor) || Objects.nonNull(oldWriteFactor);
     }
 
     /**
@@ -282,7 +292,8 @@ public class LogEntry implements Checksum {
         return "LogEntry [type=" + this.type + ", id=" + this.id + ", peers=" + this.peers + ", oldPeers="
                + this.oldPeers + ", learners=" + this.learners + ", oldLearners=" + this.oldLearners + ", data="
                + (this.data != null ? this.data.remaining() : 0) + ", readFactor=" + this.readFactor + ", writeFactor="
-               + this.writeFactor + ", oldReadFactor=" + oldReadFactor + ", oldWriteFactor=" + oldWriteFactor + "]";
+               + this.writeFactor + ", oldReadFactor=" + oldReadFactor + ", oldWriteFactor=" + oldWriteFactor
+               + ", isEnableFlexible=" + isEnableFlexible + "]";
     }
 
     @Override
