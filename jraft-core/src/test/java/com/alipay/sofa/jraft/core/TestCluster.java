@@ -24,6 +24,7 @@ import java.util.IdentityHashMap;
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Objects;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 import java.util.concurrent.CountDownLatch;
@@ -137,8 +138,8 @@ public class TestCluster {
         return this.start(addr, false, 300);
     }
 
-    public boolean startWithFlexible(final Endpoint addr) throws Exception {
-        return this.start(addr,false,300,false,true,null,null);
+    public boolean startWithFlexible(final Endpoint addr,final Integer readFactor,final Integer writeFactor) throws Exception {
+        return this.start(addr,false,300,false,readFactor,writeFactor,null,null);
     }
 
     public boolean start(final Endpoint addr, final int priority) throws Exception {
@@ -150,9 +151,9 @@ public class TestCluster {
         return this.start(peer.getEndpoint(), false, 300);
     }
 
-    public boolean startLearnerWithFlexible(final PeerId peer) throws Exception{
+    public boolean startLearnerWithFlexible(final PeerId peer,final Integer readFactor,final Integer writeFactor) throws Exception{
         this.learners.add(peer);
-        return this.start(peer.getEndpoint(), false, 300,false,true,null,null);
+        return this.start(peer.getEndpoint(), false, 300,false,readFactor,writeFactor,null,null);
     }
 
     public boolean start(final Endpoint listenAddr, final boolean emptyPeers, final int snapshotIntervalSecs)
@@ -258,6 +259,59 @@ public class TestCluster {
         final RpcServer rpcServer = RaftRpcServerFactory.createRaftRpcServer(listenAddr);
         final RaftGroupService server = new RaftGroupService(this.name, new PeerId(listenAddr, 0), nodeOptions,
             rpcServer);
+
+        this.lock.lock();
+        try {
+            if (this.serverMap.put(listenAddr.toString(), server) == null) {
+                final Node node = server.start();
+
+                this.fsms.put(new PeerId(listenAddr, 0), fsm);
+                this.nodes.add((NodeImpl) node);
+                return true;
+            }
+        } finally {
+            this.lock.unlock();
+        }
+        return false;
+    }
+
+    public boolean start(final Endpoint listenAddr, final boolean emptyPeers, final int snapshotIntervalSecs,
+                         final boolean enableMetrics, final Integer readFactor, final Integer writeFactor,
+                         final SnapshotThrottle snapshotThrottle, final RaftOptions raftOptions) throws IOException {
+
+        if (this.serverMap.get(listenAddr.toString()) != null) {
+            return true;
+        }
+
+        final NodeOptions nodeOptions = new NodeOptions();
+        nodeOptions.setElectionTimeoutMs(this.electionTimeoutMs);
+        nodeOptions.setEnableMetrics(enableMetrics);
+        nodeOptions.setSnapshotThrottle(snapshotThrottle);
+        nodeOptions.setSnapshotIntervalSecs(snapshotIntervalSecs);
+        nodeOptions.setServiceFactory(this.raftServiceFactory);
+        if(Objects.nonNull(readFactor)||Objects.nonNull(writeFactor)){
+            nodeOptions.enableFlexibleRaft(true);
+            nodeOptions.setReadFactor(readFactor);
+            nodeOptions.setWriteFactor(writeFactor);
+        }
+        if (raftOptions != null) {
+            nodeOptions.setRaftOptions(raftOptions);
+        }
+        final String serverDataPath = this.dataPath + File.separator + listenAddr.toString().replace(':', '_');
+        FileUtils.forceMkdir(new File(serverDataPath));
+        nodeOptions.setLogUri(serverDataPath + File.separator + "logs");
+        nodeOptions.setRaftMetaUri(serverDataPath + File.separator + "meta");
+        nodeOptions.setSnapshotUri(serverDataPath + File.separator + "snapshot");
+        final MockStateMachine fsm = new MockStateMachine(listenAddr);
+        nodeOptions.setFsm(fsm);
+
+        if (!emptyPeers) {
+            nodeOptions.setInitialConf(new Configuration(this.peers, this.learners));
+        }
+
+        final RpcServer rpcServer = RaftRpcServerFactory.createRaftRpcServer(listenAddr);
+        final RaftGroupService server = new RaftGroupService(this.name, new PeerId(listenAddr, 0), nodeOptions,
+                rpcServer);
 
         this.lock.lock();
         try {
