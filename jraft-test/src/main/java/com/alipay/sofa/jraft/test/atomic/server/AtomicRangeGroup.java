@@ -92,10 +92,6 @@ public class AtomicRangeGroup {
         nodeOptions.setRaftMetaUri(dataPath + File.separator + "raft_meta");
         // Snapshot, not required, but recommend
         nodeOptions.setSnapshotUri(dataPath + File.separator + "snapshot");
-        // enable flexible mode
-        nodeOptions.enableFlexibleRaft(true);
-        nodeOptions.setWriteQuorumFactor(4);
-
         // Init raft group service framework
         this.raftGroupService = new RaftGroupService(groupId, serverId, nodeOptions, rpcServer);
         // Startup node

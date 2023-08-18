@@ -131,23 +131,16 @@ public class LogManagerImpl implements LogManager {
 
     /**
      * Waiter metadata
-     *
      * @author boyan (boyan@alibaba-inc.com)
      *
      * 2018-Apr-04 5:05:04 PM
      */
     private static class WaitMeta {
-        /**
-         * callback when new log come in
-         */
+        /** callback when new log come in*/
         NewLogCallback onNewLog;
-        /**
-         * callback error code
-         */
+        /** callback error code*/
         int            errorCode;
-        /**
-         * the waiter pass-in argument
-         */
+        /** the waiter pass-in argument */
         Object         arg;
 
         public WaitMeta(final NewLogCallback onNewLog, final Object arg, final int errorCode) {
@@ -328,20 +321,12 @@ public class LogManagerImpl implements LogManager {
                 if (entry.getType() == EntryType.ENTRY_TYPE_CONFIGURATION) {
                     Configuration oldConf = new Configuration();
                     if (entry.getOldPeers() != null) {
-                        oldConf = new Configuration(entry.getOldPeers(), entry.getOldLearners());
-                        if (entry.haveOldFactorValue()) {
-                            oldConf.setReadFactor(entry.getOldReadFactor());
-                            oldConf.setWriteFactor(entry.getOldWriteFactor());
-                        }
+                        oldConf = new Configuration(entry.getOldPeers(), entry.getOldLearners(), null, entry.getReadFactor(), entry.getWriteFactor(), entry.getEnableFlexible());
                     }
-                    Configuration newConf = new Configuration(entry.getPeers(), entry.getLearners());
-                    if (entry.haveFactorValue()) {
-                        newConf.setReadFactor(entry.getReadFactor());
-                        newConf.setWriteFactor(entry.getWriteFactor());
-                    }
+                    Configuration newConf = new Configuration(entry.getPeers(), entry.getLearners(), null,
+                            entry.getReadFactor(), entry.getWriteFactor(), entry.getEnableFlexible());
                     final ConfigurationEntry conf = new ConfigurationEntry(entry.getId(),
                             newConf, oldConf);
-                    System.out.println("【LogManagerImpl ADD ENTRY】："+conf);
                     this.configManager.add(conf);
                 }
             }
@@ -421,7 +406,6 @@ public class LogManagerImpl implements LogManager {
     }
 
     private LogId appendToStorage(final List<LogEntry> toAppend) {
-        System.out.println("appendToStorage:" + toAppend);
         LogId lastId = null;
         if (!this.hasError) {
             final long startMs = Utils.monotonicMs();
@@ -616,6 +600,7 @@ public class LogManagerImpl implements LogManager {
 
     @Override
     public void setSnapshot(final SnapshotMeta meta) {
+        LOG.debug("set snapshot: {}.", meta);
         boolean doUnlock = true;
         this.writeLock.lock();
         try {
@@ -627,7 +612,6 @@ public class LogManagerImpl implements LogManager {
 
             final ConfigurationEntry entry = new ConfigurationEntry(new LogId(meta.getLastIncludedIndex(),
                 meta.getLastIncludedTerm()), conf, oldConf);
-            System.out.println("SET SNAPSHOT:" + entry);
             this.configManager.setSnapshot(entry);
             final long term = unsafeGetTerm(meta.getLastIncludedIndex());
             final long savedLastSnapshotIndex = this.lastSnapshotId.getIndex();
@@ -686,8 +670,8 @@ public class LogManagerImpl implements LogManager {
         }
         // load factor from meta
         if (meta.hasOldReadFactor() && meta.hasOldWriteFactor()) {
-            oldConf.setReadFactor((int) meta.getOldReadFactor());
-            oldConf.setWriteFactor((int) meta.getWriteFactor());
+            oldConf.setReadFactor(meta.getOldReadFactor());
+            oldConf.setWriteFactor(meta.getWriteFactor());
         }
         for (int i = 0; i < meta.getOldLearnersCount(); i++) {
             final PeerId peer = new PeerId();
@@ -696,8 +680,8 @@ public class LogManagerImpl implements LogManager {
         }
         // load old factor from meta
         if (meta.hasOldReadFactor() || meta.hasOldWriteFactor()) {
-            oldConf.setReadFactor((int) meta.getOldReadFactor());
-            oldConf.setWriteFactor((int) meta.getOldWriteFactor());
+            oldConf.setReadFactor(meta.getOldReadFactor());
+            oldConf.setWriteFactor(meta.getOldWriteFactor());
         }
         return oldConf;
     }
@@ -714,9 +698,10 @@ public class LogManagerImpl implements LogManager {
             peer.parse(meta.getLearners(i));
             conf.addLearner(peer);
         }
+        conf.setEnableFlexible(meta.getIsEnableFlexible());
         if (meta.hasReadFactor() || meta.hasWriteFactor()) {
-            conf.setReadFactor((int) meta.getReadFactor());
-            conf.setWriteFactor((int) meta.getWriteFactor());
+            conf.setReadFactor(meta.getReadFactor());
+            conf.setWriteFactor(meta.getWriteFactor());
         }
         return conf;
     }

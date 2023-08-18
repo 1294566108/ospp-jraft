@@ -36,7 +36,7 @@ import java.io.IOException;
  * Counter server that keeps a counter value in a raft group.
  *
  * @author boyan (boyan@alibaba-inc.com)
- *
+ * <p>
  * 2018-Apr-09 4:51:02 PM
  */
 public class CounterServer {
@@ -71,12 +71,9 @@ public class CounterServer {
         nodeOptions.setRaftMetaUri(dataPath + File.separator + "raft_meta");
         // snapshot, optional, generally recommended
         nodeOptions.setSnapshotUri(dataPath + File.separator + "snapshot");
-        // n=5 wq=4 rq=6 -> w=2,r=4
-        // n=5 wq=8 rq=2 -> w=4,r=2
-        // n=6 wq=4 rq=6 -> w=3,r=4
-        // n=6 wq=8,rq=2 -> w=5,r=2
+        // n=5 w=2,r=4
         nodeOptions.enableFlexibleRaft(true);
-        nodeOptions.setWriteQuorumFactor(4);
+        nodeOptions.setWriteFactor(4);
         // init raft group service framework
         this.raftGroupService = new RaftGroupService(groupId, serverId, nodeOptions, rpcServer);
         // start raft node
@@ -136,6 +133,7 @@ public class CounterServer {
             throw new IllegalArgumentException("Fail to parse serverId:" + serverIdStr);
         }
         final Configuration initConf = new Configuration();
+
         if (!initConf.parse(initConfStr)) {
             throw new IllegalArgumentException("Fail to parse initConf:" + initConfStr);
         }
