@@ -30,6 +30,8 @@ import java.util.TreeSet;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
+import com.alipay.sofa.jraft.Quorum;
+import com.alipay.sofa.jraft.entity.BallotFactory;
 import org.apache.commons.io.FileUtils;
 import org.junit.After;
 import org.junit.Before;
@@ -279,6 +281,47 @@ public class CliServiceTest {
         final PeerId newLeader = this.cluster.getLeader().getNodeId().getPeerId();
         assertNotEquals(oldLeader, newLeader);
         assertTrue(newPeers.contains(newLeader));
+    }
+
+    @Test
+    public void testResetFactor() throws Exception{
+
+        Integer readFactor=4;
+        Integer writeFactor=6;
+        Integer changeReadFactor = 8;
+        Integer changeWriteFactor = 2;
+
+        String tempDataPath = TestUtils.mkTempDir();
+        String groupId = "CliServiceTest_ResetFactorTest";
+
+        FileUtils.forceMkdir(new File(tempDataPath));
+        final List<PeerId> peers = TestUtils.generatePeers(5);
+
+        final LinkedHashSet<PeerId> learners = new LinkedHashSet<>();
+        //2 learners
+        for (int i = 2; i < 4; i++) {
+            learners.add(new PeerId(TestUtils.getMyIp(), TestUtils.INIT_PORT + LEARNER_PORT_STEP + i));
+        }
+
+        TestCluster cluster = new TestCluster(groupId, tempDataPath, peers, learners, 300);
+        for (final PeerId peer : peers) {
+            cluster.startWithFlexible(peer.getEndpoint());
+        }
+
+        for (final PeerId peer : learners) {
+            cluster.startLearnerWithFlexible(peer);
+        }
+
+        cluster.waitLeader();
+        Configuration tempConf = new Configuration(peers, learners);
+
+        Quorum quorum = BallotFactory.buildFlexibleQuorum(readFactor, writeFactor, tempConf.getPeers().size());
+        tempConf.setEnableFlexible(true);
+        tempConf.setQuorum(quorum);
+        tempConf.setReadFactor(readFactor);
+        tempConf.setWriteFactor(writeFactor);
+        System.out.println(this.cliService.resetFactor(groupId,tempConf,changeReadFactor,changeWriteFactor));
+        //assertTrue(this.cliService.resetFactor(this.groupId,tempConf,changeReadFactor,changeWriteFactor).isOk());
     }
 
     @Test
