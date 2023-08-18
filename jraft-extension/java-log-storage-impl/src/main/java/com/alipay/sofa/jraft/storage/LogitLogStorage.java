@@ -513,7 +513,7 @@ public class LogitLogStorage implements LogStorage {
             this.confDB.reset(nextLogIndex);
             if (entry == null) {
                 entry = new LogEntry();
-                entry.setType(EntryType.ENTRY_TYPE_NO_OP);
+                entry.setType(EnumOutter.EntryType.ENTRY_TYPE_NO_OP);
                 entry.setId(new LogId(nextLogIndex, 0));
             }
             saveFirstLogIndex(-1);

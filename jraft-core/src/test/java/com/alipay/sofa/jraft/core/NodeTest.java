@@ -1277,7 +1277,7 @@ public class NodeTest {
             final RaftOptions raftOptions = new RaftOptions();
             raftOptions.setEnableLogEntryChecksum(true);
             for (final PeerId peer : peers) {
-                assertTrue(cluster.start(peer.getEndpoint(), false, 300, true, null, raftOptions));
+                assertTrue(cluster.start(peer.getEndpoint(), false, 300, true,false, null, raftOptions));
             }
 
             cluster.waitLeader();
@@ -1300,7 +1300,7 @@ public class NodeTest {
                     raftOptions = new RaftOptions();
                     raftOptions.setEnableLogEntryChecksum(true);
                 }
-                assertTrue(cluster.start(peer.getEndpoint(), false, 300, true, null, raftOptions));
+                assertTrue(cluster.start(peer.getEndpoint(), false, 300, true,false, null, raftOptions));
             }
 
             cluster.waitLeader();
@@ -1319,7 +1319,7 @@ public class NodeTest {
             final RaftOptions raftOptions = new RaftOptions();
             raftOptions.setEnableLogEntryChecksum(false);
             for (final PeerId peer : peers) {
-                assertTrue(cluster.start(peer.getEndpoint(), false, 300, true, null, raftOptions));
+                assertTrue(cluster.start(peer.getEndpoint(), false, 300, true,false, null, raftOptions));
             }
 
             cluster.waitLeader();
@@ -1338,7 +1338,7 @@ public class NodeTest {
             final RaftOptions raftOptions = new RaftOptions();
             raftOptions.setEnableLogEntryChecksum(true);
             for (final PeerId peer : peers) {
-                assertTrue(cluster.start(peer.getEndpoint(), false, 300, true, null, raftOptions));
+                assertTrue(cluster.start(peer.getEndpoint(), false, 300, true,false, null, raftOptions));
             }
 
             cluster.waitLeader();
@@ -2268,7 +2268,7 @@ public class NodeTest {
         final PeerId newPeer = peers.get(3);
         final RaftOptions raftOptions = new RaftOptions();
         raftOptions.setMaxByteCountPerRpc(128);
-        final boolean started = cluster.start(newPeer.getEndpoint(), true, 300, false, null, raftOptions);
+        final boolean started = cluster.start(newPeer.getEndpoint(), true, 300, false,false, null, raftOptions);
         assertTrue(started);
 
         final CountDownLatch latch = new CountDownLatch(1);

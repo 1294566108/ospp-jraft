@@ -127,7 +127,7 @@ public class TestCluster {
     }
 
     public boolean start(final Endpoint addr, final int priority) throws Exception {
-        return this.start(addr, false, 300, false, null, null, priority);
+        return this.start(addr, false, 300, false,false, null, null, priority);
     }
 
     public boolean startLearner(final PeerId peer) throws Exception {
@@ -142,16 +142,16 @@ public class TestCluster {
 
     public boolean start(final Endpoint listenAddr, final boolean emptyPeers, final int snapshotIntervalSecs,
                          final boolean enableMetrics) throws IOException {
-        return this.start(listenAddr, emptyPeers, snapshotIntervalSecs, enableMetrics, null, null);
+        return this.start(listenAddr, emptyPeers, snapshotIntervalSecs, enableMetrics,false, null, null);
     }
 
     public boolean start(final Endpoint listenAddr, final boolean emptyPeers, final int snapshotIntervalSecs,
                          final boolean enableMetrics, final SnapshotThrottle snapshotThrottle) throws IOException {
-        return this.start(listenAddr, emptyPeers, snapshotIntervalSecs, enableMetrics, snapshotThrottle, null);
+        return this.start(listenAddr, emptyPeers, snapshotIntervalSecs, enableMetrics,false, snapshotThrottle, null);
     }
 
     public boolean start(final Endpoint listenAddr, final boolean emptyPeers, final int snapshotIntervalSecs,
-                         final boolean enableMetrics, final SnapshotThrottle snapshotThrottle,
+                         final boolean enableMetrics, final boolean enableFlexible, final SnapshotThrottle snapshotThrottle,
                          final RaftOptions raftOptions, final int priority) throws IOException {
 
         if (this.serverMap.get(listenAddr.toString()) != null) {
@@ -163,6 +163,7 @@ public class TestCluster {
         nodeOptions.setEnableMetrics(enableMetrics);
         nodeOptions.setSnapshotThrottle(snapshotThrottle);
         nodeOptions.setSnapshotIntervalSecs(snapshotIntervalSecs);
+        nodeOptions.enableFlexibleRaft(enableFlexible);
         if (raftOptions != null) {
             nodeOptions.setRaftOptions(raftOptions);
         }
@@ -200,7 +201,7 @@ public class TestCluster {
     }
 
     public boolean start(final Endpoint listenAddr, final boolean emptyPeers, final int snapshotIntervalSecs,
-                         final boolean enableMetrics, final SnapshotThrottle snapshotThrottle,
+                         final boolean enableMetrics, final boolean enableFlexible,final SnapshotThrottle snapshotThrottle,
                          final RaftOptions raftOptions) throws IOException {
 
         if (this.serverMap.get(listenAddr.toString()) != null) {
@@ -212,6 +213,7 @@ public class TestCluster {
         nodeOptions.setEnableMetrics(enableMetrics);
         nodeOptions.setSnapshotThrottle(snapshotThrottle);
         nodeOptions.setSnapshotIntervalSecs(snapshotIntervalSecs);
+        nodeOptions.enableFlexibleRaft(enableFlexible);
         if (raftOptions != null) {
             nodeOptions.setRaftOptions(raftOptions);
         }
