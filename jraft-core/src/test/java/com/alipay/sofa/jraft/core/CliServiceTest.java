@@ -305,11 +305,11 @@ public class CliServiceTest {
 
         TestCluster cluster = new TestCluster(groupId, tempDataPath, peers, learners, 300);
         for (final PeerId peer : peers) {
-            cluster.startWithFlexible(peer.getEndpoint());
+            cluster.startWithFlexible(peer.getEndpoint(),readFactor,writeFactor);
         }
 
         for (final PeerId peer : learners) {
-            cluster.startLearnerWithFlexible(peer);
+            cluster.startLearnerWithFlexible(peer,readFactor,writeFactor);
         }
 
         cluster.waitLeader();
